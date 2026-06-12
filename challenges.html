@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PRIMAVERA.arco // Conclusion</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body class="bg-gray-900 text-gray-100 font-sans leading-relaxed">
+    <header class="bg-gray-800 border-b border-gray-700 sticky top-0 z-50">
+        <div class="max-w-7xl mx-auto px-4 py-4 flex flex-col xl:flex-row justify-between items-center gap-4">
+            <div class="flex items-center gap-3"><div class="w-3 h-3 bg-blue-500 rounded-full animate-pulse"></div><h1 class="text-lg font-mono font-bold tracking-wider text-blue-400">UNIBO // KE4H_PROJECT</h1></div>
+            <nav class="flex flex-wrap gap-1 bg-gray-950 p-1 rounded-lg border border-gray-800 text-xs md:text-sm">
+                <a href="index.html" class="px-3 py-1.5 rounded transition font-medium text-gray-400 hover:text-white">Home & Abstract</a>
+                <a href="gap.html" class="px-3 py-1.5 rounded transition font-medium text-gray-400 hover:text-white">Gap Identification</a>
+                <a href="sparql.html" class="px-3 py-1.5 rounded transition font-medium text-gray-400 hover:text-white">SPARQL Engine</a>
+                <a href="prompts.html" class="px-3 py-1.5 rounded transition font-medium text-gray-400 hover:text-white">LLM Prompting & Triples</a>
+                <a href="challenges.html" class="px-3 py-1.5 rounded transition font-medium bg-blue-900 text-white border-blue-500">Challenges & Conclusion</a>
+            </nav>
+        </div>
+    </header>
+    <main class="max-w-7xl mx-auto px-4 py-8">
+        <section class="space-y-6">
+            <h2 class="text-2xl font-bold font-mono text-blue-400">4. Challenges, Mitigations & Strategic Conclusions</h2>
+            <hr class="border-gray-800">
+            <div class="bg-gray-800 p-6 rounded-xl border border-gray-700 space-y-6">
+                <div class="space-y-3 text-sm text-gray-300">
+                    <h3 class="text-base font-bold text-white font-mono flex items-center gap-2"><span class="w-1.5 h-3 bg-red-500 inline-block"></span> Challenge 1: LLM Syntactic Laziness</h3>
+                    <p class="pl-3.5 text-xs text-gray-400">Models frequently hallucinated properties outside the official ArCo ontology framework. Deploying strict Few-Shot templates proved to be the ultimate mitigation to force syntactic compliance.</p>
+                </div>
+                <div class="space-y-3 pt-4 border-t border-gray-700/50 text-sm text-gray-300">
+                    <h3 class="text-base font-bold text-white font-mono flex items-center gap-2"><span class="w-1.5 h-3 bg-blue-500 inline-block"></span> Project Strategic Takeaways</h3>
+                    <p class="pl-3.5 text-xs text-gray-300 leading-relaxed">This project successfully validated a hybrid engineering approach: while formal Knowledge Graphs secure unassailable data truth, structured Prompt Engineering acts as an agile mechanism to unlock hidden contextual interpretations. Gemini's open instruction compliance failure under CoT limits reinforces that human-in-the-loop oversight remains indispensable.</p>
+                </div>
+            </div>
+        </section>
+    </main>
+</body>
+</html>
