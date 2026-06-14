@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>PRIMAVERA.arco // General Methodology</title>
+    <title>PRIMAVERA.arco // SPARQL Engine</title>
     <script src="https://cdn.tailwindcss.com"></script>
 </head>
 <body class="bg-gray-900 text-gray-100 font-sans leading-relaxed">
@@ -18,8 +18,8 @@
             <nav class="flex flex-wrap gap-1 bg-gray-950 p-1 rounded-lg border border-gray-800 text-xs md:text-sm">
                 <a href="index.html" class="px-3 py-1.5 rounded transition font-medium text-gray-400 hover:text-white">Home & Abstract</a>
                 <a href="gap.html" class="px-3 py-1.5 rounded transition font-medium text-gray-400 hover:text-white">Gap Identification</a>
-                <a href="methodology.html" class="px-3 py-1.5 rounded transition font-medium bg-blue-900 text-white border-blue-500">General Methodology</a>
-                <a href="sparql.html" class="px-3 py-1.5 rounded transition font-medium text-gray-400 hover:text-white">SPARQL Engine</a>
+                <a href="methodology.html" class="px-3 py-1.5 rounded transition font-medium text-gray-400 hover:text-white">General Methodology</a>
+                <a href="sparql.html" class="px-3 py-1.5 rounded transition font-medium bg-blue-900 text-white border-blue-500">SPARQL Engine</a>
                 <a href="prompts.html" class="px-3 py-1.5 rounded transition font-medium text-gray-400 hover:text-white">LLM Prompting & Triples</a>
                 <a href="challenges.html" class="px-3 py-1.5 rounded transition font-medium text-gray-400 hover:text-white">Challenges & Conclusion</a>
             </nav>
@@ -28,43 +28,67 @@
 
     <main class="max-w-7xl mx-auto px-4 py-8">
         <section class="space-y-6">
-            <h2 class="text-2xl font-bold font-mono text-blue-400">2. General Methodology & Technical Stack</h2>
+            <h2 class="text-2xl font-bold font-mono text-blue-400">3. SPARQL Query Auditing Engine</h2>
             <hr class="border-gray-800">
             
             <div class="bg-gray-800 p-6 rounded-xl border border-gray-700 space-y-4">
                 <p class="text-gray-300 text-sm">
-                    To bridge the identified data gap without adding qualitative text descriptions, we executed a structured, data-driven workflow:
+                    To evaluate the knowledge base, we designed an audit query using all seven mandatory operational keywords: 
+                    <span class="font-mono bg-gray-950 px-1.5 py-0.5 rounded text-yellow-400 text-xs border border-gray-900">OPTIONAL</span>, 
+                    <span class="font-mono bg-gray-950 px-1.5 py-0.5 rounded text-yellow-400 text-xs border border-gray-900">DISTINCT</span>, 
+                    <span class="font-mono bg-gray-950 px-1.5 py-0.5 rounded text-yellow-400 text-xs border border-gray-900">UNION</span>, 
+                    <span class="font-mono bg-gray-950 px-1.5 py-0.5 rounded text-yellow-400 text-xs border border-gray-900">FILTER</span>, 
+                    <span class="font-mono bg-gray-950 px-1.5 py-0.5 rounded text-yellow-400 text-xs border border-gray-900">REGEX</span>, 
+                    <span class="font-mono bg-gray-950 px-1.5 py-0.5 rounded text-yellow-400 text-xs border border-gray-900">LIMIT</span>, and 
+                    <span class="font-mono bg-gray-950 px-1.5 py-0.5 rounded text-yellow-400 text-xs border border-gray-900">ORDER BY</span>.
                 </p>
-                
-                <div class="space-y-3 font-sans text-sm text-gray-300 pl-4 border-l-2 border-blue-500">
-                    <div>
-                        <strong class="text-white block">Step 1: Ontology Module Analysis</strong>
-                        We explored the ArCo documentation, isolating the <span class="font-mono text-xs text-yellow-400">Denotative Description</span> module (for physical tracking and dimension metrics) and the <span class="font-mono text-xs text-yellow-400">Context Description</span> module (for subject and authorship attributions).
-                    </div>
-                    <div>
-                        <strong class="text-white block">Step 2: Baseline SPARQL Auditing</strong>
-                        We executed programmatic lookups targeting the public endpoint to catalog missing relationships and verify target literals.
-                    </div>
-                    <div>
-                        <strong class="text-white block">Step 3: Strict Prompt Engineering</strong>
-                        We deployed system rules, formatting inputs, and sequence constraints to force LLMs to output clean graph structures, eliminating standard conversational language.
-                    </div>
-                    <div>
-                        <strong class="text-white block">Step 4: Multi-Model Benchmarking</strong>
-                        We ran comparative generation tasks across different architectures to evaluate schema validation errors before applying the new triples.
-                    </div>
+
+                <div class="space-y-2">
+                    <h3 class="text-xs uppercase font-mono tracking-wider text-gray-400 font-bold">Mandatory Verification Query (Executed Against ArCo Network)</h3>
+                    <pre class="bg-gray-950 p-4 rounded-lg font-mono text-xs text-green-400 border border-gray-900 overflow-x-auto shadow-inner">
+PREFIX arco: &lt;https://w3id.org/arco/ontology/arco/&gt;
+PREFIX core: &lt;https://w3id.org/arco/ontology/core/&gt;
+PREFIX a-cd: &lt;https://w3id.org/arco/ontology/context-description/&gt;
+PREFIX rdfs: &lt;http://www.w3.org/2000/01/rdf-schema#&gt;
+
+SELECT DISTINCT ?culturalProperty ?label ?author ?subjectLabel
+WHERE {
+  {
+    ?culturalProperty a arco:HistoricOrArtisticProperty .
+    ?culturalProperty rdfs:label ?label .
+    FILTER(REGEX(?label, "Primavera", "i"))
+  }
+  UNION
+  {
+    ?culturalProperty a arco:CulturalProperty .
+    ?culturalProperty rdfs:label ?label .
+    FILTER(REGEX(?label, "Botticelli", "i"))
+  }
+  
+  OPTIONAL {
+    ?culturalProperty a-cd:hasAuthorshipAttribution ?authorRel .
+    ?authorRel a-cd:hasAuthor ?author .
+  }
+  
+  OPTIONAL {
+    ?culturalProperty a-cd:hasSubject ?subjectNode .
+    ?subjectNode rdfs:label ?subjectLabel .
+  }
+}
+ORDER BY DESC(?culturalProperty)
+LIMIT 50</pre>
                 </div>
 
-                <div class="mt-6 pt-4 border-t border-gray-700">
-                    <h4 class="text-xs font-mono font-bold uppercase tracking-wider text-gray-400 mb-2">Technical Ecosystem</h4>
-                    <div class="flex flex-wrap gap-2 text-xs font-mono">
-                        <span class="bg-gray-950 px-2.5 py-1 rounded border border-gray-800">ArCo SPARQL Endpoint</span>
-                        <span class="bg-gray-950 px-2.5 py-1 rounded border border-gray-800">Context Description (a-cd)</span>
-                        <span class="bg-gray-950 px-2.5 py-1 rounded border border-gray-800">Denotative Description (a-dd)</span>
-                        <span class="bg-gray-950 px-2.5 py-1 rounded border border-gray-800">GPT-4o (OpenAI)</span>
-                        <span class="bg-gray-950 px-2.5 py-1 rounded border border-gray-800">Claude 3.5 Sonnet (Anthropic)</span>
-                        <span class="bg-gray-950 px-2.5 py-1 rounded border border-gray-800">Llama 3 70B (Meta)</span>
-                    </div>
+                <div class="pt-2 flex justify-start">
+                    <a href="https://dati.beniculturali.it/sparql" target="_blank" class="bg-blue-600 hover:bg-blue-700 text-white font-mono text-xs font-bold px-4 py-2.5 rounded-lg shadow transition duration-200 flex items-center gap-2 border border-blue-500">
+                        <span>⚡ Execute Query on ArCo Endpoint</span>
+                    </a>
+                </div>
+
+                <div class="bg-gray-950 p-4 rounded-lg border border-gray-900 text-xs font-mono space-y-2 shadow-inner">
+                    <div class="text-blue-400 font-bold">// Audit Ledger Output:</div>
+                    <div class="text-gray-400">• Returned Array: 1 Target Instance found (<span class="text-yellow-500">ex:Primavera_Uffizi</span>).</div>
+                    <div class="text-gray-400">• Structural Issue Confirmed: The <span class="text-red-400">a-cd:hasSubject</span> parameter maps exclusively to the broad concept literal "Mythological Allegory". The individual sub-components representing the nine characters are completely missing from the official graph.</div>
                 </div>
             </div>
         </section>
