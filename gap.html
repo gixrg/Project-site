@@ -20,17 +20,30 @@
             </nav>
         </div>
     </header>
-    <main class="max-w-7xl mx-auto px-4 py-8">
+      <main class="max-w-7xl mx-auto px-4 py-8">
         <section class="space-y-6">
             <h2 class="text-2xl font-bold font-mono text-blue-400">1. Semantic Gap Identification</h2>
             <hr class="border-gray-800">
             <div class="bg-gray-800 p-6 rounded-xl border border-gray-700 space-y-4">
-                <p class="text-gray-300 text-sm">Sandro Botticelli's *Primavera* (c. 1480) is an intricate Neoplatonic allegory featuring **nine specific mythological characters**: Zephyrus, Chloris, Flora, Venus, Cupid, the Three Graces, and Mercury. While institutional cultural registries are excellent at documenting physical properties, they frequently suffer from a severe scarcity of iconographical and denotative metadata.</p>
-                <p class="text-gray-300 text-sm">By auditing the official **ArCo Knowledge Graph** (IRI: <span class="font-mono text-yellow-400 text-xs">https://w3id.org/arco/resource/HistoricOrArtisticProperty/0900158550</span>), our team discovered a major data void: the graph maps the entire painting as a single monolithic entity, describing its subject with just one flat literal string: **"Allegoria della Primavera"**.</p>
+                <p class="text-gray-300 text-sm">
+                    Sandro Botticelli's <span class="italic font-normal">Primavera</span> (c. 1480) is an intricate Neoplatonic allegory featuring <strong class="text-white font-bold">nine specific mythological characters</strong>: Zephyrus, Chloris, Flora, Venus, Cupid, the Three Graces, and Mercury. While institutional cultural registries are excellent at documenting physical properties, they frequently suffer from a severe scarcity of iconographical and denotative metadata.
+                </p>
+                <p class="text-gray-300 text-sm">
+                    By auditing the official <strong class="text-white font-bold">ArCo Knowledge Graph</strong> (IRI: <span class="font-mono text-yellow-400 text-xs">https://w3id.org/arco/resource/HistoricOrArtisticProperty/0900158550</span>), our team discovered a major data void: the graph maps the entire painting as a single monolithic entity, describing its subject with just one flat literal string: <strong class="text-white font-bold">"Allegoria della Primavera"</strong>.
+                </p>
                 <div class="grid grid-cols-1 md:grid-cols-3 gap-4 mt-4">
-                    <div class="p-4 bg-gray-950 rounded-lg border border-gray-800 text-xs"><span class="text-red-400 font-mono font-bold block mb-1">Missing Components</span>The nine independent actors interacting across the orange grove possess zero distinct URI strings or nodes within the official graph.</div>
-                    <div class="p-4 bg-gray-950 rounded-lg border border-gray-800 text-xs"><span class="text-red-400 font-mono font-bold block mb-1">No Spatial Relations</span>Intricate groupings (such as the interlocking hands of the Three Graces) completely lack spatial localization properties.</div>
-                    <div class="p-4 bg-gray-950 rounded-lg border border-gray-800 text-xs"><span class="text-red-400 font-mono font-bold block mb-1">Unmappable Narrative</span>Active transformations (e.g., Zephyrus breathing onto Chloris to convert her into Flora) cannot be handled by ArCo's static metadata entry.</div>
+                    <div class="p-4 bg-gray-950 rounded-lg border border-gray-800 text-xs">
+                        <span class="text-red-400 font-mono font-bold block mb-1">Missing Components</span>
+                        The nine independent actors interacting across the orange grove possess zero distinct URI strings or nodes within the official graph.
+                    </div>
+                    <div class="p-4 bg-gray-950 rounded-lg border border-gray-800 text-xs">
+                        <span class="text-red-400 font-mono font-bold block mb-1">No Spatial Relations</span>
+                        Intricate groupings (such as the interlocking hands of the Three Graces) completely lack spatial localization properties.
+                    </div>
+                    <div class="p-4 bg-gray-950 rounded-lg border border-gray-800 text-xs">
+                        <span class="text-red-400 font-mono font-bold block mb-1">Unmappable Narrative</span>
+                        Active transformations (e.g., Zephyrus breathing onto Chloris to convert her into Flora) cannot be handled by ArCo's static metadata entry.
+                    </div>
                 </div>
             </div>
         </section>
