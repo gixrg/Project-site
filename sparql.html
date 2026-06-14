@@ -19,7 +19,7 @@
                 <a href="index.html" class="px-3 py-1.5 rounded transition font-medium text-gray-400 hover:text-white">Home & Abstract</a>
                 <a href="gap.html" class="px-3 py-1.5 rounded transition font-medium text-gray-400 hover:text-white">Gap Identification</a>
                 <a href="methodology.html" class="px-3 py-1.5 rounded transition font-medium text-gray-400 hover:text-white">General Methodology</a>
-                <a href="sparql.html" class="px-3 py-1.5 rounded transition font-medium bg-blue-900 text-white border-blue-500">SPARQL Engine</a>
+                <a href="sparql.html" class="px-3 py-1.5 rounded transition font-medium bg-blue-900 text-white border-blue-500">SPARQL Implementations</a>
                 <a href="prompts.html" class="px-3 py-1.5 rounded transition font-medium text-gray-400 hover:text-white">LLM Prompting & Triples</a>
                 <a href="challenges.html" class="px-3 py-1.5 rounded transition font-medium text-gray-400 hover:text-white">Challenges & Conclusion</a>
             </nav>
@@ -90,4 +90,98 @@ WHERE {
 }</pre>
             
             <div class="pt-2 flex justify-start">
-                <a href="
+                <a href="https://dati.cultura.gov.it/sparql?default-graph-uri=&query=SELECT+DISTINCT+%3FculturalProperty+%3Flabel+%3FauthorLabel%0D%0AWHERE+%7B%0D%0A++%3FculturalProperty+a+arco%3AHistoricOrArtisticProperty+.%0D%0A++%3FculturalProperty+rdfs%3Alabel+%3Flabel+.%0D%0A++%3FculturalProperty+a-cd%3AhasAuthor+%3Fauthor+.%0D%0A++%3Fauthor+rdfs%3Alabel+%3FauthorLabel+.%0D%0A++%0D%0A++FILTER%28REGEX%28%3Flabel%2C+%22Primavera%22%2C+%22i%22%29%29%0D%0A++FILTER%28REGEX%28%3FauthorLabel%2C+%22Botticelli%22%2C+%22i%22%29%29%0D%0A%7D%0D%0A&format=text%2Fhtml&timeout=0&signal_void=on" target="_blank" class="bg-blue-600 hover:bg-blue-700 text-white font-mono text-xs font-bold px-4 py-2.5 rounded-lg shadow transition duration-200 flex items-center gap-2 border border-blue-500">
+                    <span>View Results on SPARQL Endpoint</span>
+                </a>
+            </div>
+
+            <div class="text-gray-400 text-xs font-mono bg-gray-950 p-3 rounded border border-gray-900">
+                <span class="text-blue-400 font-bold">// Act II Audit Result:</span> The graph successfully filters out structural noise and isolates the unique URIs representing Sandro Botticelli's records at the Uffizi Gallery.
+            </div>
+        </div>
+
+        <div class="bg-gray-800 p-6 rounded-xl border border-gray-700 space-y-4">
+            <div class="flex items-center gap-2">
+                <span class="bg-blue-900 text-blue-300 font-mono text-xs px-2.5 py-1 rounded-md font-bold">ACT III</span>
+                <h3 class="text-base font-bold text-white font-mono">The Global Subject Scan (The Illusory Overlap)</h3>
+            </div>
+            
+            <div class="text-gray-300 text-sm space-y-2">
+                <p>
+                    Before pinning the target canvas, we ran a global subject query using <span class="font-mono text-xs text-yellow-400">a-cd:hasSubject</span> on any artwork labeled "Primavera". This intermediate step highlights a common challenge in data validation: names of independent characters (like Cupid or Mercury) appear in the output stream, but they belong to miscellaneous regional assets or different frescoes, not to Botticelli's canvas.
+                </p>
+            </div>
+
+            <pre class="bg-gray-950 p-4 rounded-lg font-mono text-xs text-green-400 border border-gray-900 overflow-x-auto">
+SELECT DISTINCT ?subjectLabel
+WHERE {
+  ?culturalProperty rdfs:label ?label .
+  FILTER(REGEX(?label, "Primavera", "i"))
+  
+  ?culturalProperty a-cd:hasSubject ?subjectNode .
+  ?subjectNode rdfs:label ?subjectLabel .
+}</pre>
+            
+            <div class="pt-2 flex justify-start">
+                <a href="https://dati.cultura.gov.it/sparql?default-graph-uri=&query=SELECT+DISTINCT+%3FsubjectLabel%0D%0AWHERE+%7B%0D%0A++%23+Usiamo+l%27URI+isolata+nell%27Act+II+o+cerchiamo+per+etichetta%0D%0A++%3FculturalProperty+rdfs%3Alabel+%3Flabel+.%0D%0A++FILTER%28REGEX%28%3Flabel%2C+%22Primavera%22%2C+%22i%22%29%29%0D%0A%++%0D%0A++%23+Interroghiamo+i+soggetti+associati%0D%0A++%3FculturalProperty+a-cd%3AhasSubject+%3FsubjectNode+.%0D%0A++%3FsubjectNode+rdfs%3Alabel+%3FsubjectLabel+.%0D%0A%7D%0D%0A&format=text%2Fhtml&timeout=0&signal_void=on" target="_blank" class="bg-blue-600 hover:bg-blue-700 text-white font-mono text-xs font-bold px-4 py-2.5 rounded-lg shadow transition duration-200 flex items-center gap-2 border border-blue-500">
+                    <span>View Results on SPARQL Endpoint</span>
+                </a>
+            </div>
+        </div>
+
+        <div class="bg-gray-800 p-6 rounded-xl border border-gray-700 space-y-4">
+            <div class="flex items-center gap-2">
+                <span class="bg-blue-900 text-blue-300 font-mono text-xs px-2.5 py-1 rounded-md font-bold">ACT IV</span>
+                <h3 class="text-base font-bold text-white font-mono">Chirurgical Audit: Isolating Botticelli's Subject Gap</h3>
+            </div>
+            
+            <div class="text-gray-300 text-sm space-y-2">
+                <p>
+                    This final query represents the <strong>Definitive Content Audit</strong>. By forcing a strict conjunctive condition that matches "Primavera" and "Botticelli" simultaneously, we extract the precise iconographical boundaries of the Uffizi masterpiece. 
+                </p>
+                <p>
+                    If the characters were structurally indexed as semantic graph components, the output would display individual nodes for each iconographical component. Instead, it exposes the complete absence of granular modeling.
+                </p>
+            </div>
+
+            <pre class="bg-gray-950 p-4 rounded-lg font-mono text-xs text-green-400 border border-gray-900 overflow-x-auto">
+PREFIX arco: &lt;https://w3id.org/arco/ontology/arco/&gt;
+PREFIX core: &lt;https://w3id.org/arco/ontology/core/&gt;
+PREFIX a-cd: &lt;https://w3id.org/arco/ontology/context-description/&gt;
+PREFIX rdfs: &lt;http://www.w3.org/2000/01/rdf-schema#&gt;
+
+SELECT DISTINCT ?culturalProperty ?label ?authorLabel ?subjectLabel
+WHERE {
+  ?culturalProperty a arco:HistoricOrArtisticProperty .
+  ?culturalProperty rdfs:label ?label .
+  FILTER(REGEX(?label, "Primavera", "i"))
+  
+  ?culturalProperty a-cd:hasAuthor ?author .
+  ?author rdfs:label ?authorLabel .
+  FILTER(REGEX(?authorLabel, "Botticelli", "i"))
+  
+  OPTIONAL {
+    ?culturalProperty a-cd:hasSubject ?subjectNode .
+    ?subjectNode rdfs:label ?subjectLabel .
+  }
+}
+ORDER BY DESC(?culturalProperty)</pre>
+            
+            <div class="pt-2 flex justify-start">
+                <a href="https://dati.cultura.gov.it/sparql?default-graph-uri=&query=PREFIX+arco%3A+%3Chttps%3A%2F%2Fw3id.org%2Farco%2Fontology%2Farco%2F%3E%0D%0APREFIX+core%3A+%3Chttps%3A%2F%2Fw3id.org%2Farco%2Fontology%2Fcore%2F%3E%0D%0APREFIX+a-cd%3A+%3Chttps%3A%2F%2Fw3id.org%2Farco%2Fontology%2Fcontext-description%2F%3E%0D%0APREFIX+rdfs%3A+%3Chttp%3A%2F%2Fwww.w3.org%2F2000%2F01%2Frdf-schema%23%3E%0D%0A%0D%0ASELECT+DISTINCT+%3FculturalProperty+%3Flabel+%3FauthorLabel+%3FsubjectLabel%0D%0AWHERE+%7B%0D%0A++%23+1.+Isoliamo+il+bene+culturale+che+si+chiama+%22Primavera%22%0D%0A++%3FculturalProperty+a+arco%3AHistoricOrArtisticProperty+.%0D%0A++%3FculturalProperty+rdfs%3Alabel+%3Flabel+.%0D%0A++FILTER%28REGEX%28%3Flabel%2C+%22Primavera%22%2C+%22i%22%29%29%0D%0A++%0D%0A++%23+2.+Stringiamo+la+ricerca+legandolo+OBLIGATORIAMENTE+a+Botticelli%0D%0A++%3FculturalProperty+a-cd%3AhasAuthor+%3Fauthor+.%0D%0A++%3Fauthor+rdfs%3Alabel+%3FauthorLabel+.%0D%0A++FILTER%28REGEX%28%3FauthorLabel%2C+%22Botticelli%22%2C+%22i%22%29%29%0D%0A++%0D%0A++%23+3.+Chiediamo+di+estrarre+TUTTI+i+soggetti+collegati+a+questo+specifico+binomio%0D%0A++OPTIONAL+%7B%0D%0A++++%3FculturalProperty+a-cd%3AhasSubject+%3FsubjectNode+.%0D%0A++++%3FsubjectNode+rdfs%3Alabel+%3FsubjectLabel+.%0D%0A++%7D%0D%0A%7D%0D%0AORDER+BY+DESC%28%3FculturalProperty%29%0D%0A&format=text%2Fhtml&timeout=0&signal_void=on" target="_blank" class="bg-blue-600 hover:bg-blue-700 text-white font-mono text-xs font-bold px-4 py-2.5 rounded-lg shadow transition duration-200 flex items-center gap-2 border border-blue-500">
+                    <span>View Results on SPARQL Endpoint</span>
+                </a>
+            </div>
+
+            <div class="bg-gray-950 p-4 rounded-lg border border-gray-900 text-xs font-mono space-y-2">
+                <div class="text-blue-400 font-bold">// Empirical Audit Outcome:</div>
+                <div class="text-gray-400">• Returned Rows: 2 Rows targeting the single masterpiece registry.</div>
+                <div class="text-gray-400">• Resulting Labels: <span class="text-yellow-500">"Allegoria della Primavera"</span> and <span class="text-yellow-500">"Soggetto mitologico"</span>.</div>
+                <div class="text-gray-400">• Gap Confirmed: The 9 independent mythological figures are entirely unindexed as distinct URIs or relational paths for this asset, mathematically verifying the data vacuum.</div>
+            </div>
+        </div>
+
+    </main>
+
+</body>
+</html>
