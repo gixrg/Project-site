@@ -37,11 +37,10 @@
                     <a href="https://www.wikidata.org/wiki/Q5011" target="_blank" class="text-blue-400 hover:underline hover:text-blue-300">Cupid</a>, the 
                     <a href="https://www.wikidata.org/wiki/Q184353" target="_blank" class="text-blue-400 hover:underline hover:text-blue-300">Three Graces</a>, and 
                     <a href="https://www.wikidata.org/wiki/Q1150" target="_blank" class="text-blue-400 hover:underline hover:text-blue-300">Mercury</a>. 
-                    While institutional cultural registries are excellent at documenting physical properties, they frequently suffer from a severe scarcity of iconographical and denotative metadata.
+                    While institutional cultural registries are excellent at documenting physical properties (dimensions, preservation state, current location), they frequently suffer from a severe scarcity of iconographical and denotative metadata.
                 </p>
-
                 <p class="text-gray-300 text-sm">
-                    By auditing the official <strong class="text-white font-bold">ArCo Knowledge Graph</strong>, our team discovered a major data void: the graph maps the entire painting as a single monolithic entity, describing its subject with just one flat literal string: <strong class="text-white font-bold">"Allegoria della Primavera"</strong>.
+                    By auditing the official <strong class="text-white font-bold">ArCo Knowledge Graph</strong>, our team discovered a major data void: the graph maps the entire painting as a single monolithic entity, describing its subject with just one flat literal string: <strong class="text-white font-bold">"Allegoria della Primavera"</strong>. This high-level classification leaves the internal structure of the masterpiece completely opaque to semantic queries.
                 </p>
 
                 <div class="pt-2">
@@ -57,15 +56,15 @@
             <div class="grid grid-cols-1 md:grid-cols-3 gap-4 mt-4">
                 <div class="p-4 bg-gray-950 rounded-lg border border-gray-800 text-xs">
                     <span class="text-red-400 font-mono font-bold block mb-1">Missing Components</span>
-                    The nine independent actors interacting across the orange grove possess zero distinct URI strings or nodes within the official graph.
+                    The nine independent actors interacting across the orange grove possess zero distinct URI strings or nodes within the official graph, making it impossible to perform micro-level iconographical lookups.
                 </div>
                 <div class="p-4 bg-gray-950 rounded-lg border border-gray-800 text-xs">
                     <span class="text-red-400 font-mono font-bold block mb-1">No Spatial Relations</span>
-                    Intricate groupings (such as the interlocking hands of the Three Graces) completely lack spatial localization properties.
+                    Intricate groupings (such as the interlocking hands of the Three Graces or Venus's central positioning) completely lack spatial localization properties within the cultural heritage schema.
                 </div>
                 <div class="p-4 bg-gray-950 rounded-lg border border-gray-800 text-xs">
                     <span class="text-red-400 font-mono font-bold block mb-1">Unmappable Narrative</span>
-                    Active transformations (e.g., Zephyrus breathing onto Chloris to convert her into Flora) cannot be handled by ArCo's static metadata entry.
+                    Active transformations (e.g., Zephyrus breathing onto Chloris to convert her into Flora) cannot be handled by ArCo's static metadata entry, causing a total loss of the artwork's narrative dynamics.
                 </div>
             </div>
         </section>
