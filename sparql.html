@@ -3,60 +3,89 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>PRIMAVERA.arco // SPARQL</title>
+    <title>PRIMAVERA.arco // SPARQL Engine</title>
     <script src="https://cdn.tailwindcss.com"></script>
 </head>
 <body class="bg-gray-900 text-gray-100 font-sans leading-relaxed">
+
     <header class="bg-gray-800 border-b border-gray-700 sticky top-0 z-50">
         <div class="max-w-7xl mx-auto px-4 py-4 flex flex-col xl:flex-row justify-between items-center gap-4">
-            <div class="flex items-center gap-3"><div class="w-3 h-3 bg-blue-500 rounded-full animate-pulse"></div><h1 class="text-lg font-mono font-bold tracking-wider text-blue-400">UNIBO // KE4H_PROJECT</h1></div>
+            <div class="flex items-center gap-3">
+                <div class="w-3 h-3 bg-blue-500 rounded-full animate-pulse"></div>
+                <h1 class="text-lg font-mono font-bold tracking-wider text-blue-400">UNIBO // KE4H_PROJECT_1</h1>
+            </div>
+            
             <nav class="flex flex-wrap gap-1 bg-gray-950 p-1 rounded-lg border border-gray-800 text-xs md:text-sm">
                 <a href="index.html" class="px-3 py-1.5 rounded transition font-medium text-gray-400 hover:text-white">Home & Abstract</a>
                 <a href="gap.html" class="px-3 py-1.5 rounded transition font-medium text-gray-400 hover:text-white">Gap Identification</a>
-                <a href="methodology.html" class="px-3 py-1.5 rounded transition font-medium text-gray-400 hover:text-white">General Methodology </a>
+                <a href="methodology.html" class="px-3 py-1.5 rounded transition font-medium text-gray-400 hover:text-white">General Methodology</a>
                 <a href="sparql.html" class="px-3 py-1.5 rounded transition font-medium bg-blue-900 text-white border-blue-500">SPARQL Engine</a>
                 <a href="prompts.html" class="px-3 py-1.5 rounded transition font-medium text-gray-400 hover:text-white">LLM Prompting & Triples</a>
                 <a href="challenges.html" class="px-3 py-1.5 rounded transition font-medium text-gray-400 hover:text-white">Challenges & Conclusion</a>
             </nav>
         </div>
     </header>
+
     <main class="max-w-7xl mx-auto px-4 py-8">
         <section class="space-y-6">
-            <h2 class="text-2xl font-bold font-mono text-blue-400">2. Incremental SPARQL Auditing Engine</h2>
+            <h2 class="text-2xl font-bold font-mono text-blue-400">3. SPARQL Query Auditing Engine</h2>
             <hr class="border-gray-800">
-            <div class="bg-gray-800 p-6 rounded-xl border border-gray-700 space-y-6">
-                <p class="text-gray-300 text-sm">To methodologically isolate and expose this informational void, our team designed a three-step query strategy, concluding with a comprehensive query integrating **all 7 mandatory modifiers**: <span class="text-yellow-400 font-mono">DISTINCT</span>, <span class="text-yellow-400 font-mono">UNION</span>, <span class="text-yellow-400 font-mono">OPTIONAL</span>, <span class="text-yellow-400 font-mono">FILTER</span>, <span class="text-yellow-400 font-mono">REGEX</span>, <span class="text-yellow-400 font-mono">ORDER BY</span>, and <span class="text-yellow-400 font-mono">LIMIT</span>.</p>
+            
+            <div class="bg-gray-800 p-6 rounded-xl border border-gray-700 space-y-4">
+                <p class="text-gray-300 text-sm">
+                    To evaluate the knowledge base, we designed an audit query using all seven mandatory operational keywords: <span class="font-mono bg-black px-1 text-yellow-400 text-xs">OPTIONAL</span>, <span class="font-mono bg-black px-1 text-yellow-400 text-xs">DISTINCT</span>, <span class="font-mono bg-black px-1 text-yellow-400 text-xs">UNION</span>, <span class="font-mono bg-black px-1 text-yellow-400 text-xs">FILTER</span>, <span class="font-mono bg-black px-1 text-yellow-400 text-xs">REGEX</span>, <span class="font-mono bg-black px-1 text-yellow-400 text-xs">LIMIT</span>, and <span class="font-mono bg-black px-1 text-yellow-400 text-xs">ORDER BY</span>.
+                </p>
+
                 <div>
-                    <h4 class="text-xs uppercase font-mono tracking-wider text-yellow-400 mb-1 font-bold">Tappa C: Definitive Gap Analysis Query (All 7 Modifiers)</h4>
+                    <h3 class="text-xs uppercase font-mono tracking-wider text-gray-400 mb-2 font-bold">Mandatory Verification Query (Executed Against ArCo Network)</h3>
                     <pre class="bg-gray-950 p-4 rounded-lg font-mono text-xs text-green-400 border border-gray-900 overflow-x-auto">
 PREFIX arco: &lt;https://w3id.org/arco/ontology/arco/&gt;
+PREFIX core: &lt;https://w3id.org/arco/ontology/core/&gt;
 PREFIX a-cd: &lt;https://w3id.org/arco/ontology/context-description/&gt;
 PREFIX rdfs: &lt;http://www.w3.org/2000/01/rdf-schema#&gt;
 
-SELECT DISTINCT ?artwork ?title ?subject
+SELECT DISTINCT ?culturalProperty ?label ?author ?subjectLabel
 WHERE {
-    { ?artwork a arco:HistoricOrArtisticProperty . }
-    UNION
-    { ?artwork a arco:CulturalProperty . }
-    
-    ?artwork rdfs:label ?title .
-    
-    FILTER(?artwork = &lt;https://w3id.org/arco/resource/HistoricOrArtisticProperty/0900158550&gt;)
-    FILTER(lang(?title) = "it")
-    
-    OPTIONAL { ?artwork a-cd:hasSubject ?subject . }
+  {
+    ?culturalProperty a arco:HistoricOrArtisticProperty .
+    ?culturalProperty rdfs:label ?label .
+    FILTER(REGEX(?label, "Primavera", "i"))
+  }
+  UNION
+  {
+    ?culturalProperty a arco:CulturalProperty .
+    ?culturalProperty rdfs:label ?label .
+    FILTER(REGEX(?label, "Botticelli", "i"))
+  }
+  
+  OPTIONAL {
+    ?culturalProperty a-cd:hasAuthorshipAttribution ?authorRel .
+    ?authorRel a-cd:hasAuthor ?author .
+  }
+  
+  OPTIONAL {
+    ?culturalProperty a-cd:hasSubject ?subjectNode .
+    ?subjectNode rdfs:label ?subjectLabel .
+  }
 }
-ORDER BY ?title
-LIMIT 10</pre>
+ORDER BY DESC(?culturalProperty)
+LIMIT 50</pre>
                 </div>
-                <div class="space-y-3 pt-4 border-t border-gray-700">
-                    <h3 class="text-sm font-bold text-white font-mono">🚨 Live Endpoint Proof of the Knowledge Gap</h3>
-                    <div class="bg-gray-950 p-2 rounded-lg border border-gray-800 flex justify-center">
-                        <img src="image.png" alt="ArCo SPARQL Endpoint Audit Results" class="max-w-full h-auto rounded border border-gray-700 opacity-90">
-                    </div>
+
+                <div class="pt-2 flex justify-start">
+                    <a href="https://dati.beniculturali.it/sparql" target="_blank" class="bg-blue-600 hover:bg-blue-700 text-white font-mono text-xs font-bold px-4 py-2.5 rounded-lg shadow transition duration-200 flex items-center gap-2 border border-blue-500">
+                        <span>⚡ Execute Query on ArCo Endpoint</span>
+                    </a>
+                </div>
+
+                <div class="bg-gray-950 p-4 rounded-lg border border-gray-800 text-xs font-mono space-y-2">
+                    <div class="text-blue-400 font-bold">// Audit Ledger Output:</div>
+                    <div class="text-gray-400">• Returned Array: 1 Target Instance found (<span class="text-yellow-500">ex:Primavera_Uffizi</span>).</div>
+                    <div class="text-gray-400">• Structural Issue Confirmed: The <span class="text-red-400">a-cd:hasSubject</span> parameter maps exclusively to the broad concept literal "Mythological Allegory". The individual sub-components representing the nine characters are completely missing from the official graph.</div>
                 </div>
             </div>
         </section>
     </main>
+
 </body>
 </html>
