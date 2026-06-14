@@ -19,7 +19,7 @@
                 <a href="index.html" class="px-3 py-1.5 rounded transition font-medium text-gray-400 hover:text-white">Home & Abstract</a>
                 <a href="gap.html" class="px-3 py-1.5 rounded transition font-medium text-gray-400 hover:text-white">Gap Identification</a>
                 <a href="methodology.html" class="px-3 py-1.5 rounded transition font-medium text-gray-400 hover:text-white">General Methodology</a>
-                <a href="sparql.html" class="px-3 py-1.5 rounded transition font-medium bg-blue-900 text-white border-blue-500">SPARQL Implementations</a>
+                <a href="sparql.html" class="px-3 py-1.5 rounded transition font-medium bg-blue-900 text-white border-blue-500">SPARQL Engine</a>
                 <a href="prompts.html" class="px-3 py-1.5 rounded transition font-medium text-gray-400 hover:text-white">LLM Prompting & Triples</a>
                 <a href="evaluation.html" class="px-3 py-1.5 rounded transition font-medium text-gray-400 hover:text-white">LLM Evaluation</a>
                 <a href="challenges.html" class="px-3 py-1.5 rounded transition font-medium text-gray-400 hover:text-white">Challenges & Conclusion</a>
@@ -38,7 +38,7 @@
         <div class="bg-gray-800 p-6 rounded-xl border border-gray-700 space-y-4">
             <div class="flex items-center gap-2">
                 <span class="bg-blue-900 text-blue-300 font-mono text-xs px-2.5 py-1 rounded-md font-bold">ACT I</span>
-                <h3 class="text-base font-bold text-white font-sans">Discovery: Searching for "Primavera"</h3>
+                <h3 class="font-bold font-sans text-white">Discovery: Searching for "Primavera"</h3>
             </div>
             
             <div class="text-gray-300 text-sm space-y-2 font-sans">
@@ -56,7 +56,7 @@ WHERE {
 }</pre>
             
             <div class="pt-2 flex justify-start">
-                <a href="https://dati.cultura.gov.it/sparql?default-graph-uri=&query=SELECT+DISTINCT+%3FculturalProperty+%3Flabel%0D%0AWHERE+%7B%0D%0A++%3FculturalProperty+a+arco%3AHistoricOrArtisticProperty+.%0D%0A++%3FculturalProperty+rdfs%3Alabel+%3Flabel+.%0D%0A++FILTER%28REGEX%28%3Flabel%2C+%22Primavera%22%2C+%22i%22%29%29%0D%0A%7D%0D%0A%0D%0A&format=text%2Fhtml&timeout=0&signal_void=on" target="_blank" class="bg-blue-600 hover:bg-blue-700 text-white font-sans text-xs font-bold px-4 py-2.5 rounded-lg shadow transition duration-200 flex items-center gap-2 border border-blue-500">
+                <a href="https://dati.cultura.gov.it/sparql?default-graph-uri=&query=SELECT+DISTINCT+%3FculturalProperty+%3Flabel%0D%0AWHERE+%7B%0D%0A++%3FculturalProperty+a+arco%3AHistoricOrArtisticProperty+.%0D%0A++%3FculturalProperty+rdfs%3Alabel+%3Flabel+.%0D%0A++FILTER%2加速(REGEX%28%3Flabel%2C+%22Primavera%22%2C+%22i%22%29%29%0D%0A%7D%0D%0A%0D%0A&format=text%2Fhtml&timeout=0&signal_void=on" target="_blank" class="bg-blue-600 hover:bg-blue-700 text-white font-sans text-xs font-bold px-4 py-2.5 rounded-lg shadow transition duration-200 flex items-center gap-2 border border-blue-500">
                     <span>View Results on SPARQL Endpoint</span>
                 </a>
             </div>
@@ -69,7 +69,7 @@ WHERE {
         <div class="bg-gray-800 p-6 rounded-xl border border-gray-700 space-y-4">
             <div class="flex items-center gap-2">
                 <span class="bg-blue-900 text-blue-300 font-mono text-xs px-2.5 py-1 rounded-md font-bold">ACT II</span>
-                <h3 class="text-base font-bold text-white font-sans">Attribution: Isolating Botticelli's Masterpiece</h3>
+                <h3 class="font-bold font-sans text-white">Attribution: Isolating Botticelli's Masterpiece</h3>
             </div>
             
             <div class="text-gray-300 text-sm space-y-2 font-sans">
@@ -104,7 +104,7 @@ WHERE {
         <div class="bg-gray-800 p-6 rounded-xl border border-gray-700 space-y-4">
             <div class="flex items-center gap-2">
                 <span class="bg-blue-900 text-blue-300 font-mono text-xs px-2.5 py-1 rounded-md font-bold">ACT III</span>
-                <h3 class="text-base font-bold text-white font-sans">The Global Subject Scan (The Illusory Overlap)</h3>
+                <h3 class="font-bold font-sans text-white">The Global Subject Scan (The Illusory Overlap)</h3>
             </div>
             
             <div class="text-gray-300 text-sm space-y-2 font-sans">
@@ -133,7 +133,7 @@ WHERE {
         <div class="bg-gray-800 p-6 rounded-xl border border-gray-700 space-y-4">
             <div class="flex items-center gap-2">
                 <span class="bg-blue-900 text-blue-300 font-mono text-xs px-2.5 py-1 rounded-md font-bold">ACT IV</span>
-                <h3 class="text-base font-bold text-white font-sans">Chirurgical Audit: Isolating Botticelli's Subject Gap</h3>
+                <h3 class="font-bold font-sans text-white">Chirurgical Audit: Isolating Botticelli's Subject Gap</h3>
             </div>
             
             <div class="text-gray-300 text-sm space-y-2 font-sans">
