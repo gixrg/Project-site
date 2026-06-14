@@ -3,47 +3,113 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>PRIMAVERA.arco // Prompts</title>
+    <title>PRIMAVERA.arco // LLM Prompting & Triples</title>
     <script src="https://cdn.tailwindcss.com"></script>
 </head>
 <body class="bg-gray-900 text-gray-100 font-sans leading-relaxed">
+
     <header class="bg-gray-800 border-b border-gray-700 sticky top-0 z-50">
         <div class="max-w-7xl mx-auto px-4 py-4 flex flex-col xl:flex-row justify-between items-center gap-4">
-            <div class="flex items-center gap-3"><div class="w-3 h-3 bg-blue-500 rounded-full animate-pulse"></div><h1 class="text-lg font-mono font-bold tracking-wider text-blue-400">UNIBO // KE4H_PROJECT</h1></div>
+            <div class="flex items-center gap-3">
+                <div class="w-3 h-3 bg-blue-500 rounded-full animate-pulse"></div>
+                <h1 class="text-lg font-mono font-bold tracking-wider text-blue-400">UNIBO // KE4H_PROJECT_1</h1>
+            </div>
+            
             <nav class="flex flex-wrap gap-1 bg-gray-950 p-1 rounded-lg border border-gray-800 text-xs md:text-sm">
                 <a href="index.html" class="px-3 py-1.5 rounded transition font-medium text-gray-400 hover:text-white">Home & Abstract</a>
                 <a href="gap.html" class="px-3 py-1.5 rounded transition font-medium text-gray-400 hover:text-white">Gap Identification</a>
-                <a href="methodology.html" class="px-3 py-1.5 rounded transition font-medium text-gray-400 hover:text-white">General Methodology </a>
-                <a href="sparql.html" class="px-3 py-1.5 rounded transition font-medium text-gray-400 hover:text-white">SPARQL Implementations</a>
+                <a href="methodology.html" class="px-3 py-1.5 rounded transition font-medium text-gray-400 hover:text-white">General Methodology</a>
+                <a href="sparql.html" class="px-3 py-1.5 rounded transition font-medium text-gray-400 hover:text-white">SPARQL Engine</a>
                 <a href="prompts.html" class="px-3 py-1.5 rounded transition font-medium bg-blue-900 text-white border-blue-500">LLM Prompting & Triples</a>
-                <a href="evaluation.html" class="px-3 py-1.5 rounded transition font-medium text-gray-400 hover:text-white">LLMs Comparison</a>
+                <a href="evaluation.html" class="px-3 py-1.5 rounded transition font-medium text-gray-400 hover:text-white">LLM Evaluation</a>
                 <a href="challenges.html" class="px-3 py-1.5 rounded transition font-medium text-gray-400 hover:text-white">Challenges & Conclusion</a>
             </nav>
         </div>
     </header>
-    <main class="max-w-7xl mx-auto px-4 py-8">
-        <section class="space-y-6">
+
+    <main class="max-w-7xl mx-auto px-4 py-8 space-y-10">
+        
+        <div class="space-y-2">
             <h2 class="text-2xl font-bold font-mono text-blue-400">4. LLM Prompt Engineering & RDF Generation</h2>
+            <p class="text-gray-400 text-sm font-sans">Formal representation of the prompt engineering techniques applied to extract, model, and bridge the data omissions documented in our SPARQL repository audit.</p>
             <hr class="border-gray-800">
-            <div class="bg-gray-800 p-6 rounded-xl border border-gray-700 space-y-6">
-                <div class="space-y-4 text-sm text-gray-300">
-                    <div><span class="bg-gray-950 px-2 py-0.5 rounded text-xs font-mono font-bold text-blue-400 border border-gray-700">1. Zero-Shot Prompting</span><p class="text-xs mt-1 text-gray-400">We demanded raw code generation without structural guidelines. Both models produced unstable syntax, omitting basic language tags (`@it`).</p></div>
-                    <div><span class="bg-gray-950 px-2 py-0.5 rounded text-xs font-mono font-bold text-blue-400 border border-gray-700">2. Few-Shot Prompting</span><p class="text-xs mt-1 text-gray-400">Providing an explicit formatting template drastically enhanced structural alignment, generating valid, graph-ready ArCo code.</p></div>
-                    <div><span class="bg-gray-950 px-2 py-0.5 rounded text-xs font-mono font-bold text-blue-400 border border-gray-700">3. Chain-of-Thought (CoT) & The Gemini Breakdown</span><p class="text-xs mt-1 text-gray-400">We forced a multi-stage spatial analysis (right-to-left). **Gemini completely broke down under the constraints**, explicitly stating: <em>"Non posso fornire il mio ragionamento interno dettagliato o la catena di pensiero passo per passo"</em> and omitting the Turtle code block entirely.</p></div>
+        </div>
+
+        <div class="bg-gray-800 p-6 rounded-xl border border-gray-700 space-y-6">
+            
+            <div class="bg-blue-950/30 p-4 border-l-4 border-blue-500 rounded-r">
+                <h4 class="text-xs font-bold text-blue-400 uppercase tracking-widest mb-1">Update Log: Refined Component Modeling</h4>
+                <p class="text-xs text-gray-300 font-sans">
+                    <strong>Change:</strong> Transitioned from broad conceptual subject nodes to <strong>9 discrete component entities</strong>. 
+                    This update forces the inference models to map every mythological figure as an independent instance of the class <span class="font-mono text-yellow-400 text-xs">a-cd:CulturalPropertyComponent</span>.
+                </p>
+            </div>
+
+            <p class="text-gray-300 text-sm font-sans">
+                We targeted the documented data gap using three systematic prompt engineering strategies, instructing the foundational models to bypass conversational padding and output data-ready RDF structures directly.
+            </p>
+
+            <div class="grid grid-cols-1 gap-6">
+                <div class="space-y-1">
+                    <span class="bg-blue-900/40 text-blue-300 px-2 py-0.5 rounded text-xs font-mono border border-blue-800 font-bold">Technique 1: Zero-Shot System Constraints</span>
+                    <div class="bg-gray-950 p-4 rounded-lg border border-gray-900 font-mono text-xs text-gray-300 leading-relaxed">
+                        Isolate the core characters into independent component nodes. Strip out all aesthetic interpretations. Output only valid Turtle syntax using the ArCo framework vocabulary boundaries. Do not include introductory text or chat commentary.
+                    </div>
                 </div>
-                <div class="pt-4 border-t border-gray-700">
-                    <h3 class="text-sm font-bold text-white font-mono mb-2">Enriched Dataset (9 Reconciled Subject Components)</h3>
-                    <pre class="bg-gray-950 p-4 rounded-lg font-mono text-xs text-yellow-400 border border-gray-900 overflow-x-auto">
+                
+                <div class="space-y-1">
+                    <span class="bg-blue-900/40 text-blue-300 px-2 py-0.5 rounded text-xs font-mono border border-blue-800 font-bold">Technique 2: Few-Shot Structural Alignment</span>
+                    <div class="bg-gray-950 p-4 rounded-lg border border-gray-900 font-mono text-xs text-gray-300 leading-relaxed">
+                        [Input] Canvas: Pallas and the Centaur | Component: Centaur -> [Output] ex:Artwork core:hasPart ex:Node_Centaur .<br>
+                        [Input] Canvas: Primavera | Component: Mercury -> [Output] ex:Primavera_Artwork core:hasPart ex:Node_Mercury .
+                    </div>
+                </div>
+                
+                <div class="space-y-1">
+                    <span class="bg-blue-900/40 text-blue-300 px-2 py-0.5 rounded text-xs font-mono border border-blue-800 font-bold">Technique 3: Chain-of-Thought (CoT) Spatial Extraction</span>
+                    <div class="bg-gray-950 p-4 rounded-lg border border-gray-900 font-mono text-xs text-gray-300 leading-relaxed">
+                        1. Evaluate visual boundary limits on a normalized 100x100 grid from right to left.<br>
+                        2. Establish separate URI nodes for overlapping actors. Map metadata fields adhering strictly to approved ArCo prefix documentation constraints.
+                    </div>
+                </div>
+            </div>
+
+            <div class="pt-6 border-t border-gray-700 space-y-3">
+                <h3 class="text-sm font-bold font-sans text-white">Reconciled Knowledge Graph Dataset (9 Subject Components)</h3>
+                <p class="text-gray-400 text-sm font-sans">The following Turtle schema serialization represents the verified enrichment layer generated by the inference engine to eliminate the semantic metadata gap.</p>
+                
+                <pre class="bg-gray-950 p-4 rounded-lg font-mono text-xs text-yellow-400 border border-gray-900 overflow-x-auto leading-relaxed">
 @prefix ex:    &lt;http://example.org/primavera/&gt; .
 @prefix a-cd:  &lt;https://w3id.org/arco/ontology/context-description/&gt; .
 @prefix core:  &lt;https://w3id.org/arco/ontology/core/&gt; .
 @prefix rdfs:  &lt;http://www.w3.org/2000/01/rdf-schema#&gt; .
 
-<https://w3id.org/arco/resource/HistoricOrArtisticProperty/0900158550>
-    core:hasPart ex:Zephyrus, ex:Chloris, ex:Flora, ex:Venus, ex:Cupid, ex:Grace1, ex:Grace2, ex:Grace3, ex:Mercury .</pre>
-                </div>
+# Relationship to Parent Artwork Record
+ex:Primavera_Artwork core:hasPart ex:Zephyrus, ex:Chloris, ex:Flora, ex:Venus, ex:Cupid, ex:Grace1, ex:Grace2, ex:Grace3, ex:Mercury .
+
+# Character Component Structural Modeling
+ex:Zephyrus a a-cd:CulturalPropertyComponent ; rdfs:label "Zephyrus" ; a-cd:hasSubject ex:Subj_Zephyrus .
+ex:Chloris  a a-cd:CulturalPropertyComponent ; rdfs:label "Chloris"  ; a-cd:hasSubject ex:Subj_Chloris .
+ex:Flora    a a-cd:CulturalPropertyComponent ; rdfs:label "Flora"    ; a-cd:hasSubject ex:Subj_Flora .
+ex:Venus    a a-cd:CulturalPropertyComponent ; rdfs:label "Venus"    ; a-cd:hasSubject ex:Subj_Venus .
+ex:Cupid    a a-cd:CulturalPropertyComponent ; rdfs:label "Cupid"    ; a-cd:hasSubject ex:Subj_Cupid .
+ex:Grace1   a a-cd:CulturalPropertyComponent ; rdfs:label "Aglaia"   ; a-cd:hasSubject ex:Subj_Grace .
+ex:Grace2   a a-cd:CulturalPropertyComponent ; rdfs:label "Euphrosyne" ; a-cd:hasSubject ex:Subj_Grace .
+ex:Grace3   a a-cd:CulturalPropertyComponent ; rdfs:label "Thalia"   ; a-cd:hasSubject ex:Subj_Grace .
+ex:Mercury  a a-cd:CulturalPropertyComponent ; rdfs:label "Mercury"  ; a-cd:hasSubject ex:Subj_Mercury .
+
+# Subject Node Internal Alignments
+ex:Subj_Zephyrus a a-cd:Subject ; rdfs:label "God of the West Wind" .
+ex:Subj_Chloris  a a-cd:Subject ; rdfs:label "Nymph" .
+ex:Subj_Flora    a a-cd:Subject ; rdfs:label "Goddess of Spring" .
+ex:Subj_Venus    a a-cd:Subject ; rdfs:label "Goddess of Love" .
+ex:Subj_Cupid    a a-cd:Subject ; rdfs:label "God of Desire" .
+ex:Subj_Grace    a a-cd:Subject ; rdfs:label "One of the Three Graces" .
+ex:Subj_Mercury  a a-cd:Subject ; rdfs:label "Messenger of the Gods" .</pre>
             </div>
-        </section>
+
+        </div>
     </main>
+
 </body>
 </html>
