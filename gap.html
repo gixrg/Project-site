@@ -11,7 +11,7 @@
         <div class="max-w-7xl mx-auto px-4 py-4 flex flex-col xl:flex-row justify-between items-center gap-4">
             <div class="flex items-center gap-3">
                 <div class="w-3 h-3 bg-blue-500 rounded-full animate-pulse"></div>
-                <h1 class="text-lg font-mono font-bold tracking-wider text-blue-400">UNIBO // KE4H_PROJECT</h1>
+                <h1 class="text-lg font-mono font-bold tracking-wider text-blue-400">UNIBO // KE4H_PROJECT_1</h1>
             </div>
             <nav class="flex flex-wrap gap-1 bg-gray-950 p-1 rounded-lg border border-gray-800 text-xs md:text-sm">
                 <a href="index.html" class="px-3 py-1.5 rounded transition font-medium text-gray-400 hover:text-white">Home & Abstract</a>
@@ -41,15 +41,6 @@
                 <p class="text-gray-300 text-sm">
                     Because individual compositional components (<span class="font-mono text-xs text-yellow-400">arco-cd:CulturalPropertyComponent</span>) are unindexed, semantic search agents cannot query or compute relational pathways between the characters. Resolving this spatial and thematic data gap is the primary focus of this enrichment project.
                 </p>
-
-                <div class="pt-2">
-                    <a href="https://dati.cultura.gov.it/sparql?default-graph-uri=&query=PREFIX+arco%3A+%3Chttps%3A%2F%2Fw3id.org%2Farco%2Fontology%2Farco%2F%3E%0D%0APREFIX+a-cd%3A+%3Chttps%3A%2F%2Fw3id.org%2Farco%2Fontology%2Fcontext-description%2F%3E%0D%0APREFIX+rdfs%3A+%3Chttp%3A%2F%2Fwww.w3.org%2F2000%2F01%2Frdf-schema%23%3E%0D%0A%0D%0ASELECT+DISTINCT+%3Fartwork+%3Ftitle+%3FauthorLabel+%3FsubjectLabel%0D%0AWHERE+%7B%0D%0A++++%23+1.+Usiamo+UNION+per+includere+sia+i+beni+storico-artistici+sia+i+beni+culturali+generici%0D%0A++++%7B%0D%0A++++++++%3Fartwork+a+arco%3AHistoricOrArtisticProperty+.%0D%0A++++%7D+UNION+%7B%0D%0A++++++++%3Fartwork+a+arco%3ACulturalProperty+.%0D%0A++++%7D%0D%0A++++%0D%0A++++%23+2.+Estraiamo+il+titolo+e+l%27autore%0D%0A++++%3Fartwork+rdfs%3Alabel+%3Ftitle+.%0D%0A++++%3Fartwork+a-cd%3AhasAuthor+%3Fauthor+.%0D%0A++++%3Fauthor+rdfs%3Alabel+%3FauthorLabel+.%0D%0A++++%0D%0A++++%23+3.+Usiamo+FILTER+e+REGEX+per+trovare+Botticelli+e+la+Primavera%0D%0A++++FILTER%28REGEX%28%3Ftitle%2C+%22primavera%22%2C+%22i%22%29%29%0D%0A++++FILTER%28REGEX%28%3FauthorLabel%2C+%22botticelli%22%2C+%22i%22%29%29%0D%0A++++%0D%0A++++%23+4.+Usiamo+OPTIONAL+per+il+soggetto%3A+questo+è+fondamentale+per+il+vostro+progetto%21%0D%0A++++OPTIONAL+%7B%0D%0A++++++++%3Fartwork+a-cd%3AhasSubject+%3Fsubject+.%0D%0A++++++++%3Fsubject+rdfs%3Alabel+%3FsubjectLabel+.%0D%0A++++%7D%0D%0A%7D%0D%0A%23+5.+Ordiniamo+i+risultati+e+mettiamo+un+limite%0D%0AORDER+BY+%3Ftitle%0D%0A%0D%0A%0D%0A&format=text%2Fhtml&timeout=0&signal_void=on" target="_blank" class="inline-flex items-center gap-2 px-4 py-2 bg-gray-900 hover:bg-gray-950 text-blue-400 hover:text-blue-300 font-mono text-xs font-semibold rounded-lg border border-gray-700 hover:border-blue-500 transition-all duration-200 shadow-md">
-                        <span>Execute Query on ArCo Endpoint</span>
-                        <svg class="w-3 h-3 animate-pulse" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3"></path>
-                        </svg>
-                    </a>
-                </div>
             </div>
 
             <div class="grid grid-cols-1 md:grid-cols-3 gap-4 mt-4">
