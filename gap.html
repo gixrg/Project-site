@@ -29,18 +29,17 @@
             <hr class="border-gray-800">
             <div class="bg-gray-800 p-6 rounded-xl border border-gray-700 space-y-4">
                 <p class="text-gray-300 text-sm">
-                    Sandro Botticelli's <span class="italic font-normal text-gray-100">Primavera</span> (c. 1480) is an intricate Neoplatonic allegory featuring <strong class="text-white font-bold">nine specific mythological characters</strong>: 
-                    <a href="https://www.wikidata.org/wiki/Q467515" target="_blank" class="text-blue-400 hover:underline hover:text-blue-300">Zephyrus</a>, 
-                    <a href="https://www.wikidata.org/wiki/Q1075258" target="_blank" class="text-blue-400 hover:underline hover:text-blue-300">Chloris</a>, 
-                    <a href="https://www.wikidata.org/wiki/Q209644" target="_blank" class="text-blue-400 hover:underline hover:text-blue-300">Flora</a>, 
+                    The institutional cultural registry records for Botticelli's <span class="italic font-normal text-gray-100">Primavera</span> within public endpoints model the painting exclusively as a single, monolithic entity (<span class="font-mono text-xs text-yellow-400">arco:CulturalProperty</span>). Our audit reveals a clear <strong class="text-white font-bold">knowledge gap</strong>: the nine independent mythological figures interacting across the canvas — 
+                    <a href="https://www.wikidata.org/wiki/Q1150" target="_blank" class="text-blue-400 hover:underline hover:text-blue-300">Mercury</a>, the 
+                    <a href="https://www.wikidata.org/wiki/Q184353" target="_blank" class="text-blue-400 hover:underline hover:text-blue-300">Three Graces</a>, 
                     <a href="https://www.wikidata.org/wiki/Q47652" target="_blank" class="text-blue-400 hover:underline hover:text-blue-300">Venus</a>, 
-                    <a href="https://www.wikidata.org/wiki/Q5011" target="_blank" class="text-blue-400 hover:underline hover:text-blue-300">Cupid</a>, the 
-                    <a href="https://www.wikidata.org/wiki/Q184353" target="_blank" class="text-blue-400 hover:underline hover:text-blue-300">Three Graces</a>, and 
-                    <a href="https://www.wikidata.org/wiki/Q1150" target="_blank" class="text-blue-400 hover:underline hover:text-blue-300">Mercury</a>. 
-                    While institutional cultural registries are excellent at documenting physical properties (dimensions, preservation state, current location), they frequently suffer from a severe scarcity of iconographical and denotative metadata.
+                    <a href="https://www.wikidata.org/wiki/Q5011" target="_blank" class="text-blue-400 hover:underline hover:text-blue-300">Cupid</a>, 
+                    <a href="https://www.wikidata.org/wiki/Q209644" target="_blank" class="text-blue-400 hover:underline hover:text-blue-300">Flora</a>, 
+                    <a href="https://www.wikidata.org/wiki/Q1075258" target="_blank" class="text-blue-400 hover:underline hover:text-blue-300">Chloris</a>, and 
+                    <a href="https://www.wikidata.org/wiki/Q467515" target="_blank" class="text-blue-400 hover:underline hover:text-blue-300">Zephyrus</a> — completely lack individual semantic bounds, spatial localization properties, or unique identifiers.
                 </p>
                 <p class="text-gray-300 text-sm">
-                    By auditing the official <strong class="text-white font-bold">ArCo Knowledge Graph</strong>, our team discovered a major data void: the graph maps the entire painting as a single monolithic entity, describing its subject with just one flat literal string: <strong class="text-white font-bold">"Allegoria della Primavera"</strong>. This high-level classification leaves the internal structure of the masterpiece completely opaque to semantic queries.
+                    Because individual compositional components (<span class="font-mono text-xs text-yellow-400">arco-cd:CulturalPropertyComponent</span>) are unindexed, semantic search agents cannot query or compute relational pathways between the characters. Resolving this spatial and thematic data gap is the primary focus of this enrichment project.
                 </p>
 
                 <div class="pt-2">
@@ -55,16 +54,16 @@
 
             <div class="grid grid-cols-1 md:grid-cols-3 gap-4 mt-4">
                 <div class="p-4 bg-gray-950 rounded-lg border border-gray-800 text-xs">
-                    <span class="text-red-400 font-mono font-bold block mb-1">Missing Components</span>
-                    The nine independent actors interacting across the orange grove possess zero distinct URI strings or nodes within the official graph, making it impossible to perform micro-level iconographical lookups.
+                    <span class="text-red-400 font-mono font-bold block mb-1">Compositional Blank Space</span>
+                    Individual actors possess no URI strings within the graph, preventing granular metadata retrieval.
                 </div>
                 <div class="p-4 bg-gray-950 rounded-lg border border-gray-800 text-xs">
-                    <span class="text-red-400 font-mono font-bold block mb-1">No Spatial Relations</span>
-                    Intricate groupings (such as the interlocking hands of the Three Graces or Venus's central positioning) completely lack spatial localization properties within the cultural heritage schema.
+                    <span class="text-red-400 font-mono font-bold block mb-1">Spatial Overlap Failures</span>
+                    Intricate groupings (such as the interlocking fingers of the Three Graces) lack distinct spatial coordinate delimiters.
                 </div>
                 <div class="p-4 bg-gray-950 rounded-lg border border-gray-800 text-xs">
-                    <span class="text-red-400 font-mono font-bold block mb-1">Unmappable Narrative</span>
-                    Active transformations (e.g., Zephyrus breathing onto Chloris to convert her into Flora) cannot be handled by ArCo's static metadata entry, causing a total loss of the artwork's narrative dynamics.
+                    <span class="text-red-400 font-mono font-bold block mb-1">Transformation Representation</span>
+                    The mythological sequence where Zephyrus transforms Chloris into Flora cannot be handled natively by a static data entry.
                 </div>
             </div>
         </section>
