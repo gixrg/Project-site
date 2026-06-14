@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>PRIMAVERA.arco // SPARQL Engine</title>
+    <title>PRIMAVERA.arco // General Methodology</title>
     <script src="https://cdn.tailwindcss.com"></script>
 </head>
 <body class="bg-gray-900 text-gray-100 font-sans leading-relaxed">
@@ -18,80 +18,76 @@
             <nav class="flex flex-wrap gap-1 bg-gray-950 p-1 rounded-lg border border-gray-800 text-xs md:text-sm">
                 <a href="index.html" class="px-3 py-1.5 rounded transition font-medium text-gray-400 hover:text-white">Home & Abstract</a>
                 <a href="gap.html" class="px-3 py-1.5 rounded transition font-medium text-gray-400 hover:text-white">Gap Identification</a>
-                <a href="methodology.html" class="px-3 py-1.5 rounded transition font-medium text-gray-400 hover:text-white">General Methodology</a>
-                <a href="sparql.html" class="px-3 py-1.5 rounded transition font-medium bg-blue-900 text-white border-blue-500">SPARQL Implementations</a>
+                <a href="methodology.html" class="px-3 py-1.5 rounded transition font-medium bg-blue-900 text-white border-blue-500">General Methodology</a>
+                <a href="sparql.html" class="px-3 py-1.5 rounded transition font-medium text-gray-400 hover:text-white">SPARQL Engine</a>
                 <a href="prompts.html" class="px-3 py-1.5 rounded transition font-medium text-gray-400 hover:text-white">LLM Prompting & Triples</a>
                 <a href="challenges.html" class="px-3 py-1.5 rounded transition font-medium text-gray-400 hover:text-white">Challenges & Conclusion</a>
             </nav>
         </div>
     </header>
 
-    <main class="max-w-7xl mx-auto px-4 py-8">
-        <section class="space-y-6">
-            <h2 class="text-2xl font-bold font-mono text-blue-400">3. SPARQL Query Auditing Engine</h2>
+    <main class="max-w-7xl mx-auto px-4 py-8 space-y-8">
+        
+        <div class="space-y-2">
+            <h2 class="text-2xl font-bold font-mono text-blue-400">2. General Methodology</h2>
+            <p class="text-gray-400 text-sm">A structured multi-tiered framework leveraging Semantic Web standards and Large Language Models for automated knowledge extraction.</p>
             <hr class="border-gray-800">
+        </div>
+
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
             
-            <div class="bg-gray-800 p-6 rounded-xl border border-gray-700 space-y-4">
+            <div class="bg-gray-800 p-6 rounded-xl border border-gray-700 space-y-3">
+                <div class="text-xs font-mono font-bold text-blue-400 uppercase tracking-wider">Phase I</div>
+                <h3 class="text-lg font-bold text-white font-mono">Knowledge Graph Auditing</h3>
                 <p class="text-gray-300 text-sm">
-                    To evaluate the knowledge base, we designed an audit query using all seven mandatory operational keywords: 
-                    <span class="font-mono bg-gray-950 px-1.5 py-0.5 rounded text-yellow-400 text-xs border border-gray-900">OPTIONAL</span>, 
-                    <span class="font-mono bg-gray-950 px-1.5 py-0.5 rounded text-yellow-400 text-xs border border-gray-900">DISTINCT</span>, 
-                    <span class="font-mono bg-gray-950 px-1.5 py-0.5 rounded text-yellow-400 text-xs border border-gray-900">UNION</span>, 
-                    <span class="font-mono bg-gray-950 px-1.5 py-0.5 rounded text-yellow-400 text-xs border border-gray-900">FILTER</span>, 
-                    <span class="font-mono bg-gray-950 px-1.5 py-0.5 rounded text-yellow-400 text-xs border border-gray-900">REGEX</span>, 
-                    <span class="font-mono bg-gray-950 px-1.5 py-0.5 rounded text-yellow-400 text-xs border border-gray-900">LIMIT</span>, and 
-                    <span class="font-mono bg-gray-950 px-1.5 py-0.5 rounded text-yellow-400 text-xs border border-gray-900">ORDER BY</span>.
+                    Programmatic interrogation of the official ArCo SPARQL endpoint to assess metadata granularity. This phase formalizes data omissions regarding the internal narrative components of targeted artworks, establishing a baseline for the semantic gap.
                 </p>
-
-                <div class="space-y-2">
-                    <h3 class="text-xs uppercase font-mono tracking-wider text-gray-400 font-bold">Mandatory Verification Query (Executed Against ArCo Network)</h3>
-                    <pre class="bg-gray-950 p-4 rounded-lg font-mono text-xs text-green-400 border border-gray-900 overflow-x-auto shadow-inner">
-PREFIX arco: &lt;https://w3id.org/arco/ontology/arco/&gt;
-PREFIX core: &lt;https://w3id.org/arco/ontology/core/&gt;
-PREFIX a-cd: &lt;https://w3id.org/arco/ontology/context-description/&gt;
-PREFIX rdfs: &lt;http://www.w3.org/2000/01/rdf-schema#&gt;
-
-SELECT DISTINCT ?culturalProperty ?label ?author ?subjectLabel
-WHERE {
-  {
-    ?culturalProperty a arco:HistoricOrArtisticProperty .
-    ?culturalProperty rdfs:label ?label .
-    FILTER(REGEX(?label, "Primavera", "i"))
-  }
-  UNION
-  {
-    ?culturalProperty a arco:CulturalProperty .
-    ?culturalProperty rdfs:label ?label .
-    FILTER(REGEX(?label, "Botticelli", "i"))
-  }
-  
-  OPTIONAL {
-    ?culturalProperty a-cd:hasAuthorshipAttribution ?authorRel .
-    ?authorRel a-cd:hasAuthor ?author .
-  }
-  
-  OPTIONAL {
-    ?culturalProperty a-cd:hasSubject ?subjectNode .
-    ?subjectNode rdfs:label ?subjectLabel .
-  }
-}
-ORDER BY DESC(?culturalProperty)
-LIMIT 50</pre>
-                </div>
-
-                <div class="pt-2 flex justify-start">
-                    <a href="https://dati.beniculturali.it/sparql" target="_blank" class="bg-blue-600 hover:bg-blue-700 text-white font-mono text-xs font-bold px-4 py-2.5 rounded-lg shadow transition duration-200 flex items-center gap-2 border border-blue-500">
-                        <span>⚡ Execute Query on ArCo Endpoint</span>
-                    </a>
-                </div>
-
-                <div class="bg-gray-950 p-4 rounded-lg border border-gray-900 text-xs font-mono space-y-2 shadow-inner">
-                    <div class="text-blue-400 font-bold">// Audit Ledger Output:</div>
-                    <div class="text-gray-400">• Returned Array: 1 Target Instance found (<span class="text-yellow-500">ex:Primavera_Uffizi</span>).</div>
-                    <div class="text-gray-400">• Structural Issue Confirmed: The <span class="text-red-400">a-cd:hasSubject</span> parameter maps exclusively to the broad concept literal "Mythological Allegory". The individual sub-components representing the nine characters are completely missing from the official graph.</div>
+                <div class="text-xs font-mono text-gray-500 pt-2 border-t border-gray-700">
+                    Constructs: SPARQL, Registry Mining, Validation
                 </div>
             </div>
-        </section>
+
+            <div class="bg-gray-800 p-6 rounded-xl border border-gray-700 space-y-3">
+                <div class="text-xs font-mono font-bold text-blue-400 uppercase tracking-wider">Phase II</div>
+                <h3 class="text-lg font-bold text-white font-mono">LLM Prompt Engineering</h3>
+                <p class="text-gray-300 text-sm">
+                    Design and evaluation of advanced prompting paradigms across foundational models. By enforcing precise ontological bounds and spatial processing rules, the system orchestrates zero-shot, few-shot, and chain-of-thought operations to process visual information.
+                </p>
+                <div class="text-xs font-mono text-gray-500 pt-2 border-t border-gray-700">
+                    Paradigms: Zero-Shot, Few-Shot, Chain-of-Thought
+                </div>
+            </div>
+
+            <div class="bg-gray-800 p-6 rounded-xl border border-gray-700 space-y-3">
+                <div class="text-xs font-mono font-bold text-blue-400 uppercase tracking-wider">Phase III</div>
+                <h3 class="text-lg font-bold text-white font-mono">Ontological Mapping & Fusion</h3>
+                <p class="text-gray-300 text-sm">
+                    Transformation of flat model outputs into fully compliant RDF/Turtle data structures. The extracted components are mapped to the ArCo schema, cross-referenced with Wikidata external URIs, and synthesized into the reconciled global graph.
+                </p>
+                <div class="text-xs font-mono text-gray-500 pt-2 border-t border-gray-700">
+                    Standards: W3C RDF, Turtle, ArCo Ontology Alignment
+                </div>
+            </div>
+
+        </div>
+
+        <div class="bg-gray-800 p-6 rounded-xl border border-gray-700 space-y-4">
+            <h3 class="text-base font-bold text-white font-mono">Methodological Pipeline Architecture</h3>
+            <p class="text-gray-300 text-sm">
+                The core architectural innovation relies on using Large Language Models not as simple text generators, but as specialized Knowledge Engineering components capable of structural alignment. The process follows a strict validation cycle:
+            </p>
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-4 text-xs font-mono">
+                <div class="bg-gray-950 p-4 rounded-lg border border-gray-900 space-y-2">
+                    <span class="text-blue-400 font-bold">// 1. Data Harvesting & Constraint Setup</span>
+                    <p class="text-gray-400 leading-relaxed">The pipeline initializes by extracting existing records from institutional graphs. The extracted fragments are evaluated to build the strict system boundary configurations passed to the inference models.</p>
+                </div>
+                <div class="bg-gray-950 p-4 rounded-lg border border-gray-900 space-y-2">
+                    <span class="text-blue-400 font-bold">// 2. Controlled RDF Extraction & Ingestion</span>
+                    <p class="text-gray-400 leading-relaxed">LLMs process the unstructured artistic records under structural constraints. The generated syntax is parsed, validated against the ArCo vocabulary specification, and linked to open authority data records.</p>
+                </div>
+            </div>
+        </div>
+
     </main>
 
 </body>
