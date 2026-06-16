@@ -49,13 +49,86 @@
                 We targeted the documented data gap using three systematic prompt engineering strategies, instructing the foundational models to bypass conversational padding and output data-ready RDF structures directly.
             </p>
 
-            <div class="grid grid-cols-1 gap-6">
-                <div class="space-y-1">
-                    <span class="bg-blue-900/40 text-blue-300 px-2 py-0.5 rounded text-xs font-mono border border-blue-800 font-bold">Technique 1: Zero-Shot System Constraints</span>
-                    <div class="bg-gray-950 p-4 rounded-lg border border-gray-900 font-mono text-xs text-gray-300 leading-relaxed">
-                        Isolate the core characters into independent component nodes. Strip out all aesthetic interpretations. Output only valid Turtle syntax using the ArCo framework vocabulary boundaries. Do not include introductory text or chat commentary.
-                    </div>
-                </div>
+           <div class="space-y-3">
+    <span class="bg-blue-900/40 text-blue-300 px-2 py-0.5 rounded text-xs font-mono border border-blue-800 font-bold">Technique 1: Zero-Shot System Constraints</span>
+    <div class="bg-gray-950 p-4 rounded-lg border border-gray-900 font-mono text-xs text-gray-300 leading-relaxed">
+        Isolate the core characters into independent component nodes. Strip out all aesthetic interpretations. Output only valid Turtle syntax using the ArCo framework.
+    </div>
+    
+    <div class="pl-4 border-l-2 border-gray-700 space-y-4">
+        <div class="space-y-1">
+            <span class="text-gray-400 text-xs font-mono font-bold">// Target Input Prompt (Sent to LLMs)</span>
+            <div class="bg-gray-900 p-4 rounded-lg border border-gray-950 font-mono text-xs text-gray-400 leading-relaxed">
+                Act as a Semantic Web Knowledge Engineer. Analyze Sandro Botticelli's artwork "La Primavera" to resolve its internal characters. You must follow these strict operational constraints:<br><br>
+                1. Isolate every single one of the 9 core characters into a dedicated node modeled explicitly as an instance of the class a-cd:CulturalPropertyComponent.<br>
+                2. Link each component back to the parent artwork URI (ex:Primavera_Artwork) using the object property core:hasPart.<br>
+                3. Assign an rdfs:label string to each component containing their primary mythological identification (Zephyrus, Chloris, Flora, Venus, Cupid, Aglaia, Euphrosyne, Thalia, Mercury).<br>
+                4. Output ONLY a valid W3C Turtle file using the prefixes: ex:, a-cd:, core:, and rdfs:. Do not include any conversational preamble, markdown explanations, or chat commentary.
+            </div>
+        </div>
+        
+        <div class="space-y-1">
+            <span class="text-green-400 text-xs font-mono font-bold">// Zero-Shot Model Response Output (ChatGPT)</span>
+            <pre class="bg-gray-950 p-4 rounded-lg font-mono text-xs text-green-400 border border-gray-900 overflow-x-auto leading-relaxed">@prefix ex: &lt;http://example.org/&gt; .
+@prefix a-cd: &lt;http://example.org/a-cd/&gt; .
+@prefix core: &lt;http://example.org/core/&gt; .
+@prefix rdfs: &lt;http://www.w3.org/2000/01/rdf-schema#&gt; .
+
+ex:Primavera_Artwork
+    core:hasPart ex:Primavera_Zephyrus ,
+                 ex:Primavera_Chloris ,
+                 ex:Primavera_Flora ,
+                 ex:Primavera_Venus ,
+                 ex:Primavera_Cupid ,
+                 ex:Primavera_Aglaia ,
+                 ex:Primavera_Euphrosyne ,
+                 ex:Primavera_Thalia ,
+                 ex:Primavera_Mercury .
+
+ex:Primavera_Zephyrus a a-cd:CulturalPropertyComponent ; rdfs:label "Zephyrus" .
+ex:Primavera_Chloris  a a-cd:CulturalPropertyComponent ; rdfs:label "Chloris" .
+ex:Primavera_Flora    a a-cd:CulturalPropertyComponent ; rdfs:label "Flora" .
+ex:Primavera_Venus    a a-cd:CulturalPropertyComponent ; rdfs:label "Venus" .
+ex:Primavera_Cupid    a a-cd:CulturalPropertyComponent ; rdfs:label "Cupid" .
+ex:Primavera_Aglaia   a a-cd:CulturalPropertyComponent ; rdfs:label "Aglaia" .
+ex:Primavera_Euphrosyne a a-cd:CulturalPropertyComponent ; rdfs:label "Euphrosyne" .
+ex:Primavera_Thalia   a a-cd:CulturalPropertyComponent ; rdfs:label "Thalia" .
+ex:Primavera_Mercury  a a-cd:CulturalPropertyComponent ; rdfs:label "Mercury" .</pre>
+        </div>
+
+        <div class="space-y-1">
+            <span class="text-green-400 text-xs font-mono font-bold">// Zero-Shot Model Response Output (Gemini)</span>
+            <pre class="bg-gray-950 p-4 rounded-lg font-mono text-xs text-green-400 border border-gray-900 overflow-x-auto leading-relaxed">@prefix ex: &lt;http://example.org/artwork/&gt; .
+@prefix a-cd: &lt;http://example.org/ontology/a-cd/&gt; .
+@prefix core: &lt;http://example.org/ontology/core/&gt; .
+@prefix rdfs: &lt;http://www.w3.org/2000/01/rdf-schema#&gt; .
+
+ex:Primavera_Artwork
+    a a-cd:CulturalProperty ;
+    rdfs:label "La Primavera" ;
+    core:hasPart ex:Component_Zephyrus ;
+    core:hasPart ex:Component_Chloris ;
+    core:hasPart ex:Component_Flora ;
+    core:hasPart ex:Component_Venus ;
+    core:hasPart ex:Component_Cupid ;
+    core:hasPart ex:Component_Aglaia ;
+    core:hasPart ex:Component_Euphrosyne ;
+    core:hasPart ex:Component_Thalia ;
+    core:hasPart ex:Component_Mercury .
+
+ex:Component_Zephyrus   a a-cd:CulturalPropertyComponent ; rdfs:label "Zephyrus" .
+ex:Component_Chloris    a a-cd:CulturalPropertyComponent ; rdfs:label "Chloris" .
+ex:Component_Flora      a a-cd:CulturalPropertyComponent ; rdfs:label "Flora" .
+ex:Component_Venus      a a-cd:CulturalPropertyComponent ; rdfs:label "Venus" .
+ex:Component_Cupid      a a-cd:CulturalPropertyComponent ; rdfs:label "Cupid" .
+ex:Component_Aglaia     a a-cd:CulturalPropertyComponent ; rdfs:label "Aglaia" .
+ex:Component_Euphrosyne a a-cd:CulturalPropertyComponent ; rdfs:label "Euphrosyne" .
+ex:Component_Thalia     a a-cd:CulturalPropertyComponent ; rdfs:label "Thalia" .
+ex:Component_Mercury    a a-cd:CulturalPropertyComponent ; rdfs:label "Mercury" .</pre>
+        </div>
+    </div>
+</div>
+
                 
                 <div class="space-y-1">
                     <span class="bg-blue-900/40 text-blue-300 px-2 py-0.5 rounded text-xs font-mono border border-blue-800 font-bold">Technique 2: Few-Shot Structural Alignment</span>
