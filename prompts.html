@@ -130,13 +130,78 @@ ex:Component_Mercury    a a-cd:CulturalPropertyComponent ; rdfs:label "Mercury" 
 </div>
 
                 
-                <div class="space-y-1">
-                    <span class="bg-blue-900/40 text-blue-300 px-2 py-0.5 rounded text-xs font-mono border border-blue-800 font-bold">Technique 2: Few-Shot Structural Alignment</span>
-                    <div class="bg-gray-950 p-4 rounded-lg border border-gray-900 font-mono text-xs text-gray-300 leading-relaxed">
-                        [Input] Canvas: Pallas and the Centaur | Component: Centaur -> [Output] ex:Artwork core:hasPart ex:Node_Centaur .<br>
-                        [Input] Canvas: Primavera | Component: Mercury -> [Output] ex:Primavera_Artwork core:hasPart ex:Node_Mercury .
-                    </div>
-                </div>
+               <div class="space-y-3">
+    <span class="bg-blue-900/40 text-blue-300 px-2 py-0.5 rounded text-xs font-mono border border-blue-800 font-bold">Technique 2: Few-Shot Structural Alignment</span>
+    <div class="bg-gray-950 p-4 rounded-lg border border-gray-900 font-mono text-xs text-gray-300 leading-relaxed">
+        [Input] Canvas: Pallas | Component: Centaur -> [Output] ex:Artwork core:hasPart ex:Node_Centaur.<br>
+        [Input] Canvas: Primavera | Component: Mercury -> [Output] ex:Primavera_Artwork core:hasPart ex:Node_Mercury.
+    </div>
+    
+    <div class="pl-4 border-l-2 border-gray-700 space-y-4">
+        <div class="space-y-1">
+            <span class="text-gray-400 text-xs font-mono font-bold">// Target Input Prompt (Sent to LLMs)</span>
+            <div class="bg-gray-900 p-4 rounded-lg border border-gray-950 font-mono text-xs text-gray-400 leading-relaxed">
+                Act as a Semantic Web Knowledge Engineer. Convert the following unstructured inputs into valid Turtle structures based on the provided examples, adhering strictly to the official ArCo ontology prefixes.<br><br>
+                [Example 1 Input] Canvas: Pallas and the Centaur | Component: Centaur<br>
+                [Example 1 Output] ex:Pallas_Artwork core:hasPart ex:Centaur . ex:Centaur a a-cd:CulturalPropertyComponent ; rdfs:label "Centaur" .<br><br>
+                [Example 2 Input] Canvas: Birth of Venus | Component: Venus<br>
+                [Example 2 Output] ex:BirthVenus_Artwork core:hasPart ex:Venus . ex:Venus a a-cd:CulturalPropertyComponent ; rdfs:label "Venus" .<br><br>
+                [Target Input] Canvas: La Primavera by Botticelli | Components: Zephyrus, Chloris, Flora, Venus, Cupid, Aglaia, Euphrosyne, Thalia, Mercury.<br><br>
+                Generate the exact W3C Turtle output for the Target Input following the pattern. Output ONLY the code block. No explanations, no chat commentary.
+            </div>
+        </div>
+        
+        <div class="space-y-1">
+            <span class="text-green-400 text-xs font-mono font-bold">// Few-Shot Model Response Output (ChatGPT)</span>
+            <pre class="bg-gray-950 p-4 rounded-lg font-mono text-xs text-green-400 border border-gray-900 overflow-x-auto leading-relaxed">@prefix ex:    &lt;http://example.org/primavera/&gt; .
+@prefix a-cd:  &lt;https://w3id.org/arco/ontology/context-description/&gt; .
+@prefix core:  &lt;https://w3id.org/arco/ontology/core/&gt; .
+@prefix rdfs:  &lt;http://www.w3.org/2000/01/rdf-schema#&gt; .
+
+ex:LaPrimavera_Artwork
+    core:hasPart ex:Zephyrus ;
+    core:hasPart ex:Chloris ;
+    core:hasPart ex:Flora ;
+    core:hasPart ex:Venus ;
+    core:hasPart ex:Cupid ;
+    core:hasPart ex:Aglaia ;
+    core:hasPart ex:Euphrosyne ;
+    core:hasPart ex:Thalia ;
+    core:hasPart ex:Mercury .
+
+ex:Zephyrus a a-cd:CulturalPropertyComponent ; rdfs:label "Zephyrus" .
+ex:Chloris a a-cd:CulturalPropertyComponent ; rdfs:label "Chloris" .
+ex:Flora a a-cd:CulturalPropertyComponent ; rdfs:label "Flora" .
+ex:Venus a a-cd:CulturalPropertyComponent ; rdfs:label "Venus" .
+ex:Cupid a a-cd:CulturalPropertyComponent ; rdfs:label "Cupid" .
+ex:Aglaia a a-cd:CulturalPropertyComponent ; rdfs:label "Aglaia" .
+ex:Euphrosyne a a-cd:CulturalPropertyComponent ; rdfs:label "Euphrosyne" .
+ex:Thalia a a-cd:CulturalPropertyComponent ; rdfs:label "Thalia" .
+ex:Mercury a a-cd:CulturalPropertyComponent ; rdfs:label "Mercury" .</pre>
+        </div>
+
+        <div class="space-y-1">
+            <span class="text-green-400 text-xs font-mono font-bold">// Few-Shot Model Response Output (Gemini)</span>
+            <pre class="bg-gray-950 p-4 rounded-lg font-mono text-xs text-green-400 border border-gray-900 overflow-x-auto leading-relaxed">@prefix ex:    &lt;http://example.org/primavera/&gt; .
+@prefix a-cd:  &lt;https://w3id.org/arco/ontology/context-description/&gt; .
+@prefix core:  &lt;https://w3id.org/arco/ontology/core/&gt; .
+@prefix rdfs:  &lt;http://www.w3.org/2000/01/rdf-schema#&gt; .
+
+ex:LaPrimavera_Artwork core:hasPart ex:Zephyrus , ex:Chloris , ex:Flora , ex:Venus , ex:Cupid , ex:Aglaia , ex:Euphrosyne , ex:Thalia , ex:Mercury .
+
+ex:Zephyrus a a-cd:CulturalPropertyComponent ; rdfs:label "Zephyrus" .
+ex:Chloris a a-cd:CulturalPropertyComponent ; rdfs:label "Chloris" .
+ex:Flora a a-cd:CulturalPropertyComponent ; rdfs:label "Flora" .
+ex:Venus a a-cd:CulturalPropertyComponent ; rdfs:label "Venus" .
+ex:Cupid a a-cd:CulturalPropertyComponent ; rdfs:label "Cupid" .
+ex:Aglaia a a-cd:CulturalPropertyComponent ; rdfs:label "Aglaia" .
+ex:Euphrosyne a a-cd:CulturalPropertyComponent ; rdfs:label "Euphrosyne" .
+ex:Thalia a a-cd:CulturalPropertyComponent ; rdfs:label "Thalia" .
+ex:Mercury a a-cd:CulturalPropertyComponent ; rdfs:label "Mercury" .</pre>
+        </div>
+    </div>
+</div>
+
                 
                 <div class="space-y-1">
                     <span class="bg-blue-900/40 text-blue-300 px-2 py-0.5 rounded text-xs font-mono border border-blue-800 font-bold">Technique 3: Chain-of-Thought (CoT) Spatial Extraction</span>
