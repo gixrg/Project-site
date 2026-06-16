@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PRIMAVERA.arco // LLM Evaluation & Benchmarking</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body class="bg-gray-900 text-gray-100 font-sans leading-relaxed">
+
+    <header class="bg-gray-800 border-b border-gray-700 sticky top-0 z-50">
+        <div class="max-w-7xl mx-auto px-4 py-4 flex flex-col xl:flex-row justify-between items-center gap-4">
+            <div class="flex items-center gap-3">
+                <div class="w-3 h-3 bg-blue-500 rounded-full animate-pulse"></div>
+                <h1 class="text-lg font-mono font-bold tracking-wider text-blue-400">UNIBO // KE4H_PROJECT_1</h1>
+            </div>
+            
+            <nav class="flex flex-wrap gap-1 bg-gray-950 p-1 rounded-lg border border-gray-800 text-xs md:text-sm">
+                <a href="index.html" class="px-3 py-1.5 rounded transition font-medium text-gray-400 hover:text-white">Home & Abstract</a>
+                <a href="gap.html" class="px-3 py-1.5 rounded transition font-medium text-gray-400 hover:text-white">Gap Identification</a>
+                <a href="methodology.html" class="px-3 py-1.5 rounded transition font-medium text-gray-400 hover:text-white">General Methodology</a>
+                <a href="sparql.html" class="px-3 py-1.5 rounded transition font-medium text-gray-400 hover:text-white">SPARQL Engine</a>
+                <a href="prompts.html" class="px-3 py-1.5 rounded transition font-medium text-gray-400 hover:text-white">LLM Prompting & Triples</a>
+                <a href="evaluation.html" class="px-3 py-1.5 rounded transition font-medium bg-blue-900 text-white border-blue-500">LLM Evaluation</a>
+                <a href="challenges.html" class="px-3 py-1.5 rounded transition font-medium text-gray-400 hover:text-white">Challenges & Conclusion</a>
+            </nav>
+        </div>
+    </header>
+
+    <main class="max-w-7xl mx-auto px-4 py-8 space-y-10">
+        
+        <div class="space-y-2">
+            <h2 class="text-2xl font-bold font-mono text-blue-400">5. LLM Performance Benchmarking & Comparative Evaluation</h2>
+            <p class="text-gray-400 text-sm font-sans">Empirical evaluation matrix comparing ChatGPT (GPT-4o) and Gemini (1.5 Pro) across our three progressive prompt engineering stages.</p>
+            <hr class="border-gray-800">
+        </div>
+
+        <div class="bg-gray-800 rounded-xl border border-gray-700 overflow-hidden shadow-xl">
+            <div class="p-4 bg-gray-750 border-b border-gray-700">
+                <h3 class="text-sm font-bold font-sans text-white">Empirical Capability Matrix</h3>
+            </div>
+            <div class="overflow-x-auto">
+                <table class="w-full text-left border-collapse text-xs md:text-sm font-sans">
+                    <thead>
+                        <tr class="bg-gray-950 text-gray-400 uppercase tracking-wider text-xxs border-b border-gray-800">
+                            <th class="p-4 font-mono">Prompting Strategy</th>
+                            <th class="p-4 font-mono">Model Engine</th>
+                            <th class="p-4 font-mono text-center">Syntax Validity</th>
+                            <th class="p-4 font-mono text-center">Prefix Alignment</th>
+                            <th class="p-4 font-mono text-center">Spatial Accuracy</th>
+                            <th class="p-4 font-mono text-center">Iconographical Depth</th>
+                        </tr>
+                    </thead>
+                    <tbody class="divide-y divide-gray-800 bg-gray-900/40">
+                        <tr class="hover:bg-gray-800/40 transition">
+                            <td class="p-4 font-medium text-blue-400" rowspan="2">Technique 1: Zero-Shot</td>
+                            <td class="p-4 text-gray-300 font-mono">ChatGPT (GPT-4o)</td>
+                            <td class="p-4 text-center text-green-400 font-bold">100%</td>
+                            <td class="p-4 text-center text-red-400 font-bold">0% (Allucinated)</td>
+                            <td class="p-4 text-center text-gray-500">N/A</td>
+                            <td class="p-4 text-center text-yellow-500 font-bold">Partial</td>
+                        </tr>
+                        <tr class="hover:bg-gray-800/40 transition border-b border-gray-700">
+                            <td class="p-4 text-gray-300 font-mono">Gemini (1.5 Pro)</td>
+                            <td class="p-4 text-center text-green-400 font-bold">100%</td>
+                            <td class="p-4 text-center text-red-400 font-bold">0% (Allucinated)</td>
+                            <td class="p-4 text-center text-gray-500">N/A</td>
+                            <td class="p-4 text-center text-yellow-500 font-bold">Partial</td>
+                        </tr>
+                        <tr class="hover:bg-gray-800/40 transition">
+                            <td class="p-4 font-medium text-blue-400" rowspan="2">Technique 2: Few-Shot</td>
+                            <td class="p-4 text-gray-300 font-mono">ChatGPT (GPT-4o)</td>
+                            <td class="p-4 text-center text-green-400 font-bold">100%</td>
+                            <td class="p-4 text-center text-green-400 font-bold">100% (Strict)</td>
+                            <td class="p-4 text-center text-gray-500">N/A</td>
+                            <td class="p-4 text-center text-yellow-500 font-bold">Partial</td>
+                        </tr>
+                        <tr class="hover:bg-gray-800/40 transition border-b border-gray-700">
+                            <td class="p-4 text-gray-300 font-mono">Gemini (1.5 Pro)</td>
+                            <td class="p-4 text-center text-green-400 font-bold">100%</td>
+                            <td class="p-4 text-center text-green-400 font-bold">100% (Strict)</td>
+                            <td class="p-4 text-center text-gray-500">N/A</td>
+                            <td class="p-4 text-center text-yellow-500 font-bold">Partial</td>
+                        </tr>
+                        <tr class="hover:bg-gray-800/40 transition">
+                            <td class="p-4 font-medium text-blue-400" rowspan="2">Technique 3: CoT Spatial</td>
+                            <td class="p-4 text-gray-300 font-mono">ChatGPT (GPT-4o)</td>
+                            <td class="p-4 text-center text-green-400 font-bold">100%</td>
+                            <td class="p-4 text-center text-green-400 font-bold">100% (Strict)</td>
+                            <td class="p-4 text-center text-green-400 font-bold">100% (Perfect X)</td>
+                            <td class="p-4 text-center text-yellow-500 font-bold">High (Positional Graces)</td>
+                        </tr>
+                        <tr class="hover:bg-gray-800/40 transition">
+                            <td class="p-4 text-gray-300 font-mono">Gemini (1.5 Pro)</td>
+                            <td class="p-4 text-center text-red-400 font-bold">90% (Inversion Bug)</td>
+                            <td class="p-4 text-center text-green-400 font-bold">100% (Strict)</td>
+                            <td class="p-4 text-center text-green-400 font-bold">100% (Perfect X)</td>
+                            <td class="p-4 text-center text-green-400 font-bold">Excellent (Humanistic Graces)</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+
+        <div class="space-y-6">
+            <div class="space-y-1">
+                <h3 class="text-md font-bold font-mono text-white uppercase tracking-wider">// Technical Audit Logs per Prompting Tier</h3>
+                <p class="text-xs text-gray-400 font-sans">Granular evaluation of structural behaviors observed during the output streaming phase.</p>
+            </div>
+
+            <div class="bg-gray-800 p-6 rounded-xl border border-gray-700 space-y-3">
+                <span class="bg-blue-900/40 text-blue-300 px-2 py-0.5 rounded text-xs font-mono border border-blue-800 font-bold">Tier 1 Audit: Zero-Shot Constraints</span>
+                <div class="bg-gray-950 p-4 rounded-lg border border-gray-900 text-xs font-mono space-y-2 leading-relaxed">
+                    <div class="text-red-400 font-bold">// Critique: The Semantic Disconnect</div>
+                    <div class="text-gray-300 font-sans">
+                        Both engines yielded syntactically correct W3C Turtle representations, demonstrating total adherence to the operational exclusion of conversational preamble. However, a profound <strong>Semantic Web Disconnect</strong> occurred: lacking ontological anchoring references, both models allucinated local base URIs (e.g., <span class="font-mono text-yellow-500 text-xs">http://example.org/ontology/core/</span>). 
+                    </div>
+                    <div class="text-gray-400 font-sans">
+                        • <strong>Result:</strong> Individual characters were correctly segmented into 9 discrete items, but the triples remain isolated from the global Linked Open Data cloud due to broken namespace definitions.
+                    </div>
+                </div>
+            </div>
+
+            <div class="bg-gray-800 p-6 rounded-xl border border-gray-700 space-y-3">
+                <span class="bg-blue-900/40 text-blue-300 px-2 py-0.5 rounded text-xs font-mono border border-blue-800 font-bold">Tier 2 Audit: Few-Shot Structural Alignment</span>
+                <div class="bg-gray-950 p-4 rounded-lg border border-gray-900 text-xs font-mono space-y-2 leading-relaxed">
+                    <div class="text-green-400 font-bold">// Critique: Contextual Precision Achieved</div>
+                    <div class="text-gray-300 font-sans">
+                        The injection of two structural input-output examples acted as an architectural anchor. By observing the mapping patterns of <em>Pallas</em> and <em>The Birth of Venus</em>, both models immediately aligned their outputs to the authoritative namespaces of ArCo (<span class="font-mono text-yellow-500 text-xs">https://w3id.org/arco/ontology/...</span>).
+                    </div>
+                    <div class="text-gray-400 font-sans">
+                        • <strong>Result:</strong> Zero namespace hallucinations. The structural topology matched our required data blueprint flawlessly, though iconographical depth remained locked at a basic token-label pairing.
+                    </div>
+                </div>
+            </div>
+
+            <div class="bg-gray-800 p-6 rounded-xl border border-gray-700 space-y-3">
+                <span class="bg-blue-900/40 text-blue-300 px-2 py-0.5 rounded text-xs font-mono border border-blue-800 font-bold">Tier 3 Audit: Chain-of-Thought Spatial Extraction</span>
+                <div class="bg-gray-950 p-4 rounded-lg border border-gray-900 text-xs font-mono space-y-2 leading-relaxed">
+                    <div class="text-yellow-400 font-bold">// Critique: Advanced Inference vs. Ontological Inversion</div>
+                    <div class="text-gray-300 font-sans">
+                        Enforcing a normalized grid calculation ($100 \times 0$) unlocked advanced spatial reasoning. Both models correctly simulated canvas tracking from right to left, generating coordinate literals and handling multi-node overlap.
+                    </div>
+                    <div class="text-gray-400 font-sans space-y-2">
+                        <div>
+                            • <strong class="text-white font-mono">ChatGPT (GPT-4o):</strong> Exhibited impeccable relational tracking. It resolved the central triad by position (<span class="text-blue-400">Right, Center, Left Grace</span>) and connected them to the parent node using the proper directional property (<span class="font-mono text-yellow-500">core:hasPart</span>).
+                        </div>
+                        <div>
+                            • <strong class="text-white font-mono">Gemini (1.5 Pro):</strong> Outperformed ChatGPT in art-historical reasoning, successfully fetching the Renaissance humanistic names of the Graces (<span class="text-blue-400">Voluptas, Castitas, Pulchritudo</span>). However, it suffered from a critical <strong>Ontological Inversion Bug</strong>: it flipped the predicate logic, asserting that the individual components contained the parent artwork canvas (<span class="font-mono text-red-400">ex:Component core:hasPart ex:LaPrimavera_Artwork</span>).
+                        </div>
+                    </div>
+                    <div class="text-blue-400 font-bold pt-2">// Curation Verdict:</div>
+                    <div class="text-gray-300 font-sans">
+                        This comparative split justified our <strong>Human-in-the-Loop</strong> intervention. Our final reconciled dataset combines Gemini's advanced iconographical nomenclature with ChatGPT's flawless relational directionality.
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </main>
+
+</body>
+</html>
