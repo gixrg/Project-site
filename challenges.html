@@ -8,7 +8,6 @@
 </head>
 <body class="bg-gray-900 text-gray-100 font-sans leading-relaxed text-sm">
 
-    <!-- Header & Navigation Bar -->
     <header class="bg-gray-800 border-b border-gray-700 sticky top-0 z-50 font-sans">
         <div class="max-w-7xl mx-auto px-4 py-4 flex flex-col xl:flex-row justify-between items-center gap-4">
             <div class="flex items-center gap-3">
@@ -28,7 +27,7 @@
         </div>
     </header>
 
-    <main class="max-w-7xl mx-auto px-4 py-8 space-y-10">
+    <main class="max-w-7xl mx-auto px-4 py-8 space-y-10 font-sans">
         
         <div class="space-y-2">
             <h2 class="text-2xl font-bold font-mono text-blue-400">6. Theoretical Challenges & Project Conclusion</h2>
@@ -36,59 +35,31 @@
             <hr class="border-gray-800">
         </div>
 
-        <!-- Two Core Challenges Grid -->
         <div class="grid grid-cols-1 lg:grid-cols-2 gap-6">
             
-            <!-- Challenge 1 Box -->
             <div class="bg-gray-800 p-6 rounded-xl border border-gray-700 space-y-4">
                 <div class="flex items-center gap-2">
                     <span class="bg-red-900/30 text-red-400 border border-red-800 px-2 py-0.5 rounded text-xxs font-mono font-bold">Challenge 1</span>
                     <h3 class="text-sm font-bold text-white font-mono uppercase tracking-wider">The Granularity Gap in Cultural Ontologies</h3>
                 </div>
-                <p class="text-gray-300 text-xs font-sans leading-relaxed">
+                <p class="text-gray-300 text-xs leading-relaxed">
                     The authoritative ICCD/ArCo ontological framework exhibits an expressive limitation when dealing with multi-actor narrative canvases. While ArCo provides robust properties to define an artwork's material, authorship, and broad cultural classification, it lacks <strong>spatialized fine-grained primitives</strong> to express internal spatial topology.
                 </p>
-                <div class="bg-gray-950 p-4 rounded-lg border border-gray-900 font-mono text-xxs text-gray-400 leading-relaxed">
-                    <span class="text-yellow-500 font-bold">// Expressive Compromise:</span><br>
-                    To model Sandro Botticelli's 9 core figures without altering the core schema, we had to rely on overloading <span class="text-blue-400">core:hasPart</span> (traditionally used for physical components like frames or predellas) and linking them to generic <span class="text-blue-400">a-cd:Subject</span> nodes. This demonstrates that current cultural heritage standards treat complex visual narratives as singular monolithic units rather than semantic networks.
+                <div class="bg-gray-950 p-4 rounded-lg border border-gray-900 text-xxs leading-relaxed text-gray-400 font-sans">
+                    <span class="text-yellow-500 font-bold font-mono">// Expressive Compromise:</span><br>
+                    To model Sandro Botticelli's 9 core figures without altering the core schema, we had to rely on overloading <span class="font-mono text-blue-400 text-xs">core:hasPart</span> (traditionally used for physical components like frames or predellas) and linking them to generic <span class="font-mono text-blue-400 text-xs">a-cd:Subject</span> nodes. This demonstrates that current cultural heritage standards treat complex visual narratives as singular monolithic units rather than semantic networks.
                 </div>
             </div>
 
-            <!-- Challenge 2 Box -->
             <div class="bg-gray-800 p-6 rounded-xl border border-gray-700 space-y-4">
                 <div class="flex items-center gap-2">
                     <span class="bg-red-900/30 text-red-400 border border-red-800 px-2 py-0.5 rounded text-xxs font-mono font-bold">Challenge 2</span>
                     <h3 class="text-sm font-bold text-white font-mono uppercase tracking-wider">Ontological Inversion & Hallucination Risks</h3>
                 </div>
-                <p class="text-gray-300 text-xs font-sans leading-relaxed">
+                <p class="text-gray-300 text-xs leading-relaxed">
                     Deploying Large Language Models (LLMs) as autonomous Knowledge Engineers introduces significant structural vulnerabilities. Our prompting tiers proved that as semantic complexity and logical constraints increase (e.g., forcing grid calculations in Chain-of-Thought), the models' focus on strict <strong>graph directionality</strong> degrades.
                 </p>
-                <div class="bg-gray-950 p-4 rounded-lg border border-gray-900 font-mono text-xxs text-gray-400 leading-relaxed">
-                    <span class="text-red-400 font-bold">// Empirical Failure Log:</span><br>
-                    • <strong>Zero-Shot Tier:</strong> Total failure in namespace resolution, with both models hallucinating fake local URIs due to lack of contextual anchoring.<br>
-                    • <strong>Chain-of-Thought Tier:</strong> Gemini 1.5 Pro successfully resolved advanced iconographical labels (the humanistic names of the Graces) but introduced a critical <em>Ontological Inversion Bug</em>, swapping the direction of the predicate (Component core:hasPart Artwork).
-                </div>
-            </div>
-
-        </div>
-
-        <!-- Project Conclusion & Curation Verdict -->
-        <div class="bg-gray-800 p-6 rounded-xl border border-gray-700 space-y-4">
-            <h3 class="text-md font-bold font-mono text-blue-400 uppercase tracking-wider">// Human-in-the-Loop Curation Verdict</h3>
-            <p class="text-gray-300 text-xs font-sans leading-relaxed">
-                The results of this project demonstrate that while LLMs are incredibly powerful for accelerating the ingestion and conceptual organization of unstructured historical metadata, they <strong>cannot operate as fully autonomous Semantic Web publishers</strong>. The high sensitivity of graph databases to broken namespaces or inverted predicates means that a single model error can completely isolate a dataset from the global Linked Open Data cloud.
-            </p>
-            <div class="bg-blue-950/30 p-4 border-l-4 border-blue-500 rounded-r text-xs font-sans text-gray-300 leading-relaxed">
-                <strong>Final Project Takeaway:</strong> Our progressive prompting workflow shows that a hybrid framework—leveraging <strong>Few-Shot structural examples</strong> to lock in namespaces, <strong>Chain-of-Thought reasoning</strong> to extract complex hidden layouts, and a final <strong>Human-in-the-Loop reconciliation layer</strong>—is currently the most robust and scalable method for bridging data omissions in cultural heritage knowledge graphs.
-            </div>
-        </div>
-
-        <!-- Footer / Repository Stamp -->
-        <footer class="pt-6 border-t border-gray-800 text-center font-mono text-xxs text-gray-600">
-            // UNIBO // KNOWLEDGE ENGINEERING AND WEB SEMANTICS FOR HUMANITIES // PROJECT 1 SYSTEM COMPLETE
-        </footer>
-
-    </main>
-
-</body>
-</html>
+                <div class="bg-gray-950 p-4 rounded-lg border border-gray-900 text-xxs leading-relaxed text-gray-400 font-sans">
+                    <span class="text-red-400 font-bold font-mono">// Empirical Failure Log:</span><br>
+                    • <strong class="font-bold text-gray-300">Zero-Shot Tier:</strong> Total failure in namespace resolution, with both models hallucinating fake local URIs due to lack of contextual anchoring.<br>
+                    • <strong class="font-bold text-gray-300">Chain-of-Thought Tier:</strong> Gemini 1.5 Pro successfully resolved advanced iconographical labels (the humanistic names of the Graces) but introduced a critical <em>
