@@ -136,7 +136,7 @@ WHERE {
             </div>
             
             <div class="pt-2 flex justify-start">
-                <a href="https://dati.cultura.gov.it/sparql?default-graph-uri=&query=SELECT+DISTINCT+%3FsubjectLabel%0D%0AWHERE+%7B%0D%0A++%23+Usiamo+l%27URI+isolata+nell%27Act+II+o+cerchiamo+per+etichetta%0D%0A++%3FculturalProperty+rdfs%3Alabel+%3Flabel+.%0D%0A++FILTER%28REGEX%28%3Flabel%2C+%22Primavera%22%2C+%22i%22%29%29%0D%0A%++%0D%0A++%23+Interroghiamo+i+soggetti+associati%0D%0A++%3FculturalProperty+a-cd%3AhasSubject+%3FsubjectNode+.%0D%0A++%3FsubjectNode+rdfs%3Alabel+%3FsubjectLabel+.%0D%0A%7D%0D%0A&format=text%2Fhtml&timeout=0&signal_void=on" target="_blank" class="bg-blue-600 hover:bg-blue-700 text-white font-sans text-xs font-bold px-4 py-2.5 rounded-lg shadow transition duration-200 flex items-center gap-2 border border-blue-500">
+                <a href="https://dati.cultura.gov.it/sparql?default-graph-uri=&query=SELECT+DISTINCT+%3FsubjectLabel%0D%0AWHERE+%7B%0D%0A++%3FculturalProperty+rdfs%3Alabel+%3Flabel+.%0D%0A++FILTER%28REGEX%28%3Flabel%2C+%22Primavera%22%2C+%22i%22%29%29%0D%0A++%0D%0A++%3FculturalProperty+a-cd%3AhasSubject+%3FsubjectNode+.%0D%0A++%3FsubjectNode+rdfs%3Alabel+%3FsubjectLabel+.%0D%0A%7D%0D%0A&format=text%2Fhtml&timeout=0&signal_void=on" target="_blank" class="bg-blue-600 hover:bg-blue-700 text-white font-sans text-xs font-bold px-4 py-2.5 rounded-lg shadow transition duration-200 flex items-center gap-2 border border-blue-500">
                     <span>View Results on SPARQL Endpoint</span>
                 </a>
             </div>
