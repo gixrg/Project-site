@@ -19,7 +19,7 @@
                 <a href="index.html" class="px-3 py-1.5 rounded transition font-medium text-gray-400 hover:text-white">Home & Abstract</a>
                 <a href="gap.html" class="px-3 py-1.5 rounded transition font-medium text-gray-400 hover:text-white">Gap Identification</a>
                 <a href="methodology.html" class="px-3 py-1.5 rounded transition font-medium text-gray-400 hover:text-white">General Methodology</a>
-                <a href="sparql.html" class="px-3 py-1.5 rounded transition font-medium bg-blue-900 text-white border-blue-500">SPARQL Implementations</a>
+                <a href="sparql.html" class="px-3 py-1.5 rounded transition font-medium bg-blue-900 text-white border border-blue-500">SPARQL Implementations</a>
                 <a href="prompts.html" class="px-3 py-1.5 rounded transition font-medium text-gray-400 hover:text-white">LLM Prompting & Triples</a>
                 <a href="evaluation.html" class="px-3 py-1.5 rounded transition font-medium text-gray-400 hover:text-white">LLMs Comparison</a>
                 <a href="challenges.html" class="px-3 py-1.5 rounded transition font-medium text-gray-400 hover:text-white">Challenges & Conclusion</a>
@@ -153,12 +153,12 @@ WHERE {
                     This final query represents the <strong>Definitive Content Audit</strong>. By forcing a strict conjunctive condition that matches "Primavera" and "Botticelli" simultaneously, we extract the precise iconographical boundaries of the Uffizi masterpiece. 
                 </p>
                 <p>
-                    If the characters were structurally indexed as semantic graph components, the output would display individual nodes for each iconographical component. Instead, it exposes the complete absence of granular modeling.
+                    If the characters were structurally indexed as semantic graph components, the output would display individual nodes for each iconographical component. Instead, it exposes the complete absence of granular modeling. We limit the final result execution parameters and leverage pattern union blocks to verify schema alignment securely.
                 </p>
             </div>
 
             <div class="space-y-1">
-                <span class="bg-blue-900/40 text-blue-300 px-2 py-0.5 rounded text-xs font-mono border border-blue-800 font-bold">Target Query Specification</span>
+                <span class="bg-blue-900/40 text-blue-300 px-2 py-0.5 rounded text-xs font-mono border border-blue-800 font-bold">Target Query Specification (Integrated with UNION and LIMIT)</span>
                 <pre class="bg-gray-950 p-4 rounded-lg font-mono text-xs text-green-400 border border-gray-900 overflow-x-auto leading-relaxed">PREFIX arco: &lt;https://w3id.org/arco/ontology/arco/&gt;
 PREFIX core: &lt;https://w3id.org/arco/ontology/core/&gt;
 PREFIX a-cd: &lt;https://w3id.org/arco/ontology/context-description/&gt;
@@ -175,15 +175,23 @@ WHERE {
   FILTER(REGEX(?authorLabel, "Botticelli", "i"))
   
   OPTIONAL {
-    ?culturalProperty a-cd:hasSubject ?subjectNode .
-    ?subjectNode rdfs:label ?subjectLabel .
+    { 
+      ?culturalProperty a-cd:hasSubject ?subjectNode .
+      ?subjectNode rdfs:label ?subjectLabel .
+    }
+    UNION
+    {
+      ?author a-cd:hasSubject ?subjectNode .
+      ?subjectNode rdfs:label ?subjectLabel .
+    }
   }
 }
-ORDER BY DESC(?culturalProperty)</pre>
+ORDER BY DESC(?culturalProperty)
+LIMIT 5</pre>
             </div>
             
             <div class="pt-2 flex justify-start">
-                <a href="https://dati.cultura.gov.it/sparql?default-graph-uri=&query=PREFIX+arco%3A+%3Chttps%3A%2F%2Fw3id.org%2Farco%2Fontology%2Farco%2F%3E%0D%0APREFIX+core%3A+%3Chttps%3A%2F%2Fw3id.org%2Farco%2Fontology%2Fcore%2F%3E%0D%0APREFIX+a-cd%3A+%3Chttps%3A%2F%2Fw3id.org%2Farco%2Fontology%2Fcontext-description%2F%3E%0D%0APREFIX+rdfs%3A+%3Chttp%3A%2F%2Fwww.w3.org%2F2000%2F01%2Frdf-schema%23%3E%0D%0A%0D%0ASELECT+DISTINCT+%3FculturalProperty+%3Flabel+%3FauthorLabel+%3FsubjectLabel%0D%0AWHERE+%7B%0D%0A++%23+1.+Isoliamo+il+bene+culturale+che+si+chiama+%22Primavera%22%0D%0A++%3FculturalProperty+a+arco%3AHistoricOrArtisticProperty+.%0D%0A++%3FculturalProperty+rdfs%3Alabel+%3Flabel+.%0D%0A++FILTER%28REGEX%28%3Flabel%2C+%22Primavera%22%2C+%22i%22%29%29%0D%0A++%0D%0A++%23+2.+Stringiamo+la+ricerca+legandolo+OBLIGATORIAMENTE+a+Botticelli%0D%0A++%3FculturalProperty+a-cd%3AhasAuthor+%3Fauthor+.%0D%0A++%3Fauthor+rdfs%3Alabel+%3FauthorLabel+.%0D%0A++FILTER%28REGEX%28%3FauthorLabel%2C+%22Botticelli%22%2C+%22i%22%29%29%0D%0A++%0D%0A++%23+3.+Chiediamo+di+estrarre+TUTTI+i+soggetti+collegati+a+questo+specifico+binomio%0D%0A++OPTIONAL+%7B%0D%0A++++%3FculturalProperty+a-cd%3AhasSubject+%3FsubjectNode+.%0D%0A++++%3FsubjectNode+rdfs%3Alabel+%3FsubjectLabel+.%0D%0A++%7D%0D%0A%7D%0D%0AORDER+BY+DESC%28%3FculturalProperty%29%0D%0A&format=text%2Fhtml&timeout=0&signal_void=on" target="_blank" class="bg-blue-600 hover:bg-blue-700 text-white font-sans text-xs font-bold px-4 py-2.5 rounded-lg shadow transition duration-200 flex items-center gap-2 border border-blue-500">
+                <a href="https://dati.cultura.gov.it/sparql?default-graph-uri=&query=PREFIX+arco%3A+%3Chttps%3A%2F%2Fw3id.org%2Farco%2Fontology%2Farco%2F%3E%0D%0APREFIX+core%3A+%3Chttps%3A%2F%2Fw3id.org%2Farco%2Fontology%2Fcore%2F%3E%0D%0APREFIX+a-cd%3A+%3Chttps%3A%2F%2Fw3id.org%2Farco%2Fontology%2Fcontext-description%2F%3E%0D%0APREFIX+rdfs%3A+%3Chttp%3A%2F%2Fwww.w3.org%2F2000%2F01%2Frdf-schema%23%3E%0D%0A%0D%0ASELECT+DISTINCT+%3FculturalProperty+%3Flabel+%3FauthorLabel+%3FsubjectLabel%0D%0AWHERE+%7B%0D%0A++%3FculturalProperty+a+arco%3AHistoricOrArtisticProperty+.%0D%0A++%3FculturalProperty+rdfs%3Alabel+%3Flabel+.%0D%0A++FILTER%28REGEX%28%3Flabel%2C+%22Primavera%22%2C+%22i%22%29%29%0D%0A++%0D%0A++%3FculturalProperty+a-cd%3AhasAuthor+%3Fauthor+.%0D%0A++%3Fauthor+rdfs%3Alabel+%3FauthorLabel+.%0D%0A++FILTER%28REGEX%28%3FauthorLabel%2C+%22Botticelli%22%2C+%22i%22%29%29%0D%0A++%0D%0A++OPTIONAL+%7B%0D%0A++++%7B+%0D%0A++++++%3FculturalProperty+a-cd%3AhasSubject+%3FsubjectNode+.%0D%0A++++++%3FsubjectNode+rdfs%3Alabel+%3FsubjectLabel+.%0D%0A++++%7D%0D%0A++++UNION%0D%0A++++%7B%0D%0A++++++%3Fauthor+a-cd%3AhasSubject+%3FsubjectNode+.%0D%0A++++++%3FsubjectNode+rdfs%3Alabel+%3FsubjectLabel+.%0D%0A++++%7D%0D%0A++%7D%0D%0A%7D%0D%0AORDER+BY+DESC%28%3FculturalProperty%29%0D%0ALIMIT+5%0D%0A&format=text%2Fhtml&timeout=0&signal_void=on" target="_blank" class="bg-blue-600 hover:bg-blue-700 text-white font-sans text-xs font-bold px-4 py-2.5 rounded-lg shadow transition duration-200 flex items-center gap-2 border border-blue-500">
                     <span>View Results on SPARQL Endpoint</span>
                 </a>
             </div>
