@@ -31,7 +31,7 @@
         
         <div class="space-y-2">
             <h2 class="text-2xl font-bold font-mono text-blue-400">6. Theoretical Challenges & Project Conclusion</h2>
-            <p class="text-gray-400 text-xs font-sans">Critical synthesis of the ontological and computational bottlenecks encountered during the semantic enrichment of complex iconographical assets.</p>
+            <p class="text-gray-400 text-xs">Critical synthesis of the ontological and computational bottlenecks encountered during the semantic enrichment of complex iconographical assets.</p>
             <hr class="border-gray-800">
         </div>
 
@@ -45,7 +45,7 @@
                 <p class="text-gray-300 text-xs leading-relaxed">
                     The authoritative ICCD/ArCo ontological framework exhibits an expressive limitation when dealing with multi-actor narrative canvases. While ArCo provides robust properties to define an artwork's material, authorship, and broad cultural classification, it lacks <strong>spatialized fine-grained primitives</strong> to express internal spatial topology.
                 </p>
-                <div class="bg-gray-950 p-4 rounded-lg border border-gray-900 text-xxs leading-relaxed text-gray-400 font-sans">
+                <div class="bg-gray-950 p-4 rounded-lg border border-gray-900 text-xxs leading-relaxed text-gray-400">
                     <span class="text-yellow-500 font-bold font-mono">// Expressive Compromise:</span><br>
                     To model Sandro Botticelli's 9 core figures without altering the core schema, we had to rely on overloading <span class="font-mono text-blue-400 text-xs">core:hasPart</span> (traditionally used for physical components like frames or predellas) and linking them to generic <span class="font-mono text-blue-400 text-xs">a-cd:Subject</span> nodes. This demonstrates that current cultural heritage standards treat complex visual narratives as singular monolithic units rather than semantic networks.
                 </div>
@@ -59,7 +59,14 @@
                 <p class="text-gray-300 text-xs leading-relaxed">
                     Deploying Large Language Models (LLMs) as autonomous Knowledge Engineers introduces significant structural vulnerabilities. Our prompting tiers proved that as semantic complexity and logical constraints increase (e.g., forcing grid calculations in Chain-of-Thought), the models' focus on strict <strong>graph directionality</strong> degrades.
                 </p>
-                <div class="bg-gray-950 p-4 rounded-lg border border-gray-900 text-xxs leading-relaxed text-gray-400 font-sans">
+                <div class="bg-gray-950 p-4 rounded-lg border border-gray-900 text-xxs leading-relaxed text-gray-400">
                     <span class="text-red-400 font-bold font-mono">// Empirical Failure Log:</span><br>
-                    • <strong class="font-bold text-gray-300">Zero-Shot Tier:</strong> Total failure in namespace resolution, with both models hallucinating fake local URIs due to lack of contextual anchoring.<br>
-                    • <strong class="font-bold text-gray-300">Chain-of-Thought Tier:</strong> Gemini 1.5 Pro successfully resolved advanced iconographical labels (the humanistic names of the Graces) but introduced a critical <em>
+                    • <span class="font-bold text-gray-300">Zero-Shot Tier:</span> Total failure in namespace resolution, with both models hallucinating fake local URIs due to lack of contextual anchoring.<br>
+                    • <span class="font-bold text-gray-300">Chain-of-Thought Tier:</span> Gemini 1.5 Pro successfully resolved advanced iconographical labels (the humanistic names of the Graces) but introduced a critical <em>Ontological Inversion Bug</em>, swapping the direction of the predicate (<span class="font-mono text-red-400">Component core:hasPart Artwork</span>).
+                </div>
+            </div>
+
+        </div>
+
+        <div class="bg-gray-800 p-6 rounded-xl border border-gray-700 space-y-4">
+            <h3 class="text-md font-bold font-mono text
