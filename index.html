@@ -6,54 +6,62 @@
     <title>PRIMAVERA.arco // Home</title>
     <script src="https://cdn.tailwindcss.com"></script>
 </head>
-<body class="bg-gray-900 text-gray-100 font-sans leading-relaxed">
+<body class="bg-gray-900 text-gray-100 font-sans leading-relaxed text-sm">
+
     <header class="bg-gray-800 border-b border-gray-700 sticky top-0 z-50">
         <div class="max-w-7xl mx-auto px-4 py-4 flex flex-col xl:flex-row justify-between items-center gap-4">
-            <div class="flex items-center gap-3"><div class="w-3 h-3 bg-blue-500 rounded-full animate-pulse"></div><h1 class="text-lg font-mono font-bold tracking-wider text-blue-400">UNIBO // KE4H_PROJECT</h1></div>
+            <div class="flex items-center gap-3">
+                <div class="w-3 h-3 bg-blue-500 rounded-full animate-pulse"></div>
+                <h1 class="text-lg font-mono font-bold tracking-wider text-blue-400">UNIBO // KE4H_PROJECT_1</h1>
+            </div>
             <nav class="flex flex-wrap gap-1 bg-gray-950 p-1 rounded-lg border border-gray-800 text-xs md:text-sm">
                 <a href="index.html" class="px-3 py-1.5 rounded transition font-medium bg-blue-900 text-white border-blue-500">Home & Abstract</a>
                 <a href="gap.html" class="px-3 py-1.5 rounded transition font-medium text-gray-400 hover:text-white">Gap Identification</a>
-                <a href="methodology.html" class="px-3 py-1.5 rounded transition font-medium text-gray-400 hover:text-white">General Methodology </a>
-                <a href="sparql.html" class="px-3 py-1.5 rounded transition font-medium text-gray-400 hover:text-white">SPARQL Implementations</a>
+                <a href="methodology.html" class="px-3 py-1.5 rounded transition font-medium text-gray-400 hover:text-white">General Methodology</a>
+                <a href="sparql.html" class="px-3 py-1.5 rounded transition font-medium text-gray-400 hover:text-white">SPARQL Engine</a>
                 <a href="prompts.html" class="px-3 py-1.5 rounded transition font-medium text-gray-400 hover:text-white">LLM Prompting & Triples</a>
-                <a href="evaluation.html" class="px-3 py-1.5 rounded transition font-medium text-gray-400 hover:text-white">LLMs Comparison</a>
+                <a href="evaluation.html" class="px-3 py-1.5 rounded transition font-medium text-gray-400 hover:text-white">LLM Evaluation</a>
                 <a href="challenges.html" class="px-3 py-1.5 rounded transition font-medium text-gray-400 hover:text-white">Challenges & Conclusion</a>
             </nav>
         </div>
     </header>
+
     <main class="max-w-7xl mx-auto px-4 py-8">
         <section class="space-y-6">
             <div class="bg-gradient-to-r from-blue-950 to-gray-800 p-8 rounded-xl border border-gray-700 shadow-xl">
-                <span class="text-xs font-mono tracking-widest text-blue-400 uppercase font-semibold">Alma Mater Studiorum – Università di Bologna</span>
-                <h2 class="text-3xl md:text-4xl font-extrabold text-white mt-1 mb-4 tracking-tight">Project: Enriching <a href="https://www.wikidata.org/wiki/Q5669" target="_blank" class="text-blue-400 hover:underline hover:text-blue-300">Sandro Botticelli</a>'s <a href="https://www.wikidata.org/wiki/Q549847" target="_blank" class="italic text-blue-400 hover:underline hover:text-blue-300">Primavera</a> within the <a href="https://dati.beniculturali.it/arco/index.php" target="_blank" class="text-blue-400 hover:underline hover:text-blue-300">ArCo Knowledge Graph</a></h2>
+                <span class="text-xs font-mono tracking-widest text-blue-400 uppercase font-semibold">
+                    <a href="https://www.unibo.it/it" target="_blank" class="hover:underline hover:text-blue-300">Alma Mater Studiorum – Università di Bologna</a>
+                </span>
+                <h2 class="text-2xl md:text-3xl font-extrabold text-white mt-1 mb-4 tracking-tight">Project: Enriching <a href="https://www.wikidata.org/wiki/Q5669" target="_blank" class="text-blue-400 hover:underline hover:text-blue-300 font-normal">Sandro Botticelli</a>'s <a href="https://www.wikidata.org/wiki/Q549847" target="_blank" class="italic text-blue-400 hover:underline hover:text-blue-300 font-normal">Primavera</a> within the <a href="https://dati.beniculturali.it/arco/index.php" target="_blank" class="text-blue-400 hover:underline hover:text-blue-300 font-normal">ArCo Knowledge Graph</a></h2>
 
-
-                <div class="grid grid-cols-1 md:grid-cols-2 gap-6 pt-4 border-t border-gray-700/50 text-sm">
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-6 pt-4 border-t border-gray-700/50 text-xs md:text-sm">
                     <div>
                         <h3 class="text-xs uppercase tracking-wider text-gray-400 font-mono font-bold mb-1">Project Abstract</h3>
-                        <p class="text-gray-300 leading-relaxed">This project explores the collaborative enrichment of cultural heritage metadata through the combined use of Knowledge Graphs (KGs) and Large Language Models (LLMs) within the ArCo framework. Focusing strictly on Sandro Botticelli's <span class="italic font-normal">Primavera</span> (c. 1482), we execute specialized SPARQL queries to audit data deficiencies in online digital registries. By leveraging zero-shot, few-shot, and chain-of-thought prompt engineering, we generate new validated semantic triples to model individual canvas components, bypassing narrative constraints to capture fine-grained spatial and situational realities.</p>
+                        <p class="text-gray-300 leading-relaxed font-sans">This project explores the collaborative enrichment of cultural heritage metadata through the combined use of Knowledge Graphs (KGs) and Large Language Models (LLMs) within the ArCo framework. Focusing strictly on Sandro Botticelli's <span class="italic">Primavera</span> (c. 1482), we execute specialized <a href="https://dati.cultura.gov.it/sparql" target="_blank" class="text-blue-400 hover:underline hover:text-blue-300 font-normal">SPARQL queries</a> to audit data deficiencies in online digital registries. By leveraging zero-shot, few-shot, and chain-of-thought prompt engineering, we generate new validated semantic triples to model individual canvas components, bypassing narrative constraints to capture fine-grained spatial and situational realities.</p>
                     </div>
                     <div class="bg-gray-900/60 p-4 rounded-lg border border-gray-800 flex flex-col justify-between">
                         <div>
                             <h3 class="text-xs uppercase tracking-wider text-gray-400 font-mono font-bold mb-2">Project Team Members</h3>
                             <ul class="space-y-1 font-mono text-xs text-blue-300">
-                                <li>• Caterina Zanet</li><li>• Cecilia Domeniconi</li><li>• Giorgia Lacroce</li><li>• Roberta Casacchia</li>
+                                <li>• Caterina Zanet</li>
+                                <li>• Cecilia Domeniconi</li>
+                                <li>• Giorgia Lacroce</li>
+                                <li>• Roberta Casacchia</li>
                             </ul>
                         </div>
                     </div>
                 </div>
             </div>
 
-            
-                                 <div class="relative bg-gray-950 p-2 rounded-xl border border-gray-800 overflow-hidden flex justify-center items-end">
+            <div class="relative bg-gray-950 p-2 rounded-xl border border-gray-800 overflow-hidden flex justify-center items-end">
                 <img src="https://upload.wikimedia.org/wikipedia/commons/3/3c/Botticelli-primavera.jpg" alt="Sandro Botticelli - Primavera" class="w-full h-auto object-cover rounded-lg opacity-90">
                 
                 <div class="absolute bottom-6 mx-auto max-w-md bg-gray-950/80 backdrop-blur-md p-4 rounded-lg border border-gray-800 font-mono text-xs shadow-2xl text-center">
                     <p class="text-gray-300 leading-relaxed">
                         Canvas Target: Uffizi Gallery, Florence 
-                        <span class="block mt-1 text-gray-400">
+                        <span class="block mt-1 text-gray-400 font-sans">
                             Linked via external authority 
-                            <a href="https://www.wikidata.org/wiki/Q549847" target="_blank" class="text-blue-400 hover:underline hover:text-blue-300 font-normal">Wikidata:Q549847</a>
+                            <a href="https://www.wikidata.org/wiki/Q549847" target="_blank" class="text-blue-400 hover:underline hover:text-blue-300 font-normal font-mono">Wikidata:Q549847</a>
                         </span>
                     </p>
                 </div>
@@ -61,6 +69,8 @@
         </section>
     </main>
 
-
 </body>
 </html>
+
+ 
+
