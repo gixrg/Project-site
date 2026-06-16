@@ -203,13 +203,114 @@ ex:Mercury a a-cd:CulturalPropertyComponent ; rdfs:label "Mercury" .</pre>
 </div>
 
                 
-                <div class="space-y-1">
-                    <span class="bg-blue-900/40 text-blue-300 px-2 py-0.5 rounded text-xs font-mono border border-blue-800 font-bold">Technique 3: Chain-of-Thought (CoT) Spatial Extraction</span>
-                    <div class="bg-gray-950 p-4 rounded-lg border border-gray-900 font-mono text-xs text-gray-300 leading-relaxed">
-                        1. Evaluate visual boundary limits on a normalized 100x100 grid from right to left.<br>
-                        2. Establish separate URI nodes for overlapping actors. Map metadata fields adhering strictly to approved ArCo prefix documentation constraints.
-                    </div>
-                </div>
+               <div class="space-y-3">
+    <span class="bg-blue-900/40 text-blue-300 px-2 py-0.5 rounded text-xs font-mono border border-blue-800 font-bold">Technique 3: Chain-of-Thought (CoT) Spatial Extraction</span>
+    <div class="bg-gray-950 p-4 rounded-lg border border-gray-900 font-mono text-xs text-gray-300 leading-relaxed">
+        1. Calculate boundary limits on a normalized 100x100 grid from right to left.<br>
+        2. Establish separate URI nodes for overlapping actors. Map properties to ArCo documentation rules.
+    </div>
+    
+    <div class="pl-4 border-l-2 border-gray-700 space-y-4">
+        <div class="space-y-1">
+            <span class="text-gray-400 text-xs font-mono font-bold">// Target Input Prompt (Sent to LLMs)</span>
+            <div class="bg-gray-900 p-4 rounded-lg border border-gray-950 font-mono text-xs text-gray-400 leading-relaxed">
+                Act as a Semantic Web Knowledge Engineer. You need to map the internal components of Sandro Botticelli's "La Primavera" by computing their spatial distribution from right to left on a normalized 100x100 canvas grid.<br><br>
+                Execute this task following these exact logical steps:<br>
+                1. Identify the 9 characters moving sequentially from the far right (X=100) to the far left (X=0).<br>
+                2. For each character, establish a dedicated URI node as an instance of a-cd:CulturalPropertyComponent, linked via core:hasPart to ex:LaPrimavera_Artwork.<br>
+                3. For each character, generate a secondary connected ex:Subj_ node using a-cd:hasSubject to model their iconographical role (e.g., God of the West Wind, Nymph, Goddess of Spring, Goddess of Love, God of Desire, Three Graces, Messenger of the Gods) and write an rdfs:label for both nodes.<br>
+                4. Use the official ArCo ontology prefixes for a-cd:, core:, and rdfs:.<br><br>
+                Output the final result as a strict W3C Turtle block. Do not write any conversational preamble or chat commentary.
+            </div>
+        </div>
+        
+        <div class="space-y-1">
+            <span class="text-green-400 text-xs font-mono font-bold">// Chain-of-Thought Model Response Output (ChatGPT)</span>
+            <pre class="bg-gray-950 p-4 rounded-lg font-mono text-xs text-green-400 border border-gray-900 overflow-x-auto leading-relaxed">@prefix ex: &lt;http://example.org/la-primavera/&gt; .
+@prefix a-cd: &lt;https://w3id.org/arco/ontology/context-description/&gt; .
+@prefix core: &lt;https://w3id.org/arco/ontology/core/&gt; .
+@prefix rdfs: &lt;http://www.w3.org/2000/01/rdf-schema#&gt; .
+
+ex:LaPrimavera_Artwork
+    core:hasPart
+        ex:Comp_Zephyrus,
+        ex:Comp_Chloris,
+        ex:Comp_Flora,
+        ex:Comp_Venus,
+        ex:Comp_Cupid,
+        ex:Comp_Grace_Right,
+        ex:Comp_Grace_Center,
+        ex:Comp_Grace_Left,
+        ex:Comp_Mercury .
+
+ex:Comp_Zephyrus a a-cd:CulturalPropertyComponent ; rdfs:label "Zephyrus" ; a-cd:hasSubject ex:Subj_Zephyrus ; ex:xPosition "95"^^&lt;http://www.w3.org/2001/XMLSchema#integer&gt; ; ex:yPosition "55"^^&lt;http://www.w3.org/2001/XMLSchema#integer&gt; .
+ex:Subj_Zephyrus rdfs:label "God of the West Wind" .
+
+ex:Comp_Chloris a a-cd:CulturalPropertyComponent ; rdfs:label "Chloris" ; a-cd:hasSubject ex:Subj_Chloris ; ex:xPosition "85"^^&lt;http://www.w3.org/2001/XMLSchema#integer&gt; ; ex:yPosition "55"^^&lt;http://www.w3.org/2001/XMLSchema#integer&gt; .
+ex:Subj_Chloris rdfs:label "Nymph" .
+
+ex:Comp_Flora a a-cd:CulturalPropertyComponent ; rdfs:label "Flora" ; a-cd:hasSubject ex:Subj_Flora ; ex:xPosition "75"^^&lt;http://www.w3.org/2001/XMLSchema#integer&gt; ; ex:yPosition "55"^^&lt;http://www.w3.org/2001/XMLSchema#integer&gt; .
+ex:Subj_Flora rdfs:label "Goddess of Spring" .
+
+ex:Comp_Venus a a-cd:CulturalPropertyComponent ; rdfs:label "Venus" ; a-cd:hasSubject ex:Subj_Venus ; ex:xPosition "55"^^&lt;http://www.w3.org/2001/XMLSchema#integer&gt; ; ex:yPosition "55"^^&lt;http://www.w3.org/2001/XMLSchema#integer&gt; .
+ex:Subj_Venus rdfs:label "Goddess of Love" .
+
+ex:Comp_Cupid a a-cd:CulturalPropertyComponent ; rdfs:label "Cupid" ; a-cd:hasSubject ex:Subj_Cupid ; ex:xPosition "50"^^&lt;http://www.w3.org/2001/XMLSchema#integer&gt; ; ex:yPosition "80"^^&lt;http://www.w3.org/2001/XMLSchema#integer&gt; .
+ex:Subj_Cupid rdfs:label "God of Desire" .
+
+ex:Comp_Grace_Right a a-cd:CulturalPropertyComponent ; rdfs:label "Right Grace" ; a-cd:hasSubject ex:Subj_Grace_Right ; ex:xPosition "40"^^&lt;http://www.w3.org/2001/XMLSchema#integer&gt; ; ex:yPosition "55"^^&lt;http://www.w3.org/2001/XMLSchema#integer&gt; .
+ex:Subj_Grace_Right rdfs:label "Three Graces" .
+
+ex:Comp_Grace_Center a a-cd:CulturalPropertyComponent ; rdfs:label "Center Grace" ; a-cd:hasSubject ex:Subj_Grace_Center ; ex:xPosition "30"^^&lt;http://www.w3.org/2001/XMLSchema#integer&gt; ; ex:yPosition "55"^^&lt;http://www.w3.org/2001/XMLSchema#integer&gt; .
+ex:Subj_Grace_Center rdfs:label "Three Graces" .
+
+ex:Comp_Grace_Left a a-cd:CulturalPropertyComponent ; rdfs:label "Left Grace" ; a-cd:hasSubject ex:Subj_Grace_Left ; ex:xPosition "20"^^&lt;http://www.w3.org/2001/XMLSchema#integer&gt; ; ex:yPosition "55"^^&lt;http://www.w3.org/2001/XMLSchema#integer&gt; .
+ex:Subj_Grace_Left rdfs:label "Three Graces" .
+
+ex:Comp_Mercury a a-cd:CulturalPropertyComponent ; rdfs:label "Mercury" ; a-cd:hasSubject ex:Subj_Mercury ; ex:xPosition "5"^^&lt;http://www.w3.org/2001/XMLSchema#integer&gt; ; ex:yPosition "55"^^&lt;http://www.w3.org/2001/XMLSchema#integer&gt; .
+ex:Subj_Mercury rdfs:label "Messenger of the Gods" .</pre>
+        </div>
+
+        <div class="space-y-1">
+            <span class="text-green-400 text-xs font-mono font-bold">// Chain-of-Thought Model Response Output (Gemini)</span>
+            <pre class="bg-gray-950 p-4 rounded-lg font-mono text-xs text-green-400 border border-gray-900 overflow-x-auto leading-relaxed">@prefix a-cd: &lt;https://w3id.org/arco/ontology/context-description/&gt; .
+@prefix core: &lt;https://w3id.org/arco/ontology/core/&gt; .
+@prefix rdfs: &lt;http://www.w3.org/2000/01/rdf-schema#&gt; .
+@prefix ex:   &lt;http://example.org/primavera/&gt; .
+@prefix xsd:  &lt;http://www.w3.org/2001/XMLSchema#&gt; .
+
+ex:LaPrimavera_Artwork a core:CulturalProperty ; rdfs:label "La Primavera by Sandro Botticelli" .
+
+ex:Component_Zephyrus a a-cd:CulturalPropertyComponent ; rdfs:label "Component: Zephyrus" ; core:hasPart ex:LaPrimavera_Artwork ; a-cd:hasSubject ex:Subj_Zephyrus ; ex:spatialX "95"^^xsd:integer .
+ex:Subj_Zephyrus a a-cd:Subject ; rdfs:label "God of the West Wind" .
+
+ex:Component_Chloris a a-cd:CulturalPropertyComponent ; rdfs:label "Component: Chloris" ; core:hasPart ex:LaPrimavera_Artwork ; a-cd:hasSubject ex:Subj_Chloris ; ex:spatialX "85"^^xsd:integer .
+ex:Subj_Chloris a a-cd:Subject ; rdfs:label "Nymph" .
+
+ex:Component_Flora a a-cd:CulturalPropertyComponent ; rdfs:label "Component: Flora" ; core:hasPart ex:LaPrimavera_Artwork ; a-cd:hasSubject ex:Subj_Flora ; ex:spatialX "75"^^xsd:integer .
+ex:Subj_Flora a a-cd:Subject ; rdfs:label "Goddess of Spring" .
+
+ex:Component_Venus a a-cd:CulturalPropertyComponent ; rdfs:label "Component: Venus" ; core:hasPart ex:LaPrimavera_Artwork ; a-cd:hasSubject ex:Subj_Venus ; ex:spatialX "50"^^xsd:integer .
+ex:Subj_Venus a a-cd:Subject ; rdfs:label "Goddess of Love" .
+
+ex:Component_Cupid a a-cd:CulturalPropertyComponent ; rdfs:label "Component: Cupid" ; core:hasPart ex:LaPrimavera_Artwork ; a-cd:hasSubject ex:Subj_Cupid ; ex:spatialX "48"^^xsd:integer .
+ex:Subj_Cupid a a-cd:Subject ; rdfs:label "God of Desire" .
+
+ex:Component_Grace_Voluptas a a-cd:CulturalPropertyComponent ; rdfs:label "Component: Grace (Pleasure)" ; core:hasPart ex:LaPrimavera_Artwork ; a-cd:hasSubject ex:Subj_Grace_Voluptas ; ex:spatialX "35"^^xsd:integer .
+ex:Subj_Grace_Voluptas a a-cd:Subject ; rdfs:label "Three Graces" .
+
+ex:Component_Grace_Castitas a a-cd:CulturalPropertyComponent ; rdfs:label "Component: Grace (Chastity)" ; core:hasPart ex:LaPrimavera_Artwork ; a-cd:hasSubject ex:Subj_Grace_Castitas ; ex:spatialX "28"^^xsd:integer .
+ex:Subj_Grace_Castitas a a-cd:Subject ; rdfs:label "Three Graces" .
+
+ex:Component_Grace_Pulchritudo a a-cd:CulturalPropertyComponent ; rdfs:label "Component: Grace (Beauty)" ; core:hasPart ex:LaPrimavera_Artwork ; a-cd:hasSubject ex:Subj_Grace_Pulchritudo ; ex:spatialX "22"^^xsd:integer .
+ex:Subj_Grace_Pulchritudo a a-cd:Subject ; rdfs:label "Three Graces" .
+
+ex:Component_Mercury a a-cd:CulturalPropertyComponent ; rdfs:label "Component: Mercury" ; core:hasPart ex:LaPrimavera_Artwork ; a-cd:hasSubject ex:Subj_Mercury ; ex:spatialX "10"^^xsd:integer .
+ex:Subj_Mercury a a-cd:Subject ; rdfs:label "Messenger of the Gods" .</pre>
+        </div>
+    </div>
+</div>
+
             </div>
 
             <div class="pt-6 border-t border-gray-700 space-y-3">
