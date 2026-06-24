@@ -40,9 +40,9 @@
                 <h3 class="font-bold text-white font-mono">// Empirical Capability Matrix</h3>
             </div>
             <div class="overflow-x-auto">
-                <table class="w-full text-left border-collapse font-sans">
+                <table class="w-full text-left border-collapse text-xs font-sans">
                     <thead>
-                        <tr class="bg-gray-950 text-gray-400 uppercase tracking-wider text-xs border-b border-gray-800 font-mono">
+                        <tr class="bg-gray-950 text-gray-400 uppercase tracking-wider text-[11px] border-b border-gray-800 font-mono">
                             <th class="p-4 font-bold">Prompting Strategy</th>
                             <th class="p-4 font-bold">Model Engine</th>
                             <th class="p-4 font-bold text-center">Syntax Validity</th>
@@ -103,8 +103,12 @@
         </div>
 
         <div class="space-y-6">
-            <h3 class="text-lg font-bold text-white uppercase tracking-wider font-mono">// Technical Audit Logs per Prompting Tier</h3>
+            <div class="space-y-1">
+                <h3 class="text-lg font-bold text-white uppercase tracking-wider font-mono">// Technical Audit Logs per Prompting Tier</h3>
+                <p class="text-gray-400 text-sm font-sans">Granular evaluation of structural behaviors observed during the output streaming phase.</p>
+            </div>
 
+            <!-- Tiers -->
             <div class="bg-gray-800 p-6 rounded-xl border border-gray-700 space-y-3">
                 <span class="bg-blue-900/40 text-blue-300 px-3 py-1 rounded text-sm font-mono border border-blue-800 font-bold">Tier 1 Audit: Zero-Shot Constraints</span>
                 <div class="bg-gray-950 p-5 rounded-lg border border-gray-900 space-y-3 leading-relaxed">
