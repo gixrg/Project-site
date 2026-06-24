@@ -264,6 +264,45 @@ WHERE {
                 </div>
             </div>
         </div>
+        <div class="bg-gray-800 p-6 rounded-xl border border-gray-700 space-y-4">
+            <div class="flex items-center gap-2">
+                <span class="bg-blue-900 text-blue-300 font-mono text-xs px-2.5 py-1 rounded-md font-bold">ACT VI</span>
+                <h3 class="text-sm font-bold font-sans text-white">The Boolean Verification</h3>
+            </div>
+            
+            <div class="text-gray-300 text-sm space-y-2 font-sans">
+                <p>
+                    To provide ultimate mathematical proof of the spatial gap, we deploy a boolean <span class="font-mono text-xs text-yellow-400">ASK</span> query. Instead of requesting data projection, we ask the server a closed query: "Is it true that the Primavera canvas contains at least one spatial subdivision hosting a character?"
+                </p>
+            </div>
+
+            <div class="space-y-1">
+                <span class="bg-blue-900/40 text-blue-300 px-2 py-0.5 rounded text-xs font-mono border border-blue-800 font-bold">Target Query Specification (Boolean Test)</span>
+                <pre class="bg-gray-950 p-4 rounded-lg font-mono text-xs text-green-400 border border-gray-900 overflow-x-auto leading-relaxed">PREFIX core: &lt;https://w3id.org/arco/ontology/core/&gt;
+PREFIX a-cd: &lt;https://w3id.org/arco/ontology/context-description/&gt;
+
+ASK WHERE {
+  # Check if at least ONE spatial region exists
+  &lt;http://dati.cultura.gov.it/resource/HistoricOrArtisticProperty/0900115362&gt; core:hasPart ?canvasRegion .
+  
+  # And if that region contains a subject
+  ?canvasRegion a-cd:hasSubject ?character .
+}</pre>
+            </div>
+            
+            <div class="pt-2 flex justify-start">
+                <a href="https://dati.cultura.gov.it/sparql?default-graph-uri=&query=PREFIX+core%3A+%3Chttps%3A%2F%2Fw3id.org%2Farco%2Fontology%2Fcore%2F%3E%0D%0APREFIX+a-cd%3A+%3Chttps%3A%2F%2Fw3id.org%2Farco%2Fontology%2Fcontext-description%2F%3E%0D%0A%0D%0AASK+WHERE+%7B%0D%0A++%23+Chiediamo+se+esiste+almeno+UNA+regione+spaziale+%28core%3AhasPart%29%0D%0A++%3Chttp%3A%2F%2Fdati.cultura.gov.it%2Fresource%2FHistoricOrArtisticProperty%2F0900115362%3E+core%3AhasPart+%3FcanvasRegion+.%0D%0A++%0D%0A++%23+E+se+quella+regione+contiene+un+personaggio+%28a-cd%3AhasSubject%29%0D%0A++%3FcanvasRegion+a-cd%3AhasSubject+%3Fcharacter+.%0D%0A%7D%0D%0A&format=text%2Fhtml&timeout=0&signal_void=on" target="_blank" class="bg-blue-600 hover:bg-blue-700 text-white font-sans text-xs font-bold px-4 py-2.5 rounded-lg shadow transition duration-200 flex items-center gap-2 border border-blue-500">
+                    <span>View Results on SPARQL Endpoint</span>
+                </a>
+            </div>
+            
+             <div class="space-y-1">
+                <span class="bg-blue-900/40 text-blue-300 px-2 py-0.5 rounded text-xs font-mono border border-blue-800 font-bold">Audit Evaluation Log</span>
+                <div class="text-gray-400 text-xs font-mono bg-gray-950 p-4 rounded-lg border border-gray-900 leading-relaxed">
+                    <span class="text-blue-400 font-bold">// Act VI Audit Result:</span> The endpoint unequivocally returns <span class="text-red-400 font-bold font-sans">False</span>, providing the definitive Boolean proof that the official graph is entirely devoid of the necessary spatial decomposition triples.
+                </div>
+            </div>
+        </div>
 
     </main>
 
