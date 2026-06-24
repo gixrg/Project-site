@@ -195,6 +195,54 @@ LIMIT 5</pre>
                     <span>View Results on SPARQL Endpoint</span>
                 </a>
             </div>
+        <div class="bg-gray-800 p-6 rounded-xl border border-gray-700 space-y-4 shadow-[0_0_15px_rgba(59,130,246,0.15)]">
+            <div class="flex items-center gap-2">
+                <span class="bg-blue-600 text-white font-mono text-xs px-2.5 py-1 rounded-md font-bold shadow-lg">ACT V (CORE GAP)</span>
+                <h3 class="text-sm font-bold font-sans text-white">The Spatial & Geometric Void</h3>
+            </div>
+            
+            <div class="text-gray-300 text-sm space-y-2 font-sans">
+                <p>
+                    Once the semantic subject gap was confirmed, we executed the most critical audit: testing the official <strong>ArCo endpoint</strong> for the spatial decomposition of the canvas using the official URI of the Primavera. We demanded the physical regions (<span class="font-mono text-xs text-yellow-400">core:hasPart</span>), their specific characters (<span class="font-mono text-xs text-yellow-400">a-cd:hasSubject</span>), and their geometric coordinates (<span class="font-mono text-xs text-yellow-400">ex:hasXMin / ex:hasXMax</span>).
+                </p>
+                <p>
+                    The endpoint returns an entirely <strong class="text-red-400">empty HTML5 table</strong>. This empirically validates the core thesis of our project: the official Knowledge Graph completely lacks a geometric and spatial semantic representation of the painting's internal components.
+                </p>
+            </div>
+
+            <div class="space-y-1">
+                <span class="bg-blue-900/40 text-blue-300 px-2 py-0.5 rounded text-xs font-mono border border-blue-800 font-bold">Target Query Specification (Spatial Decomposition)</span>
+                <pre class="bg-gray-950 p-4 rounded-lg font-mono text-xs text-green-400 border border-gray-900 overflow-x-auto leading-relaxed">PREFIX core: &lt;https://w3id.org/arco/ontology/core/&gt;
+PREFIX a-cd: &lt;https://w3id.org/arco/ontology/context-description/&gt;
+PREFIX ex: &lt;http://example.org/primavera/&gt;
+
+SELECT ?character ?xMin ?xMax
+WHERE {
+  &lt;http://dati.cultura.gov.it/resource/HistoricOrArtisticProperty/0900115362&gt; core:hasPart ?canvasRegion .
+  ?canvasRegion a-cd:hasSubject ?character .
+  
+  OPTIONAL {
+    ?canvasRegion ex:hasXMin ?xMin .
+    ?canvasRegion ex:hasXMax ?xMax .
+  }
+}</pre>
+            </div>
+            
+            <div class="pt-2 flex justify-start">
+                <a href="https://dati.cultura.gov.it/sparql?default-graph-uri=&query=PREFIX+core%3A+%3Chttps%3A%2F%2Fw3id.org%2Farco%2Fontology%2Fcore%2F%3E%0D%0APREFIX+a-cd%3A+%3Chttps%3A%2F%2Fw3id.org%2Farco%2Fontology%2Fcontext-description%2F%3E%0D%0APREFIX+ex%3A+%3Chttp%3A%2F%2Fexample.org%2Fprimavera%2F%3E%0D%0A%0D%0ASELECT+%3Fcharacter+%3FxMin+%3FxMax%0D%0AWHERE+%7B%0D%0A++%3Chttp%3A%2F%2Fdati.cultura.gov.it%2Fresource%2FHistoricOrArtisticProperty%2F0900115362%3E+core%3AhasPart+%3FcanvasRegion+.%0D%0A++%3FcanvasRegion+a-cd%3AhasSubject+%3Fcharacter+.%0D%0A++%0D%0A++OPTIONAL+%7B%0D%0A++++%3FcanvasRegion+ex%3AhasXMin+%3FxMin+.%0D%0A++++%3FcanvasRegion+ex%3AhasXMax+%3FxMax+.%0D%0A++%7D%0D%0A%7D&format=text%2Fhtml&timeout=0&signal_void=on" target="_blank" class="bg-red-600 hover:bg-red-700 text-white font-sans text-xs font-bold px-4 py-2.5 rounded-lg shadow transition duration-200 flex items-center gap-2 border border-red-500">
+                    <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z"></path></svg>
+                    <span>Execute Spatial Audit (Expected Output: Empty Table)</span>
+                </a>
+            </div>
+            
+             <div class="space-y-1">
+                <span class="bg-blue-900/40 text-blue-300 px-2 py-0.5 rounded text-xs font-mono border border-blue-800 font-bold">Audit Evaluation Log</span>
+                <div class="bg-gray-950 p-4 rounded-lg border border-red-900/50 text-xs font-mono space-y-2 leading-relaxed">
+                    <div class="text-red-400 font-bold">// Final Geometric Gap Confirmed:</div>
+                    <div class="text-gray-400 font-sans">The endpoint's failure to return graph matches for <code class="text-red-300">core:hasPart</code> and spatial properties proves the necessity of our prompt-engineered LLM enrichment to generate grid coordinates.</div>
+                </div>
+            </div>
+        </div>
 
             <div class="space-y-1">
                 <span class="bg-blue-900/40 text-blue-300 px-2 py-0.5 rounded text-xs font-mono border border-blue-800 font-bold">Audit Evaluation Log</span>
