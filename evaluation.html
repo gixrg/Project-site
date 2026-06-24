@@ -104,38 +104,40 @@
 
         <div class="space-y-6">
             <div class="space-y-1">
-                <h3 class="text-lg font-bold text-white uppercase tracking-wider font-mono">// Technical Audit Logs per Prompting Tier</h3>
-                <p class="text-gray-400 text-sm font-sans">Granular evaluation of structural behaviors observed during the output streaming phase.</p>
+                <h3 class="text-sm font-bold text-white uppercase tracking-wider font-mono">// Technical Audit Logs per Prompting Tier</h3>
+                <p class="text-xs text-gray-400 font-sans">Granular evaluation of structural behaviors observed during the output streaming phase.</p>
             </div>
 
-            <!-- Tiers -->
+            <!-- Tier 1 -->
             <div class="bg-gray-800 p-6 rounded-xl border border-gray-700 space-y-3">
-                <span class="bg-blue-900/40 text-blue-300 px-3 py-1 rounded text-sm font-mono border border-blue-800 font-bold">Tier 1 Audit: Zero-Shot Constraints</span>
-                <div class="bg-gray-950 p-5 rounded-lg border border-gray-900 space-y-3 leading-relaxed">
+                <span class="bg-blue-900/40 text-blue-300 px-2 py-0.5 rounded text-xs font-mono border border-blue-800 font-bold">Tier 1 Audit: Zero-Shot Constraints</span>
+                <div class="bg-gray-950 p-4 rounded-lg border border-gray-900 font-sans text-xs text-gray-300 leading-relaxed space-y-3">
                     <div class="text-red-400 font-bold font-mono">// Critique: The Semantic Disconnect</div>
-                    <p class="text-gray-300">
+                    <p>
                         Both engines yielded syntactically correct <a href="https://www.w3.org/TR/turtle/" target="_blank" class="text-blue-400 hover:underline">W3C Turtle representations</a>, demonstrating total adherence to the operational exclusion of conversational preamble. However, a profound <strong>Semantic Web Disconnect</strong> occurred: lacking <a href="https://www.w3.org/standards/semanticweb/ontology" target="_blank" class="text-blue-400 hover:underline">ontological anchoring</a> references, both models hallucinated local base URIs (e.g., <span class="text-yellow-500 font-mono">http://example.org/ontology/core/</span>). 
                     </p>
                     <p class="text-gray-400">• Result: Individual characters were correctly segmented, but triples remain isolated from the global Linked Open Data cloud.</p>
                 </div>
             </div>
 
+            <!-- Tier 2 -->
             <div class="bg-gray-800 p-6 rounded-xl border border-gray-700 space-y-3">
-                <span class="bg-blue-900/40 text-blue-300 px-3 py-1 rounded text-sm font-mono border border-blue-800 font-bold">Tier 2 Audit: Few-Shot Structural Alignment</span>
-                <div class="bg-gray-950 p-5 rounded-lg border border-gray-900 space-y-3 leading-relaxed">
+                <span class="bg-blue-900/40 text-blue-300 px-2 py-0.5 rounded text-xs font-mono border border-blue-800 font-bold">Tier 2 Audit: Few-Shot Structural Alignment</span>
+                <div class="bg-gray-950 p-4 rounded-lg border border-gray-900 font-sans text-xs text-gray-300 leading-relaxed space-y-3">
                     <div class="text-green-400 font-bold font-mono">// Critique: Contextual Precision Achieved</div>
-                    <p class="text-gray-300">
+                    <p>
                         The injection of structural examples acted as an architectural anchor. By observing the mapping patterns, both models immediately aligned their outputs to the authoritative namespaces of ArCo.
                     </p>
                     <p class="text-gray-400">• Result: Zero namespace hallucinations. The structural topology matched our required data blueprint flawlessly.</p>
                 </div>
             </div>
 
+            <!-- Tier 3 -->
             <div class="bg-gray-800 p-6 rounded-xl border border-gray-700 space-y-3">
-                <span class="bg-blue-900/40 text-blue-300 px-3 py-1 rounded text-sm font-mono border border-blue-800 font-bold">Tier 3 Audit: Chain-of-Thought Spatial Extraction</span>
-                <div class="bg-gray-950 p-5 rounded-lg border border-gray-900 space-y-3 leading-relaxed">
+                <span class="bg-blue-900/40 text-blue-300 px-2 py-0.5 rounded text-xs font-mono border border-blue-800 font-bold">Tier 3 Audit: Chain-of-Thought Spatial Extraction</span>
+                <div class="bg-gray-950 p-4 rounded-lg border border-gray-900 font-sans text-xs text-gray-300 leading-relaxed space-y-3">
                     <div class="text-yellow-400 font-bold font-mono">// Critique: Advanced Inference vs. Ontological Inversion</div>
-                    <p class="text-gray-300">
+                    <p>
                         Enforcing a normalized grid calculation (100x100) unlocked <a href="https://arxiv.org/abs/2201.11903" target="_blank" class="text-blue-400 hover:underline">advanced spatial reasoning</a>. Both models simulated canvas tracking successfully.
                     </p>
                     <div class="text-gray-400 space-y-2">
@@ -143,7 +145,7 @@
                         <p><strong class="text-white">Gemini:</strong> Outperformed in art-historical naming, but suffered a <strong>Critical Ontological Inversion Bug</strong> (flipping predicate direction).</p>
                     </div>
                     <div class="text-blue-400 font-bold font-mono pt-2">// Curation Verdict:</div>
-                    <p class="text-gray-300">
+                    <p>
                         This comparative split justified our <strong><a href="https://en.wikipedia.org/wiki/Human-in-the-loop" target="_blank" class="text-blue-400 hover:underline">Human-in-the-Loop</a></strong> intervention. Our final reconciled dataset combines <a href="https://gemini.google.com/" target="_blank" class="text-blue-400 hover:underline">Gemini</a>'s advanced nomenclature with <a href="https://chatgpt.com/" target="_blank" class="text-blue-400 hover:underline">ChatGPT</a>'s flawless <a href="https://www.w3.org/TR/rdf11-concepts/" target="_blank" class="text-blue-400 hover:underline">relational logic</a>, mitigating <a href="https://en.wikipedia.org/wiki/Hallucination_(artificial_intelligence)" target="_blank" class="text-blue-400 hover:underline">AI hallucinations</a> to ensure the graph meets the strict requirements of the <a href="https://dati.beniculturali.it/arco/" target="_blank" class="text-blue-400 hover:underline">ArCo ecosystem</a>.
                     </p>
                 </div>
