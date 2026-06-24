@@ -43,7 +43,7 @@
             
             <div class="text-gray-300 text-sm space-y-2 font-sans">
                 <p>
-                    The first step addresses <strong>Entity Discovery</strong> within a national-level aggregation graph. We execute a broad semantic lookup targeting instances of the core class <span class="font-mono text-xs text-yellow-400">arco:HistoricOrArtisticProperty</span>. We apply a case-insensitive regular expression filter (<span class="font-mono text-xs text-yellow-400">FILTER(REGEX(..., "i"))</span>) on the <span class="font-mono text-xs text-yellow-400">rdfs:label</span> property to evaluate whether the token "Primavera" is present as a literal string.
+                    The first step addresses <strong>Entity Discovery</strong> within a national-level aggregation graph. We execute a broad semantic lookup targeting instances of the core class <a href="https://w3id.org/arco/ontology/arco/HistoricOrArtisticProperty" target="_blank" class="font-mono text-xs text-yellow-400 hover:underline hover:text-yellow-300">arco:HistoricOrArtisticProperty</a>. We apply a case-insensitive regular expression filter (<span class="font-mono text-xs text-yellow-400">FILTER(REGEX(..., "i"))</span>) on the <a href="http://www.w3.org/2000/01/rdf-schema#label" target="_blank" class="font-mono text-xs text-yellow-400 hover:underline hover:text-yellow-300">rdfs:label</a> property to evaluate whether the token "<a href="https://www.wikidata.org/wiki/Q549847" target="_blank" class="italic text-blue-400 hover:underline hover:text-blue-300 font-normal">Primavera</a>" is present as a literal string.
                 </p>
             </div>
 
@@ -82,7 +82,7 @@ WHERE {
             
             <div class="text-gray-300 text-sm space-y-2 font-sans">
                 <p>
-                    To achieve precise <strong>Entity Resolution</strong>, we introduce a structured graph join. We exploit the object property <span class="font-mono text-xs text-yellow-400">a-cd:hasAuthor</span> to bridge the artwork node directly to its creator entity, restricting the scope with a secondary filter targeting "Botticelli".
+                    To achieve precise <strong>Entity Resolution</strong>, we introduce a structured graph join. We exploit the object property <a href="https://w3id.org/arco/ontology/context-description/hasAuthor" target="_blank" class="font-mono text-xs text-yellow-400 hover:underline hover:text-yellow-300">a-cd:hasAuthor</a> to bridge the artwork node directly to its creator entity, restricting the scope with a secondary filter targeting "<a href="https://www.wikidata.org/wiki/Q5669" target="_blank" class="text-blue-400 hover:underline hover:text-blue-300 font-normal">Botticelli</a>".
                 </p>
             </div>
 
@@ -113,7 +113,7 @@ WHERE {
             <div class="space-y-1">
                 <span class="bg-blue-900/40 text-blue-300 px-2 py-0.5 rounded text-xs font-mono border border-blue-800 font-bold">Audit Evaluation Log</span>
                 <div class="text-gray-400 text-xs font-mono bg-gray-950 p-4 rounded-lg border border-gray-900 leading-relaxed">
-                    <span class="text-blue-400 font-bold">// Act II Audit Result:</span> The graph successfully filters out structural noise and isolates the unique URIs representing Sandro Botticelli's records at the Uffizi Gallery.
+                    <span class="text-blue-400 font-bold">// Act II Audit Result:</span> The graph successfully filters out structural noise and isolates the unique URIs representing Sandro Botticelli's records at the <a href="https://www.wikidata.org/wiki/Q51252" target="_blank" class="text-blue-400 hover:underline hover:text-blue-300 font-sans font-bold">Uffizi Gallery</a>.
                 </div>
             </div>
         </div>
@@ -126,7 +126,7 @@ WHERE {
             
             <div class="text-gray-300 text-sm space-y-2 font-sans">
                 <p>
-                    Before pinning the target canvas, we ran a global subject query using <span class="font-mono text-xs text-yellow-400">a-cd:hasSubject</span> on any artwork labeled "Primavera". This intermediate step highlights a common challenge in data validation: names of independent characters (like Cupid or Mercury) appear in the output stream, but they belong to miscellaneous regional assets or different frescoes, not to Botticelli's canvas.
+                    Before pinning the target canvas, we ran a global subject query using <a href="https://w3id.org/arco/ontology/context-description/hasSubject" target="_blank" class="font-mono text-xs text-yellow-400 hover:underline hover:text-yellow-300">a-cd:hasSubject</a> on any artwork labeled "<a href="https://www.wikidata.org/wiki/Q549847" target="_blank" class="italic text-blue-400 hover:underline hover:text-blue-300 font-normal">Primavera</a>". This intermediate step highlights a common challenge in data validation: names of independent characters (like Cupid or Mercury) appear in the output stream, but they belong to miscellaneous regional assets or different frescoes, not to <a href="https://www.wikidata.org/wiki/Q5669" target="_blank" class="text-blue-400 hover:underline hover:text-blue-300 font-normal">Botticelli</a>'s canvas.
                 </p>
             </div>
 
@@ -167,7 +167,7 @@ WHERE {
             
             <div class="text-gray-300 text-sm space-y-2 font-sans">
                 <p>
-                    This final semantic query represents the <strong>Definitive Content Audit</strong>. By forcing a strict conjunctive condition that matches "Primavera" and "Botticelli" simultaneously, we extract the precise iconographical boundaries of the Uffizi masterpiece. 
+                    This final semantic query represents the <strong>Definitive Content Audit</strong>. By forcing a strict conjunctive condition that matches "<a href="https://www.wikidata.org/wiki/Q549847" target="_blank" class="italic text-blue-400 hover:underline hover:text-blue-300 font-normal">Primavera</a>" and "<a href="https://www.wikidata.org/wiki/Q5669" target="_blank" class="text-blue-400 hover:underline hover:text-blue-300 font-normal">Botticelli</a>" simultaneously, we extract the precise iconographical boundaries of the <a href="https://www.wikidata.org/wiki/Q51252" target="_blank" class="text-blue-400 hover:underline hover:text-blue-300 font-normal">Uffizi</a> masterpiece. 
                 </p>
             </div>
 
@@ -226,7 +226,7 @@ LIMIT 5</pre>
             
             <div class="text-gray-300 text-sm space-y-2 font-sans">
                 <p>
-                    Once the semantic subject gap was confirmed, we executed the most critical audit: testing the official <strong>ArCo endpoint</strong> for the spatial decomposition of the canvas using the official URI of the Primavera. We demanded the physical regions (<span class="font-mono text-xs text-yellow-400">core:hasPart</span>), their specific characters (<span class="font-mono text-xs text-yellow-400">a-cd:hasSubject</span>), and their geometric coordinates (<span class="font-mono text-xs text-yellow-400">ex:hasXMin / ex:hasXMax</span>).
+                    Once the semantic subject gap was confirmed, we executed the most critical audit: testing the official <strong>ArCo endpoint</strong> for the spatial decomposition of the canvas using the official URI of the <a href="https://www.wikidata.org/wiki/Q549847" target="_blank" class="italic text-blue-400 hover:underline hover:text-blue-300 font-normal">Primavera</a>. We demanded the physical regions (<a href="https://w3id.org/arco/ontology/core/hasPart" target="_blank" class="font-mono text-xs text-yellow-400 hover:underline hover:text-yellow-300">core:hasPart</a>), their specific characters (<a href="https://w3id.org/arco/ontology/context-description/hasSubject" target="_blank" class="font-mono text-xs text-yellow-400 hover:underline hover:text-yellow-300">a-cd:hasSubject</a>), and their geometric coordinates (<span class="font-mono text-xs text-yellow-400">ex:hasXMin / ex:hasXMax</span>).
                 </p>
                 <p>
                     The endpoint returns an entirely <strong>empty HTML5 table</strong>. This empirically validates the core thesis of our project: the official Knowledge Graph completely lacks a geometric and spatial semantic representation of the painting's internal components.
@@ -264,7 +264,8 @@ WHERE {
                 </div>
             </div>
         </div>
-            <div class="bg-gray-800 p-6 rounded-xl border border-gray-700 space-y-4">
+
+        <div class="bg-gray-800 p-6 rounded-xl border border-gray-700 space-y-4">
             <div class="flex items-center gap-2">
                 <span class="bg-blue-900 text-blue-300 font-mono text-xs px-2.5 py-1 rounded-md font-bold">ACT VI</span>
                 <h3 class="text-sm font-bold font-sans text-white">The Boolean Verification</h3>
@@ -272,7 +273,7 @@ WHERE {
             
             <div class="text-gray-300 text-sm space-y-2 font-sans">
                 <p>
-                    To provide ultimate mathematical proof of the spatial gap, we deploy a boolean <span class="font-mono text-xs text-yellow-400">ASK</span> query. Instead of requesting data projection, we ask the server a closed query: "Is it true that the Primavera canvas contains at least one spatial subdivision hosting a character?"
+                    To provide ultimate mathematical proof of the spatial gap, we deploy a boolean <a href="https://www.w3.org/TR/sparql11-query/#ask" target="_blank" class="font-mono text-xs text-yellow-400 hover:underline hover:text-yellow-300">ASK</a> query. Instead of requesting data projection, we ask the server a closed query: "Is it true that the <a href="https://www.wikidata.org/wiki/Q549847" target="_blank" class="italic text-blue-400 hover:underline hover:text-blue-300 font-normal">Primavera</a> canvas contains at least one spatial subdivision hosting a character?"
                 </p>
             </div>
 
@@ -300,7 +301,6 @@ ASK WHERE {
                 </div>
             </div>
         </div>
-
 
     </main>
 
