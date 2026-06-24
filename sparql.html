@@ -49,7 +49,10 @@
 
             <div class="space-y-1">
                 <span class="bg-blue-900/40 text-blue-300 px-2 py-0.5 rounded text-xs font-mono border border-blue-800 font-bold">Target Query Specification</span>
-                <pre class="bg-gray-950 p-4 rounded-lg font-mono text-xs text-green-400 border border-gray-900 overflow-x-auto leading-relaxed">SELECT DISTINCT ?culturalProperty ?label
+                <pre class="bg-gray-950 p-4 rounded-lg font-mono text-xs text-green-400 border border-gray-900 overflow-x-auto leading-relaxed">PREFIX arco: &lt;https://w3id.org/arco/ontology/arco/&gt;
+PREFIX rdfs: &lt;http://www.w3.org/2000/01/rdf-schema#&gt;
+
+SELECT DISTINCT ?culturalProperty ?label
 WHERE {
   ?culturalProperty a arco:HistoricOrArtisticProperty .
   ?culturalProperty rdfs:label ?label .
@@ -58,7 +61,7 @@ WHERE {
             </div>
             
             <div class="pt-2 flex justify-start">
-                <a href="https://dati.cultura.gov.it/sparql?default-graph-uri=&query=SELECT+DISTINCT+%3FculturalProperty+%3Flabel%0D%0AWHERE+%7B%0D%0A++%3FculturalProperty+a+arco%3AHistoricOrArtisticProperty+.%0D%0A++%3FculturalProperty+rdfs%3Alabel+%3Flabel+.%0D%0A++FILTER%28REGEX%28%3Flabel%2C+%22Primavera%22%2C+%22i%22%29%29%0D%0A%7D%0D%0A%0D%0A&format=text%2Fhtml&timeout=0&signal_void=on" target="_blank" class="bg-blue-600 hover:bg-blue-700 text-white font-sans text-xs font-bold px-4 py-2.5 rounded-lg shadow transition duration-200 flex items-center gap-2 border border-blue-500">
+                <a href="https://dati.cultura.gov.it/sparql?default-graph-uri=&query=PREFIX+arco%3A+%3Chttps%3A%2F%2Fw3id.org%2Farco%2Fontology%2Farco%2F%3E%0D%0APREFIX+rdfs%3A+%3Chttp%3A%2F%2Fwww.w3.org%2F2000%2F01%2Frdf-schema%23%3E%0D%0A%0D%0ASELECT+DISTINCT+%3FculturalProperty+%3Flabel%0D%0AWHERE+%7B%0D%0A++%3FculturalProperty+a+arco%3AHistoricOrArtisticProperty+.%0D%0A++%3FculturalProperty+rdfs%3Alabel+%3Flabel+.%0D%0A++FILTER%28REGEX%28%3Flabel%2C+%22Primavera%22%2C+%22i%22%29%29%0D%0A%7D&format=text%2Fhtml&timeout=0&signal_void=on" target="_blank" class="bg-blue-600 hover:bg-blue-700 text-white font-sans text-xs font-bold px-4 py-2.5 rounded-lg shadow transition duration-200 flex items-center gap-2 border border-blue-500">
                     <span>View Results on SPARQL Endpoint</span>
                 </a>
             </div>
@@ -85,7 +88,11 @@ WHERE {
 
             <div class="space-y-1">
                 <span class="bg-blue-900/40 text-blue-300 px-2 py-0.5 rounded text-xs font-mono border border-blue-800 font-bold">Target Query Specification</span>
-                <pre class="bg-gray-950 p-4 rounded-lg font-mono text-xs text-green-400 border border-gray-900 overflow-x-auto leading-relaxed">SELECT DISTINCT ?culturalProperty ?label ?authorLabel
+                <pre class="bg-gray-950 p-4 rounded-lg font-mono text-xs text-green-400 border border-gray-900 overflow-x-auto leading-relaxed">PREFIX arco: &lt;https://w3id.org/arco/ontology/arco/&gt;
+PREFIX a-cd: &lt;https://w3id.org/arco/ontology/context-description/&gt;
+PREFIX rdfs: &lt;http://www.w3.org/2000/01/rdf-schema#&gt;
+
+SELECT DISTINCT ?culturalProperty ?label ?authorLabel
 WHERE {
   ?culturalProperty a arco:HistoricOrArtisticProperty .
   ?culturalProperty rdfs:label ?label .
@@ -98,7 +105,7 @@ WHERE {
             </div>
             
             <div class="pt-2 flex justify-start">
-                <a href="https://dati.cultura.gov.it/sparql?default-graph-uri=&query=SELECT+DISTINCT+%3FculturalProperty+%3Flabel+%3FauthorLabel%0D%0AWHERE+%7B%0D%0A++%3FculturalProperty+a+arco%3AHistoricOrArtisticProperty+.%0D%0A++%3FculturalProperty+rdfs%3Alabel+%3Flabel+.%0D%0A++%3FculturalProperty+a-cd%3AhasAuthor+%3Fauthor+.%0D%0A++%3Fauthor+rdfs%3Alabel+%3FauthorLabel+.%0D%0A++%0D%0A++FILTER%28REGEX%28%3Flabel%2C+%22Primavera%22%2C+%22i%22%29%29%0D%0A++FILTER%28REGEX%28%3FauthorLabel%2C+%22Botticelli%22%2C+%22i%22%29%29%0D%0A%7D%0D%0A&format=text%2Fhtml&timeout=0&signal_void=on" target="_blank" class="bg-blue-600 hover:bg-blue-700 text-white font-sans text-xs font-bold px-4 py-2.5 rounded-lg shadow transition duration-200 flex items-center gap-2 border border-blue-500">
+                <a href="https://dati.cultura.gov.it/sparql?default-graph-uri=&query=PREFIX+arco%3A+%3Chttps%3A%2F%2Fw3id.org%2Farco%2Fontology%2Farco%2F%3E%0D%0APREFIX+a-cd%3A+%3Chttps%3A%2F%2Fw3id.org%2Farco%2Fontology%2Fcontext-description%2F%3E%0D%0APREFIX+rdfs%3A+%3Chttp%3A%2F%2Fwww.w3.org%2F2000%2F01%2Frdf-schema%23%3E%0D%0A%0D%0ASELECT+DISTINCT+%3FculturalProperty+%3Flabel+%3FauthorLabel%0D%0AWHERE+%7B%0D%0A++%3FculturalProperty+a+arco%3AHistoricOrArtisticProperty+.%0D%0A++%3FculturalProperty+rdfs%3Alabel+%3Flabel+.%0D%0A++%3FculturalProperty+a-cd%3AhasAuthor+%3Fauthor+.%0D%0A++%3Fauthor+rdfs%3Alabel+%3FauthorLabel+.%0D%0A++%0D%0A++FILTER%28REGEX%28%3Flabel%2C+%22Primavera%22%2C+%22i%22%29%29%0D%0A++FILTER%28REGEX%28%3FauthorLabel%2C+%22Botticelli%22%2C+%22i%22%29%29%0D%0A%7D&format=text%2Fhtml&timeout=0&signal_void=on" target="_blank" class="bg-blue-600 hover:bg-blue-700 text-white font-sans text-xs font-bold px-4 py-2.5 rounded-lg shadow transition duration-200 flex items-center gap-2 border border-blue-500">
                     <span>View Results on SPARQL Endpoint</span>
                 </a>
             </div>
@@ -125,7 +132,10 @@ WHERE {
 
             <div class="space-y-1">
                 <span class="bg-blue-900/40 text-blue-300 px-2 py-0.5 rounded text-xs font-mono border border-blue-800 font-bold">Target Query Specification</span>
-                <pre class="bg-gray-950 p-4 rounded-lg font-mono text-xs text-green-400 border border-gray-900 overflow-x-auto leading-relaxed">SELECT DISTINCT ?subjectLabel
+                <pre class="bg-gray-950 p-4 rounded-lg font-mono text-xs text-green-400 border border-gray-900 overflow-x-auto leading-relaxed">PREFIX a-cd: &lt;https://w3id.org/arco/ontology/context-description/&gt;
+PREFIX rdfs: &lt;http://www.w3.org/2000/01/rdf-schema#&gt;
+
+SELECT DISTINCT ?subjectLabel
 WHERE {
   ?culturalProperty rdfs:label ?label .
   FILTER(REGEX(?label, "Primavera", "i"))
@@ -136,7 +146,7 @@ WHERE {
             </div>
             
             <div class="pt-2 flex justify-start">
-                <a href="https://dati.cultura.gov.it/sparql?default-graph-uri=&query=SELECT+DISTINCT+%3FsubjectLabel%0D%0AWHERE+%7B%0D%0A++%3FculturalProperty+rdfs%3Alabel+%3Flabel+.%0D%0A++FILTER%28REGEX%28%3Flabel%2C+%22Primavera%22%2C+%22i%22%29%29%0D%0A++%0D%0A++%3FculturalProperty+a-cd%3AhasSubject+%3FsubjectNode+.%0D%0A++%3FsubjectNode+rdfs%3Alabel+%3FsubjectLabel+.%0D%0A%7D%0D%0A&format=text%2Fhtml&timeout=0&signal_void=on" target="_blank" class="bg-blue-600 hover:bg-blue-700 text-white font-sans text-xs font-bold px-4 py-2.5 rounded-lg shadow transition duration-200 flex items-center gap-2 border border-blue-500">
+                <a href="https://dati.cultura.gov.it/sparql?default-graph-uri=&query=PREFIX+a-cd%3A+%3Chttps%3A%2F%2Fw3id.org%2Farco%2Fontology%2Fcontext-description%2F%3E%0D%0APREFIX+rdfs%3A+%3Chttp%3A%2F%2Fwww.w3.org%2F2000%2F01%2Frdf-schema%23%3E%0D%0A%0D%0ASELECT+DISTINCT+%3FsubjectLabel%0D%0AWHERE+%7B%0D%0A++%3FculturalProperty+rdfs%3Alabel+%3Flabel+.%0D%0A++FILTER%28REGEX%28%3Flabel%2C+%22Primavera%22%2C+%22i%22%29%29%0D%0A++%0D%0A++%3FculturalProperty+a-cd%3AhasSubject+%3FsubjectNode+.%0D%0A++%3FsubjectNode+rdfs%3Alabel+%3FsubjectLabel+.%0D%0A%7D&format=text%2Fhtml&timeout=0&signal_void=on" target="_blank" class="bg-blue-600 hover:bg-blue-700 text-white font-sans text-xs font-bold px-4 py-2.5 rounded-lg shadow transition duration-200 flex items-center gap-2 border border-blue-500">
                     <span>View Results on SPARQL Endpoint</span>
                 </a>
             </div>
@@ -148,113 +158,4 @@ WHERE {
                 <h3 class="text-sm font-bold font-sans text-white">Chirurgical Audit: Isolating Botticelli's Subject Gap</h3>
             </div>
             
-            <div class="text-gray-300 text-sm space-y-2 font-sans">
-                <p>
-                    This final query represents the <strong>Definitive Content Audit</strong>. By forcing a strict conjunctive condition that matches "Primavera" and "Botticelli" simultaneously, we extract the precise iconographical boundaries of the Uffizi masterpiece. 
-                </p>
-                <p>
-                    If the characters were structurally indexed as semantic graph components, the output would display individual nodes for each iconographical component. Instead, it exposes the complete absence of granular modeling. We limit the final result execution parameters and leverage pattern union blocks to verify schema alignment securely.
-                </p>
-            </div>
-
-            <div class="space-y-1">
-                <span class="bg-blue-900/40 text-blue-300 px-2 py-0.5 rounded text-xs font-mono border border-blue-800 font-bold">Target Query Specification (Integrated with UNION and LIMIT)</span>
-                <pre class="bg-gray-950 p-4 rounded-lg font-mono text-xs text-green-400 border border-gray-900 overflow-x-auto leading-relaxed">PREFIX arco: &lt;https://w3id.org/arco/ontology/arco/&gt;
-PREFIX core: &lt;https://w3id.org/arco/ontology/core/&gt;
-PREFIX a-cd: &lt;https://w3id.org/arco/ontology/context-description/&gt;
-PREFIX rdfs: &lt;http://www.w3.org/2000/01/rdf-schema#&gt;
-
-SELECT DISTINCT ?culturalProperty ?label ?authorLabel ?subjectLabel
-WHERE {
-  ?culturalProperty a arco:HistoricOrArtisticProperty .
-  ?culturalProperty rdfs:label ?label .
-  FILTER(REGEX(?label, "Primavera", "i"))
-  
-  ?culturalProperty a-cd:hasAuthor ?author .
-  ?author rdfs:label ?authorLabel .
-  FILTER(REGEX(?authorLabel, "Botticelli", "i"))
-  
-  OPTIONAL {
-    { 
-      ?culturalProperty a-cd:hasSubject ?subjectNode .
-      ?subjectNode rdfs:label ?subjectLabel .
-    }
-    UNION
-    {
-      ?author a-cd:hasSubject ?subjectNode .
-      ?subjectNode rdfs:label ?subjectLabel .
-    }
-  }
-}
-ORDER BY DESC(?culturalProperty)
-LIMIT 5</pre>
-            </div>
-            
-            <div class="pt-2 flex justify-start">
-                <a href="https://dati.cultura.gov.it/sparql?default-graph-uri=&query=PREFIX+arco%3A+%3Chttps%3A%2F%2Fw3id.org%2Farco%2Fontology%2Farco%2F%3E%0D%0APREFIX+core%3A+%3Chttps%3A%2F%2Fw3id.org%2Farco%2Fontology%2Fcore%2F%3E%0D%0APREFIX+a-cd%3A+%3Chttps%3A%2F%2Fw3id.org%2Farco%2Fontology%2Fcontext-description%2F%3E%0D%0APREFIX+rdfs%3A+%3Chttp%3A%2F%2Fwww.w3.org%2F2000%2F01%2Frdf-schema%23%3E%0D%0A%0D%0ASELECT+DISTINCT+%3FculturalProperty+%3Flabel+%3FauthorLabel+%3FsubjectLabel%0D%0AWHERE+%7B%0D%0A++%3FculturalProperty+a+arco%3AHistoricOrArtisticProperty+.%0D%0A++%3FculturalProperty+rdfs%3Alabel+%3Flabel+.%0D%0A++FILTER%28REGEX%28%3Flabel%2C+%22Primavera%22%2C+%22i%22%29%29%0D%0A++%0D%0A++%3FculturalProperty+a-cd%3AhasAuthor+%3Fauthor+.%0D%0A++%3Fauthor+rdfs%3Alabel+%3FauthorLabel+.%0D%0A++FILTER%28REGEX%28%3FauthorLabel%2C+%22Botticelli%22%2C+%22i%22%29%29%0D%0A++%0D%0A++OPTIONAL+%7B%0D%0A++++%7B+%0D%0A++++++%3FculturalProperty+a-cd%3AhasSubject+%3FsubjectNode+.%0D%0A++++++%3FsubjectNode+rdfs%3Alabel+%3FsubjectLabel+.%0D%0A++++%7D%0D%0A++++UNION%0D%0A++++%7B%0D%0A++++++%3Fauthor+a-cd%3AhasSubject+%3FsubjectNode+.%0D%0A++++++%3FsubjectNode+rdfs%3Alabel+%3FsubjectLabel+.%0D%0A++++%7D%0D%0A++%7D%0D%0A%7D%0D%0AORDER+BY+DESC%28%3FculturalProperty%29%0D%0ALIMIT+5%0D%0A&format=text%2Fhtml&timeout=0&signal_void=on" target="_blank" class="bg-blue-600 hover:bg-blue-700 text-white font-sans text-xs font-bold px-4 py-2.5 rounded-lg shadow transition duration-200 flex items-center gap-2 border border-blue-500">
-                    <span>View Results on SPARQL Endpoint</span>
-                </a>
-            </div>
-
-             <div class="space-y-1">
-                <span class="bg-blue-900/40 text-blue-300 px-2 py-0.5 rounded text-xs font-mono border border-blue-800 font-bold">Audit Evaluation Log</span>
-                <div class="bg-gray-950 p-4 rounded-lg border border-gray-900 text-xs font-mono space-y-2 leading-relaxed">
-                    <div class="text-blue-400 font-bold">// Empirical Audit Outcome:</div>
-                    <div class="text-gray-400 font-sans">• Returned Rows: 2 Rows targeting the single masterpiece registry.</div>
-                    <div class="text-gray-400 font-sans">• Gap Confirmed: The 9 independent mythological figures are entirely unindexed as distinct URIs or relational paths for this asset, mathematically verifying the data vacuum.</div>
-                </div>
-            </div>
-          <div class="bg-gray-800 p-6 rounded-xl border border-gray-700 space-y-4">
-            <div class="flex items-center gap-2">
-                <span class="bg-blue-900 text-blue-300 font-mono text-xs px-2.5 py-1 rounded-md font-bold">ACT V</span>
-                <h3 class="text-sm font-bold font-sans text-white">The Spatial & Geometric Void</h3>
-            </div>
-            
-            <div class="text-gray-300 text-sm space-y-2 font-sans">
-                <p>
-                    Once the semantic subject gap was confirmed, we executed the most critical audit: testing the official <strong>ArCo endpoint</strong> for the spatial decomposition of the canvas using the official URI of the Primavera. We demanded the physical regions (<span class="font-mono text-xs text-yellow-400">core:hasPart</span>), their specific characters (<span class="font-mono text-xs text-yellow-400">a-cd:hasSubject</span>), and their geometric coordinates (<span class="font-mono text-xs text-yellow-400">ex:hasXMin / ex:hasXMax</span>).
-                </p>
-                <p>
-                    The endpoint returns an entirely <strong>empty HTML5 table</strong>. This empirically validates the core thesis of our project: the official Knowledge Graph completely lacks a geometric and spatial semantic representation of the painting's internal components.
-                </p>
-            </div>
-
-            <div class="space-y-1">
-                <span class="bg-blue-900/40 text-blue-300 px-2 py-0.5 rounded text-xs font-mono border border-blue-800 font-bold">Target Query Specification (Spatial Decomposition)</span>
-                <pre class="bg-gray-950 p-4 rounded-lg font-mono text-xs text-green-400 border border-gray-900 overflow-x-auto leading-relaxed">PREFIX core: &lt;https://w3id.org/arco/ontology/core/&gt;
-PREFIX a-cd: &lt;https://w3id.org/arco/ontology/context-description/&gt;
-PREFIX ex: &lt;http://example.org/primavera/&gt;
-
-SELECT ?character ?xMin ?xMax
-WHERE {
-  &lt;http://dati.cultura.gov.it/resource/HistoricOrArtisticProperty/0900115362&gt; core:hasPart ?canvasRegion .
-  ?canvasRegion a-cd:hasSubject ?character .
-  
-  OPTIONAL {
-    ?canvasRegion ex:hasXMin ?xMin .
-    ?canvasRegion ex:hasXMax ?xMax .
-  }
-}</pre>
-            </div>
-            
-            <div class="pt-2 flex justify-start">
-                <a href="https://dati.cultura.gov.it/sparql?default-graph-uri=&query=PREFIX+core%3A+%3Chttps%3A%2F%2Fw3id.org%2Farco%2Fontology%2Fcore%2F%3E%0D%0APREFIX+a-cd%3A+%3Chttps%3A%2F%2Fw3id.org%2Farco%2Fontology%2Fcontext-description%2F%3E%0D%0APREFIX+ex%3A+%3Chttp%3A%2F%2Fexample.org%2Fprimavera%2F%3E%0D%0A%0D%0ASELECT+%3Fcharacter+%3FxMin+%3FxMax%0D%0AWHERE+%7B%0D%0A++%3Chttp%3A%2F%2Fdati.cultura.gov.it%2Fresource%2FHistoricOrArtisticProperty%2F0900115362%3E+core%3AhasPart+%3FcanvasRegion+.%0D%0A++%3FcanvasRegion+a-cd%3AhasSubject+%3Fcharacter+.%0D%0A++%0D%0A++OPTIONAL+%7B%0D%0A++++%3FcanvasRegion+ex%3AhasXMin+%3FxMin+.%0D%0A++++%3FcanvasRegion+ex%3AhasXMax+%3FxMax+.%0D%0A++%7D%0D%0A%7D&format=text%2Fhtml&timeout=0&signal_void=on" target="_blank" class="bg-blue-600 hover:bg-blue-700 text-white font-sans text-xs font-bold px-4 py-2.5 rounded-lg shadow transition duration-200 flex items-center gap-2 border border-blue-500">
-                    <span>View Results on SPARQL Endpoint</span>
-                </a>
-            </div>
-            
-             <div class="space-y-1">
-                <span class="bg-blue-900/40 text-blue-300 px-2 py-0.5 rounded text-xs font-mono border border-blue-800 font-bold">Audit Evaluation Log</span>
-                <div class="bg-gray-950 p-4 rounded-lg border border-gray-900 text-xs font-mono space-y-2 leading-relaxed">
-                    <div class="text-blue-400 font-bold">// Final Geometric Gap Confirmed:</div>
-                    <div class="text-gray-400 font-sans">• Endpoint returns a table structure but with zero data rows.</div>
-                    <div class="text-gray-400 font-sans">• The failure to return graph matches for <span class="text-yellow-500 font-mono">core:hasPart</span> and spatial properties mathematically proves the necessity of our LLM enrichment to generate grid coordinates.</div>
-                </div>
-            </div>
-        </div>
-
-
-    </main>
-
-</body>
-</html>
+            <div class="text-gray-300 text-sm space
