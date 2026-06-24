@@ -30,7 +30,7 @@
             <hr class="border-gray-800">
             <div class="bg-gray-800 p-6 rounded-xl border border-gray-700 space-y-4">
                 <p class="text-gray-300 text-sm">
-                    The institutional cultural registry records for Botticelli's <span class="italic font-normal text-gray-100">Primavera</span> within public endpoints model the painting exclusively as a single, monolithic entity (<span class="font-mono text-xs text-yellow-400">arco:CulturalProperty</span>). Our audit reveals a clear <strong class="text-white font-bold">knowledge gap</strong>: the nine independent mythological figures interacting across the canvas — 
+                    The institutional cultural registry records for Botticelli's <span class="italic font-normal text-gray-100">Primavera</span> within public endpoints model the painting exclusively as a single, monolithic entity (<a href="https://w3id.org/arco/ontology/arco/CulturalProperty" target="_blank" class="font-mono text-xs text-yellow-400 hover:underline hover:text-yellow-300">arco:CulturalProperty</a>). Our audit reveals a clear <strong class="text-white font-bold">knowledge gap</strong>: the nine independent mythological figures interacting across the canvas — 
                     <a href="https://www.wikidata.org/wiki/Q1150" target="_blank" class="text-blue-400 hover:underline hover:text-blue-300">Mercury</a>, the 
                     <a href="https://www.wikidata.org/wiki/Q184353" target="_blank" class="text-blue-400 hover:underline hover:text-blue-300">Three Graces</a>, 
                     <a href="https://www.wikidata.org/wiki/Q47652" target="_blank" class="text-blue-400 hover:underline hover:text-blue-300">Venus</a>, 
@@ -40,20 +40,20 @@
                     <a href="https://www.wikidata.org/wiki/Q467515" target="_blank" class="text-blue-400 hover:underline hover:text-blue-300">Zephyrus</a> — completely lack individual semantic bounds, spatial localization properties, or unique identifiers.
                 </p>
                 <p class="text-gray-300 text-sm">
-                    By executing a targeted <strong class="text-white font-bold">SPARQL audit query</strong> on the official ArCo endpoint, our team empirically verified this metadata void. The triple store maps the masterpiece as an indivisible object, describing its narrative content with just one flat literal string: <span class="font-mono text-xs text-yellow-400">"Allegoria della Primavera"</span>. Because individual compositional components (<span class="font-mono text-xs text-yellow-400">arco-cd:CulturalPropertyComponent</span>) are unindexed, semantic search agents cannot query or compute relational pathways between the characters. Resolving this spatial and thematic data gap is the primary focus of this enrichment project.
+                    By executing a targeted <strong class="text-white font-bold">SPARQL audit query</strong> on the official ArCo endpoint, our team empirically verified this metadata void. The triple store maps the masterpiece as an indivisible object, describing its narrative content with just one flat literal string: <span class="font-mono text-xs text-yellow-400">"Allegoria della Primavera"</span>. Because the physical decomposition of the canvas via <a href="https://w3id.org/arco/ontology/core/hasPart" target="_blank" class="font-mono text-xs text-yellow-400 hover:underline hover:text-yellow-300">core:hasPart</a> and its specific regions (<a href="https://w3id.org/arco/ontology/denotative-description/CulturalPropertyComponent" target="_blank" class="font-mono text-xs text-yellow-400 hover:underline hover:text-yellow-300">a-dd:CulturalPropertyComponent</a>) are unindexed, semantic search agents cannot query or compute the geometric relationships between the characters. Resolving this spatial and thematic data gap is the primary focus of this enrichment project.
                 </p>
             </div>
 
             <div class="grid grid-cols-1 md:grid-cols-3 gap-4 mt-4">
-                <div class="p-4 bg-gray-950 rounded-lg border border-gray-800 text-xs">
+                <div class="p-4 bg-gray-950 rounded-lg border border-gray-800 text-xs shadow-md">
                     <span class="text-red-400 font-mono font-bold block mb-1">Compositional Blank Space</span>
                     Individual actors possess no URI strings within the graph, preventing granular metadata retrieval.
                 </div>
-                <div class="p-4 bg-gray-950 rounded-lg border border-gray-800 text-xs">
+                <div class="p-4 bg-gray-950 rounded-lg border border-gray-800 text-xs shadow-md">
                     <span class="text-red-400 font-mono font-bold block mb-1">Spatial Overlap Failures</span>
                     Intricate groupings (such as the interlocking fingers of the Three Graces) lack distinct spatial coordinate delimiters.
                 </div>
-                <div class="p-4 bg-gray-950 rounded-lg border border-gray-800 text-xs">
+                <div class="p-4 bg-gray-950 rounded-lg border border-gray-800 text-xs shadow-md">
                     <span class="text-red-400 font-mono font-bold block mb-1">Transformation Representation</span>
                     The mythological sequence where Zephyrus transforms Chloris into Flora cannot be handled natively by a static data entry.
                 </div>
