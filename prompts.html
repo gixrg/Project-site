@@ -28,7 +28,7 @@
     </header>
 
     <main class="max-w-7xl mx-auto px-4 py-8 space-y-10">
-                <div class="space-y-2">
+                       <div class="space-y-2">
             <h2 class="text-2xl font-bold font-mono text-blue-400">4. LLM Prompt Engineering & RDF Generation</h2>
             <p class="text-gray-400 text-sm font-sans">Formal representation of the <a href="https://en.wikipedia.org/wiki/Prompt_engineering" target="_blank" class="text-blue-400 hover:underline hover:text-blue-300 font-normal">prompt engineering</a> techniques applied to extract, model, and bridge the data omissions documented in our SPARQL repository audit.</p>
             <hr class="border-gray-800">
@@ -39,8 +39,14 @@
                 <h4 class="text-xs font-bold text-blue-400 uppercase tracking-widest mb-1">Update Log: Refined Component Modeling</h4>
                 <p class="text-xs text-gray-300 font-sans">
                     <strong>Change:</strong> Transitioned from broad conceptual subject nodes to <strong>9 discrete component entities</strong>. 
-                    This update forces the inference models to map every mythological figure as an independent instance of the class <a href="https://w3id.org/arco/ontology/context-description/" target="_blank" class="font-mono text-yellow-400 text-xs hover:underline">a-cd:CulturalPropertyComponent</a>.
+                    This update forces the inference models to map every mythological figure as an independent instance of the class <a href="https://w3id.org/arco/ontology/arco/CulturalPropertyComponent" target="_blank" class="font-mono text-yellow-400 text-xs hover:underline">arco:CulturalPropertyComponent</a>.
                 </p>
+            </div>
+
+            <p class="text-gray-300 text-sm font-sans">
+                We targeted the documented data gap using three systematic prompt engineering strategies, instructing the foundational models to bypass conversational padding and output data-ready <a href="https://www.w3.org/RDF/" target="_blank" class="text-blue-400 hover:underline hover:text-blue-300 font-normal">RDF structures</a> directly.
+            </p>
+
             </div>
 
             <p class="text-gray-300 text-sm font-sans">
@@ -313,12 +319,13 @@ ex:Subj_Mercury a a-cd:Subject ; rdfs:label "Messenger of the Gods" .</pre>
             </div>
 
             <!-- Reconciled Section -->
-                                    <div class="pt-6 border-t border-gray-700 space-y-3">
+                            <div class="pt-6 border-t border-gray-700 space-y-3">
                 <h3 class="text-sm font-bold font-sans text-white">Reconciled Knowledge Graph Dataset (9 Subject Components + Spatial Bounds)</h3>
-                <p class="text-gray-400 text-sm font-sans">The following <a href="https://www.w3.org/TR/turtle/" target="_blank" class="text-blue-400 hover:underline hover:text-blue-300 font-normal">Turtle schema</a> serialization represents the verified enrichment layer. During the <a href="https://en.wikipedia.org/wiki/Human-in-the-loop" target="_blank" class="text-blue-400 hover:underline hover:text-blue-300 font-normal">Human-in-the-Loop</a> phase, we corrected the LLM's predicate direction errors and normalized the spatial estimates into strict <code class="text-yellow-500 font-mono text-xs">ex:hasXMin / ex:hasXMax</code> properties, fully resolving the gap identified in the SPARQL audit.</p>
-
+                <p class="text-gray-400 text-sm font-sans">The following <a href="https://www.w3.org/TR/turtle/" target="_blank" class="text-blue-400 hover:underline hover:text-blue-300 font-normal">Turtle schema</a> serialization represents the verified enrichment layer. During the <a href="https://en.wikipedia.org/wiki/Human-in-the-loop" target="_blank" class="text-blue-400 hover:underline hover:text-blue-300 font-normal">Human-in-the-Loop</a> phase, we corrected the LLM's predicate direction errors, fixed namespace hallucinations (restoring <code class="text-yellow-500 font-mono text-xs">arco:CulturalPropertyComponent</code>), and normalized the spatial estimates into strict <code class="text-yellow-500 font-mono text-xs">ex:hasXMin / ex:hasXMax</code> properties, fully resolving the gap identified in the SPARQL audit.</p>
+                
                 <pre class="bg-gray-950 p-4 rounded-lg font-mono text-xs text-yellow-400 border border-gray-900 overflow-x-auto leading-relaxed">@prefix ex:    &lt;http://example.org/primavera/&gt; .
 @prefix a-cd:  &lt;https://w3id.org/arco/ontology/context-description/&gt; .
+@prefix arco:  &lt;https://w3id.org/arco/ontology/arco/&gt; .
 @prefix core:  &lt;https://w3id.org/arco/ontology/core/&gt; .
 @prefix rdfs:  &lt;http://www.w3.org/2000/01/rdf-schema#&gt; .
 @prefix xsd:   &lt;http://www.w3.org/2001/XMLSchema#&gt; .
@@ -327,31 +334,31 @@ ex:Subj_Mercury a a-cd:Subject ; rdfs:label "Messenger of the Gods" .</pre>
 ex:Primavera_Artwork core:hasPart ex:Zephyrus, ex:Chloris, ex:Flora, ex:Venus, ex:Cupid, ex:Grace_Voluptas, ex:Grace_Castitas, ex:Grace_Pulchritudo, ex:Mercury .
 
 # Character Components (Independent instances linked to their iconographical subject and spatial grid)
-ex:Zephyrus         a a-cd:CulturalPropertyComponent ; rdfs:label "Zephyrus" ; a-cd:hasSubject ex:Subj_Zephyrus ;
+ex:Zephyrus         a arco:CulturalPropertyComponent ; rdfs:label "Zephyrus" ; a-cd:hasSubject ex:Subj_Zephyrus ;
                     ex:hasXMin "90"^^xsd:integer ; ex:hasXMax "100"^^xsd:integer .
                     
-ex:Chloris          a a-cd:CulturalPropertyComponent ; rdfs:label "Chloris"  ; a-cd:hasSubject ex:Subj_Chloris ;
+ex:Chloris          a arco:CulturalPropertyComponent ; rdfs:label "Chloris"  ; a-cd:hasSubject ex:Subj_Chloris ;
                     ex:hasXMin "75"^^xsd:integer ; ex:hasXMax "90"^^xsd:integer .
                     
-ex:Flora            a a-cd:CulturalPropertyComponent ; rdfs:label "Flora"    ; a-cd:hasSubject ex:Subj_Flora ;
+ex:Flora            a arco:CulturalPropertyComponent ; rdfs:label "Flora"    ; a-cd:hasSubject ex:Subj_Flora ;
                     ex:hasXMin "65"^^xsd:integer ; ex:hasXMax "75"^^xsd:integer .
                     
-ex:Venus            a a-cd:CulturalPropertyComponent ; rdfs:label "Venus"    ; a-cd:hasSubject ex:Subj_Venus ;
+ex:Venus            a arco:CulturalPropertyComponent ; rdfs:label "Venus"    ; a-cd:hasSubject ex:Subj_Venus ;
                     ex:hasXMin "45"^^xsd:integer ; ex:hasXMax "55"^^xsd:integer .
                     
-ex:Cupid            a a-cd:CulturalPropertyComponent ; rdfs:label "Cupid"    ; a-cd:hasSubject ex:Subj_Cupid ;
+ex:Cupid            a arco:CulturalPropertyComponent ; rdfs:label "Cupid"    ; a-cd:hasSubject ex:Subj_Cupid ;
                     ex:hasXMin "45"^^xsd:integer ; ex:hasXMax "55"^^xsd:integer .
                     
-ex:Grace_Voluptas   a a-cd:CulturalPropertyComponent ; rdfs:label "Grace (Voluptas)" ; a-cd:hasSubject ex:Subj_Grace_Voluptas ;
+ex:Grace_Voluptas   a arco:CulturalPropertyComponent ; rdfs:label "Grace (Voluptas)" ; a-cd:hasSubject ex:Subj_Grace_Voluptas ;
                     ex:hasXMin "35"^^xsd:integer ; ex:hasXMax "45"^^xsd:integer .
                     
-ex:Grace_Castitas   a a-cd:CulturalPropertyComponent ; rdfs:label "Grace (Castitas)" ; a-cd:hasSubject ex:Subj_Grace_Castitas ;
+ex:Grace_Castitas   a arco:CulturalPropertyComponent ; rdfs:label "Grace (Castitas)" ; a-cd:hasSubject ex:Subj_Grace_Castitas ;
                     ex:hasXMin "25"^^xsd:integer ; ex:hasXMax "35"^^xsd:integer .
                     
-ex:Grace_Pulchritudo a a-cd:CulturalPropertyComponent ; rdfs:label "Grace (Pulchritudo)" ; a-cd:hasSubject ex:Subj_Grace_Pulchritudo ;
+ex:Grace_Pulchritudo a arco:CulturalPropertyComponent ; rdfs:label "Grace (Pulchritudo)" ; a-cd:hasSubject ex:Subj_Grace_Pulchritudo ;
                     ex:hasXMin "15"^^xsd:integer ; ex:hasXMax "25"^^xsd:integer .
                     
-ex:Mercury          a a-cd:CulturalPropertyComponent ; rdfs:label "Mercury"  ; a-cd:hasSubject ex:Subj_Mercury ;
+ex:Mercury          a arco:CulturalPropertyComponent ; rdfs:label "Mercury"  ; a-cd:hasSubject ex:Subj_Mercury ;
                     ex:hasXMin "0"^^xsd:integer ; ex:hasXMax "15"^^xsd:integer .
 
 # Reconciled Subject Nodes (Precise semantic identities resolved by human-in-the-loop curation)
@@ -365,6 +372,7 @@ ex:Subj_Grace_Castitas   a a-cd:Subject ; rdfs:label "The Grace of Chastity (Cen
 ex:Subj_Grace_Pulchritudo a a-cd:Subject ; rdfs:label "The Grace of Beauty (Left Character of the Triad)" .
 ex:Subj_Mercury          a a-cd:Subject ; rdfs:label "Messenger of the Gods dispelling the clouds" .</pre>
             </div>
+
         </div>
     </main>
 </body>
