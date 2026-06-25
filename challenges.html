@@ -43,12 +43,12 @@
                     <h3 class="text-xs font-bold text-white font-mono uppercase tracking-wider">The Granularity Gap</h3>
                 </div>
                 <p class="text-gray-300 text-xs font-sans leading-relaxed">
-                    The authoritative <a href="https://dati.beniculturali.it/arco/" target="_blank" class="text-blue-400 hover:underline hover:text-blue-300 font-normal">ICCD/ArCo ontological framework</a> exhibits an expressive limitation when dealing with multi-actor narrative canvases. While ArCo provides robust properties to define an artwork's material, authorship, and broad cultural classification, it lacks <strong>spatialized fine-grained primitives</strong> to express internal spatial topology.
+                    The authoritative <a href="https://dati.beniculturali.it/arco/" target="_blank" class="text-blue-400 hover:underline hover:text-blue-300 font-normal">ICCD/ArCo ontological framework</a> exhibits an expressive limitation when dealing with multi-actor narrative canvases. While <a href="https://dati.beniculturali.it/arco/" target="_blank" class="text-blue-400 hover:underline">ArCo</a> provides robust properties to define an artwork's material, authorship, and broad cultural classification, it lacks <strong>spatialized fine-grained primitives</strong> to express internal spatial topology.
                 </p>
                 <div class="bg-gray-950 p-4 rounded-lg border border-gray-900 font-sans text-xs text-gray-300 leading-relaxed space-y-2">
                     <div class="text-yellow-500 font-bold font-mono">// Expressive Compromise:</div>
                     <p>
-                        To model Sandro Botticelli's 9 core figures without altering the core schema, we had to rely on overloading <span class="font-mono text-blue-400">core:hasPart</span> (traditionally used for physical components like frames or predellas) and linking them to generic <span class="font-mono text-blue-400">a-cd:Subject</span> nodes. This demonstrates that current cultural heritage standards treat complex visual narratives as singular monolithic units rather than semantic networks.
+                        To model <a href="https://www.wikidata.org/wiki/Q5669" target="_blank" class="text-gray-400 hover:text-gray-300 hover:underline">Sandro Botticelli</a>'s 9 core figures without altering the core schema, we had to rely on overloading <a href="https://w3id.org/arco/ontology/core/hasPart" target="_blank" class="font-mono text-blue-400 hover:underline">core:hasPart</a> (traditionally used for physical components like frames or predellas) and linking them to generic <a href="https://w3id.org/arco/ontology/context-description/Subject" target="_blank" class="font-mono text-blue-400 hover:underline">a-cd:Subject</a> nodes. This demonstrates that current cultural heritage standards treat complex visual narratives as singular monolithic units rather than semantic networks.
                     </p>
                 </div>
             </div>
@@ -59,15 +59,15 @@
                     <h3 class="text-xs font-bold text-white font-mono uppercase tracking-wider">Ontological Inversion Risks</h3>
                 </div>
                 <p class="text-gray-300 text-xs font-sans leading-relaxed">
-                    Deploying <a href="https://en.wikipedia.org/wiki/Large_language_model" target="_blank" class="text-blue-400 hover:underline hover:text-blue-300 font-normal">Large Language Models (LLMs)</a> as autonomous Knowledge Engineers introduces significant structural vulnerabilities. Our prompting tiers proved that as semantic complexity and logical constraints increase (e.g., forcing grid calculations in Chain-of-Thought), the models' focus on strict <strong>graph directionality</strong> degrades.
+                    Deploying <a href="https://en.wikipedia.org/wiki/Large_language_model" target="_blank" class="text-blue-400 hover:underline hover:text-blue-300 font-normal">Large Language Models (LLMs)</a> as autonomous Knowledge Engineers introduces significant structural vulnerabilities. Our prompting tiers proved that as semantic complexity and logical constraints increase (e.g., forcing grid calculations in <a href="https://en.wikipedia.org/wiki/Prompt_engineering#Chain-of-thought" target="_blank" class="text-blue-400 hover:underline hover:text-blue-300 font-normal">Chain-of-Thought</a>), the models' focus on strict <strong>graph directionality</strong> degrades.
                 </p>
                 <div class="bg-gray-950 p-4 rounded-lg border border-gray-900 font-sans text-xs text-gray-300 leading-relaxed space-y-2">
                     <div class="text-red-400 font-bold font-mono">// Empirical Failure Log:</div>
                     <p>
-                        • <span class="font-bold text-gray-200">Zero-Shot Tier:</span> Total failure in namespace resolution, with both models hallucinating fake local URIs due to lack of contextual anchoring.
+                        • <a href="https://www.promptingguide.ai/techniques/zeroshot" target="_blank" class="text-gray-400 hover:text-gray-300 hover:underline font-bold">Zero-Shot Tier:</a> Total failure in namespace resolution, with both models hallucinating fake local URIs due to lack of contextual anchoring.
                     </p>
                     <p>
-                        • <span class="font-bold text-gray-200">Chain-of-Thought Tier:</span> Gemini 1.5 Pro successfully resolved advanced iconographical labels but introduced a critical <em>Ontological Inversion Bug</em>, swapping the direction of the predicate (<span class="font-mono text-red-400">Component core:hasPart Artwork</span>).
+                        • <a href="https://www.promptingguide.ai/techniques/cot" target="_blank" class="text-gray-400 hover:text-gray-300 hover:underline font-bold">Chain-of-Thought Tier:</a> <a href="https://gemini.google.com/" target="_blank" class="text-gray-400 hover:text-gray-300 hover:underline">Gemini</a> successfully resolved advanced iconographical labels but introduced a critical <em>Ontological Inversion Bug</em>, swapping the direction of the predicate (<span class="font-mono text-red-400">Component <a href="https://w3id.org/arco/ontology/core/hasPart" target="_blank" class="text-red-400 hover:underline">core:hasPart</a> Artwork</span>).
                     </p>
                 </div>
             </div>
@@ -79,7 +79,7 @@
             
             <div class="space-y-4 text-gray-300 text-xs font-sans leading-relaxed">
                 <p>
-                    By systematically filtering away conversational text, we successfully audited and enriched the semantic data model of Sandro Botticelli's masterpiece. This project demonstrates that combining automated <a href="https://www.w3.org/TR/sparql11-query/" target="_blank" class="text-blue-400 hover:underline hover:text-blue-300 font-normal">SPARQL verification queries</a> with structured LLM prompt flows can successfully modernize legacy cultural collections, transforming classical fine arts metadata into highly usable, <a href="https://en.wikipedia.org/wiki/Knowledge_graph" target="_blank" class="text-blue-400 hover:underline hover:text-blue-300 font-normal">machine-readable graphs</a>.
+                    By systematically filtering away conversational text, we successfully audited and enriched the semantic data model of <a href="https://www.wikidata.org/wiki/Q5669" target="_blank" class="text-gray-300 hover:underline hover:text-white">Sandro Botticelli</a>'s masterpiece. This project demonstrates that combining automated <a href="https://www.w3.org/TR/sparql11-query/" target="_blank" class="text-blue-400 hover:underline hover:text-blue-300 font-normal">SPARQL</a> verification queries with structured <a href="https://en.wikipedia.org/wiki/Large_language_model" target="_blank" class="text-gray-300 hover:underline hover:text-white">LLM</a> prompt flows can successfully modernize legacy cultural collections, transforming classical fine arts metadata into highly usable, <a href="https://en.wikipedia.org/wiki/Knowledge_graph" target="_blank" class="text-blue-400 hover:underline hover:text-blue-300 font-normal">machine-readable graphs</a>.
                 </p>
             </div>
         </div>
