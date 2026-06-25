@@ -29,12 +29,11 @@
 
     <main class="max-w-7xl mx-auto px-4 py-8 space-y-10">
         
-                <div class="space-y-2">
+        <div class="space-y-2">
             <h2 class="text-2xl font-bold font-mono text-blue-400">3. SPARQL Query Auditing Engine</h2>
             <p class="text-sm text-gray-400 font-sans">Our semantic audit was conducted using a progressive pipeline to verify the data depth of the <a href="https://dati.beniculturali.it/arco/" target="_blank" class="text-blue-400 hover:underline hover:text-blue-300 font-normal">ArCo Knowledge Graph</a> and mathematically isolate the targeted gap.</p>
             <hr class="border-gray-800">
         </div>
-
 
         <div class="bg-gray-800 p-6 rounded-xl border border-gray-700 space-y-4">
             <div class="flex items-center gap-2">
@@ -114,7 +113,7 @@ WHERE {
             <div class="space-y-1">
                 <span class="bg-blue-900/40 text-blue-300 px-2 py-0.5 rounded text-xs font-mono border border-blue-800 font-bold">Audit Evaluation Log</span>
                 <div class="text-gray-400 text-xs font-mono bg-gray-950 p-4 rounded-lg border border-gray-900 leading-relaxed">
-                    <span class="text-blue-400 font-bold">// Act II Audit Result:</span> The graph successfully filters out structural noise and isolates the unique URIs representing Sandro Botticelli's records at the <a href="https://www.wikidata.org/wiki/Q51252" target="_blank" class="text-blue-400 hover:underline hover:text-blue-300 font-sans font-bold">Uffizi Gallery</a>.
+                    <span class="text-blue-400 font-bold">// Act II Audit Result:</span> The graph successfully filters out structural noise and isolates the unique URIs representing <a href="https://www.wikidata.org/wiki/Q5669" target="_blank" class="text-gray-400 hover:text-gray-300 hover:underline">Sandro Botticelli</a>'s records at the <a href="https://www.wikidata.org/wiki/Q51252" target="_blank" class="text-gray-400 hover:text-gray-300 hover:underline font-sans font-bold">Uffizi Gallery</a>.
                 </div>
             </div>
         </div>
@@ -127,7 +126,7 @@ WHERE {
             
             <div class="text-gray-300 text-sm space-y-2 font-sans">
                 <p>
-                    Before pinning the target canvas, we ran a global subject query using <a href="https://w3id.org/arco/ontology/context-description/hasSubject" target="_blank" class="font-mono text-xs text-yellow-400 hover:underline hover:text-yellow-300">a-cd:hasSubject</a> on any artwork labeled "<a href="https://www.wikidata.org/wiki/Q549847" target="_blank" class="italic text-blue-400 hover:underline hover:text-blue-300 font-normal">Primavera</a>". This intermediate step highlights a common challenge in data validation: names of independent characters (like Cupid or Mercury) appear in the output stream, but they belong to miscellaneous regional assets or different frescoes, not to <a href="https://www.wikidata.org/wiki/Q5669" target="_blank" class="text-blue-400 hover:underline hover:text-blue-300 font-normal">Botticelli</a>'s canvas.
+                    Before pinning the target canvas, we ran a global subject query using <a href="https://w3id.org/arco/ontology/context-description/hasSubject" target="_blank" class="font-mono text-xs text-yellow-400 hover:underline hover:text-yellow-300">a-cd:hasSubject</a> on any artwork labeled "<a href="https://www.wikidata.org/wiki/Q549847" target="_blank" class="italic text-blue-400 hover:underline hover:text-blue-300 font-normal">Primavera</a>". This intermediate step highlights a common challenge in data validation: names of independent characters (like <a href="https://www.wikidata.org/wiki/Q47565" target="_blank" class="text-blue-400 hover:underline hover:text-blue-300 font-normal">Cupid</a> or <a href="https://www.wikidata.org/wiki/Q1150" target="_blank" class="text-blue-400 hover:underline hover:text-blue-300 font-normal">Mercury</a>) appear in the output stream, but they belong to miscellaneous regional assets or different frescoes, not to <a href="https://www.wikidata.org/wiki/Q5669" target="_blank" class="text-blue-400 hover:underline hover:text-blue-300 font-normal">Botticelli</a>'s canvas.
                 </p>
             </div>
 
@@ -155,7 +154,7 @@ WHERE {
             <div class="space-y-1">
                 <span class="bg-blue-900/40 text-blue-300 px-2 py-0.5 rounded text-xs font-mono border border-blue-800 font-bold">Audit Evaluation Log</span>
                 <div class="text-gray-400 text-xs font-mono bg-gray-950 p-4 rounded-lg border border-gray-900 leading-relaxed">
-                    <span class="text-blue-400 font-bold">// Act III Audit Result:</span> The endpoint returns disparate mythological subjects from unrelated cultural properties across Italy, highlighting the need for strict contextual filtering.
+                    <span class="text-blue-400 font-bold">// Act III Audit Result:</span> The endpoint returns disparate mythological subjects from unrelated cultural properties across <a href="https://www.wikidata.org/wiki/Q38" target="_blank" class="text-gray-400 hover:text-gray-300 hover:underline">Italy</a>, highlighting the need for strict contextual filtering.
                 </div>
             </div>
         </div>
@@ -227,7 +226,7 @@ LIMIT 5</pre>
             
             <div class="text-gray-300 text-sm space-y-2 font-sans">
                 <p>
-                    Once the semantic subject gap was confirmed, we executed the most critical audit: testing the official <strong>ArCo endpoint</strong> for the spatial decomposition of the canvas using the official URI of the <a href="https://www.wikidata.org/wiki/Q549847" target="_blank" class="italic text-blue-400 hover:underline hover:text-blue-300 font-normal">Primavera</a>. We demanded the physical regions (<a href="https://w3id.org/arco/ontology/core/hasPart" target="_blank" class="font-mono text-xs text-yellow-400 hover:underline hover:text-yellow-300">core:hasPart</a>), their specific characters (<a href="https://w3id.org/arco/ontology/context-description/hasSubject" target="_blank" class="font-mono text-xs text-yellow-400 hover:underline hover:text-yellow-300">a-cd:hasSubject</a>), and their geometric coordinates (<span class="font-mono text-xs text-yellow-400">ex:hasXMin / ex:hasXMax</span>).
+                    Once the semantic subject gap was confirmed, we executed the most critical audit: testing the official <strong><a href="https://dati.cultura.gov.it/sparql" target="_blank" class="text-blue-400 hover:underline hover:text-blue-300 font-normal">ArCo endpoint</a></strong> for the spatial decomposition of the canvas using the official URI of the <a href="https://www.wikidata.org/wiki/Q549847" target="_blank" class="italic text-blue-400 hover:underline hover:text-blue-300 font-normal">Primavera</a>. We demanded the physical regions (<a href="https://w3id.org/arco/ontology/core/hasPart" target="_blank" class="font-mono text-xs text-yellow-400 hover:underline hover:text-yellow-300">core:hasPart</a>), their specific characters (<a href="https://w3id.org/arco/ontology/context-description/hasSubject" target="_blank" class="font-mono text-xs text-yellow-400 hover:underline hover:text-yellow-300">a-cd:hasSubject</a>), and their geometric coordinates (<span class="font-mono text-xs text-yellow-400">ex:hasXMin / ex:hasXMax</span>).
                 </p>
                 <p>
                     The endpoint returns an entirely <strong>empty HTML5 table</strong>. This empirically validates the core thesis of our project: the official Knowledge Graph completely lacks a geometric and spatial semantic representation of the painting's internal components.
@@ -261,7 +260,7 @@ WHERE {
              <div class="space-y-1">
                 <span class="bg-blue-900/40 text-blue-300 px-2 py-0.5 rounded text-xs font-mono border border-blue-800 font-bold">Audit Evaluation Log</span>
                 <div class="text-gray-400 text-xs font-mono bg-gray-950 p-4 rounded-lg border border-gray-900 leading-relaxed">
-                    <span class="text-blue-400 font-bold">// Act V Audit Result:</span> The endpoint returns an empty data table, mathematically proving the failure to match <span class="font-mono text-yellow-500 text-[10px]">core:hasPart</span> spatial properties and necessitating our LLM enrichment to generate grid coordinates.
+                    <span class="text-blue-400 font-bold">// Act V Audit Result:</span> The endpoint returns an empty data table, mathematically proving the failure to match <a href="https://w3id.org/arco/ontology/core/hasPart" target="_blank" class="font-mono text-yellow-500 hover:text-yellow-400 hover:underline text-[10px]">core:hasPart</a> spatial properties and necessitating our <a href="https://en.wikipedia.org/wiki/Large_language_model" target="_blank" class="text-gray-400 hover:text-gray-300 hover:underline">LLM</a> enrichment to generate grid coordinates.
                 </div>
             </div>
         </div>
