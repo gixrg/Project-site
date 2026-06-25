@@ -73,7 +73,7 @@
             </div>
 
         </div>
-        <div class="bg-gray-800 p-6 rounded-xl border border-gray-700 space-y-4">
+            <div class="bg-gray-800 p-6 rounded-xl border border-gray-700 space-y-4">
             <h3 class="text-xs font-bold text-blue-400 font-mono uppercase tracking-wider">// Semantic Enrichment: Before vs. After</h3>
             <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
                 <div class="bg-gray-950 p-4 rounded-lg border border-red-900/50">
@@ -89,19 +89,19 @@ ex:Primavera_Artwork
                     <pre class="mt-2 text-[10px] font-mono text-green-500">
 ex:Primavera_Artwork 
     core:hasPart ex:Zephyrus, ex:Venus, 
-                 ex:Cupid, ex:Mercury, ... ;
+                 ex:Aglaia, ex:Euphrosyne, ex:Thalia, ... ;
     arco:hasSpatialDecomposition ex:Grid_100x100 .
 
-ex:Zephyrus a arco:CulturalPropertyComponent ;
-    ex:hasXMin 90 ; ex:hasXMax 100 .
-# [Repeat for 9 total components: Zephyrus, Chloris, 
-# Flora, Venus, Cupid, 3xGraces, Mercury]</pre>
+ex:Aglaia a arco:CulturalPropertyComponent ;
+    ex:hasXMin 15 ; ex:hasXMax 25 .
+# [9 total: Zephyrus, Chloris, Flora, Venus, Cupid, Aglaia, Euphrosyne, Thalia, Mercury]</pre>
                 </div>
             </div>
             <p class="text-[10px] text-gray-400 font-sans italic">
-                *Empirical transformation: The model now supports 9 unique URI nodes with discrete coordinate mapping for every mythological actor.*
+                *Empirical transformation: From a singular artwork record to a network of 9 components, including the spatial localization of Aglaia, Euphrosyne, and Thalia.*
             </p>
         </div>
+
 
 
         <div class="bg-blue-950/20 p-6 rounded-xl border border-blue-900/50 space-y-4 mt-6">
