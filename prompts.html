@@ -310,55 +310,90 @@ ex:Subj_Mercury a a-cd:Subject ; rdfs:label "Messenger of the Gods" .</pre>
                 <h3 class="text-sm font-bold font-sans text-white">Reconciled Knowledge Graph Dataset (9 Subject Components + Spatial Bounds)</h3>
                 <p class="text-gray-400 text-sm font-sans">The following <a href="https://www.w3.org/TR/turtle/" target="_blank" class="text-blue-400 hover:underline hover:text-blue-300 font-normal">Turtle schema</a> serialization represents the verified enrichment layer. During the <a href="https://en.wikipedia.org/wiki/Human-in-the-loop" target="_blank" class="text-blue-400 hover:underline hover:text-blue-300 font-normal">Human-in-the-Loop</a> phase, we corrected the <a href="https://en.wikipedia.org/wiki/Large_language_model" target="_blank" class="text-blue-400 hover:underline hover:text-blue-300 font-normal">LLM's</a> predicate direction errors, fixed namespace hallucinations (restoring <a href="https://w3id.org/arco/ontology/arco/CulturalPropertyComponent" target="_blank" class="hover:underline"><code class="text-yellow-500 font-mono text-xs">arco:CulturalPropertyComponent</code></a>), and normalized the spatial estimates into strict <code class="text-yellow-500 font-mono text-xs">ex:hasXMin / ex:hasXMax</code> properties, fully resolving the gap identified in the <a href="sparql.html" class="text-blue-400 hover:underline hover:text-blue-300 font-normal">SPARQL</a> audit.</p>
                 
-                <pre class="bg-gray-950 p-4 rounded-lg font-mono text-xs text-yellow-400 border border-gray-900 overflow-x-auto leading-relaxed">@prefix ex:    &lt;http://example.org/primavera/&gt; .
+               <pre class="bg-gray-950 p-4 rounded-lg font-mono text-xs text-yellow-400 border border-gray-900 overflow-x-auto leading-relaxed">@prefix ex:    &lt;http://example.org/primavera/&gt; .
 @prefix a-cd:  &lt;https://w3id.org/arco/ontology/context-description/&gt; .
 @prefix arco:  &lt;https://w3id.org/arco/ontology/arco/&gt; .
 @prefix core:  &lt;https://w3id.org/arco/ontology/core/&gt; .
 @prefix rdfs:  &lt;http://www.w3.org/2000/01/rdf-schema#&gt; .
 @prefix xsd:   &lt;http://www.w3.org/2001/XMLSchema#&gt; .
 
-# Relationship to Parent (Granular decomposition of the canvas)
-ex:Primavera_Artwork core:hasPart ex:Zephyrus, ex:Chloris, ex:Flora, ex:Venus, ex:Cupid, ex:Grace_Voluptas, ex:Grace_Castitas, ex:Grace_Pulchritudo, ex:Mercury .
+# Relationship to Parent
+ex:Primavera_Artwork core:hasPart ex:Zephyrus .
+ex:Primavera_Artwork core:hasPart ex:Chloris .
+ex:Primavera_Artwork core:hasPart ex:Flora .
+ex:Primavera_Artwork core:hasPart ex:Venus .
+ex:Primavera_Artwork core:hasPart ex:Cupid .
+ex:Primavera_Artwork core:hasPart ex:Grace_Voluptas .
+ex:Primavera_Artwork core:hasPart ex:Grace_Castitas .
+ex:Primavera_Artwork core:hasPart ex:Grace_Pulchritudo .
+ex:Primavera_Artwork core:hasPart ex:Mercury .
 
-# Character Components (Independent instances linked to their iconographical subject and spatial grid)
-ex:Zephyrus         a arco:CulturalPropertyComponent ; rdfs:label "Zephyrus" ; a-cd:hasSubject ex:Subj_Zephyrus ;
-                    ex:hasXMin "90"^^xsd:integer ; ex:hasXMax "100"^^xsd:integer .
-                    
-ex:Chloris          a arco:CulturalPropertyComponent ; rdfs:label "Chloris"  ; a-cd:hasSubject ex:Subj_Chloris ;
-                    ex:hasXMin "75"^^xsd:integer ; ex:hasXMax "90"^^xsd:integer .
-                    
-ex:Flora            a arco:CulturalPropertyComponent ; rdfs:label "Flora"    ; a-cd:hasSubject ex:Subj_Flora ;
-                    ex:hasXMin "65"^^xsd:integer ; ex:hasXMax "75"^^xsd:integer .
-                    
-ex:Venus            a arco:CulturalPropertyComponent ; rdfs:label "Venus"    ; a-cd:hasSubject ex:Subj_Venus ;
-                    ex:hasXMin "45"^^xsd:integer ; ex:hasXMax "55"^^xsd:integer .
-                    
-ex:Cupid            a arco:CulturalPropertyComponent ; rdfs:label "Cupid"    ; a-cd:hasSubject ex:Subj_Cupid ;
-                    ex:hasXMin "45"^^xsd:integer ; ex:hasXMax "55"^^xsd:integer .
-                    
-ex:Grace_Voluptas   a arco:CulturalPropertyComponent ; rdfs:label "Grace (Voluptas)" ; a-cd:hasSubject ex:Subj_Grace_Voluptas ;
-                    ex:hasXMin "35"^^xsd:integer ; ex:hasXMax "45"^^xsd:integer .
-                    
-ex:Grace_Castitas   a arco:CulturalPropertyComponent ; rdfs:label "Grace (Castitas)" ; a-cd:hasSubject ex:Subj_Grace_Castitas ;
-                    ex:hasXMin "25"^^xsd:integer ; ex:hasXMax "35"^^xsd:integer .
-                    
-ex:Grace_Pulchritudo a arco:CulturalPropertyComponent ; rdfs:label "Grace (Pulchritudo)" ; a-cd:hasSubject ex:Subj_Grace_Pulchritudo ;
-                    ex:hasXMin "15"^^xsd:integer ; ex:hasXMax "25"^^xsd:integer .
-                    
-ex:Mercury          a arco:CulturalPropertyComponent ; rdfs:label "Mercury"  ; a-cd:hasSubject ex:Subj_Mercury ;
-                    ex:hasXMin "0"^^xsd:integer ; ex:hasXMax "15"^^xsd:integer .
+# Character Components
+ex:Zephyrus a arco:CulturalPropertyComponent ;
+    rdfs:label "Zephyrus" ;
+    a-cd:hasSubject ex:Subj_Zephyrus ;
+    ex:hasXMin 90 ;
+    ex:hasXMax 100 .
 
-# Reconciled Subject Nodes (Precise semantic identities resolved by human-in-the-loop curation)
-ex:Subj_Zephyrus         a a-cd:Subject ; rdfs:label "God of the West Wind" .
-ex:Subj_Chloris          a a-cd:Subject ; rdfs:label "Nymph associated with transformation into Flora" .
-ex:Subj_Flora            a a-cd:Subject ; rdfs:label "Goddess of Spring and Flowers" .
-ex:Subj_Venus            a a-cd:Subject ; rdfs:label "Goddess of Love and Beauty (Central Figure)" .
-ex:Subj_Cupid            a a-cd:Subject ; rdfs:label "God of Desire (Blindfolded Amoretto)" .
-ex:Subj_Grace_Voluptas   a a-cd:Subject ; rdfs:label "The Grace of Pleasure (Right Character of the Triad)" .
-ex:Subj_Grace_Castitas   a a-cd:Subject ; rdfs:label "The Grace of Chastity (Central Character of the Triad)" .
-ex:Subj_Grace_Pulchritudo a a-cd:Subject ; rdfs:label "The Grace of Beauty (Left Character of the Triad)" .
-ex:Subj_Mercury          a a-cd:Subject ; rdfs:label "Messenger of the Gods dispelling the clouds" .</pre>
-            </div>
+ex:Chloris a arco:CulturalPropertyComponent ;
+    rdfs:label "Chloris" ;
+    a-cd:hasSubject ex:Subj_Chloris ;
+    ex:hasXMin 75 ;
+    ex:hasXMax 90 .
+
+ex:Flora a arco:CulturalPropertyComponent ;
+    rdfs:label "Flora" ;
+    a-cd:hasSubject ex:Subj_Flora ;
+    ex:hasXMin 65 ;
+    ex:hasXMax 75 .
+
+ex:Venus a arco:CulturalPropertyComponent ;
+    rdfs:label "Venus" ;
+    a-cd:hasSubject ex:Subj_Venus ;
+    ex:hasXMin 45 ;
+    ex:hasXMax 55 .
+
+ex:Cupid a arco:CulturalPropertyComponent ;
+    rdfs:label "Cupid" ;
+    a-cd:hasSubject ex:Subj_Cupid ;
+    ex:hasXMin 45 ;
+    ex:hasXMax 55 .
+
+ex:Grace_Voluptas a arco:CulturalPropertyComponent ;
+    rdfs:label "Aglaia" ;
+    a-cd:hasSubject ex:Subj_Grace_Voluptas ;
+    ex:hasXMin 35 ;
+    ex:hasXMax 45 .
+
+ex:Grace_Castitas a arco:CulturalPropertyComponent ;
+    rdfs:label "Euphrosyne" ;
+    a-cd:hasSubject ex:Subj_Grace_Castitas ;
+    ex:hasXMin 25 ;
+    ex:hasXMax 35 .
+
+ex:Grace_Pulchritudo a arco:CulturalPropertyComponent ;
+    rdfs:label "Thalia" ;
+    a-cd:hasSubject ex:Subj_Grace_Pulchritudo ;
+    ex:hasXMin 15 ;
+    ex:hasXMax 25 .
+
+ex:Mercury a arco:CulturalPropertyComponent ;
+    rdfs:label "Mercury" ;
+    a-cd:hasSubject ex:Subj_Mercury ;
+    ex:hasXMin 0 ;
+    ex:hasXMax 15 .
+
+# Reconciled Subject Nodes
+ex:Subj_Zephyrus a a-cd:Subject ; rdfs:label "Zephyrus" .
+ex:Subj_Chloris a a-cd:Subject ; rdfs:label "Chloris" .
+ex:Subj_Flora a a-cd:Subject ; rdfs:label "Flora" .
+ex:Subj_Venus a a-cd:Subject ; rdfs:label "Venus" .
+ex:Subj_Cupid a a-cd:Subject ; rdfs:label "Cupid" .
+ex:Subj_Grace_Voluptas a a-cd:Subject ; rdfs:label "Aglaia" .
+ex:Subj_Grace_Castitas a a-cd:Subject ; rdfs:label "Euphrosyne" .
+ex:Subj_Grace_Pulchritudo a a-cd:Subject ; rdfs:label "Thalia" .
+ex:Subj_Mercury a a-cd:Subject ; rdfs:label "Mercury" .</pre>
+
 
         </div>
     </main>
