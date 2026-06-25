@@ -3,154 +3,84 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>PRIMAVERA.arco // LLM Evaluation</title>
+    <title>PRIMAVERA.arco // Home</title>
     <script src="https://cdn.tailwindcss.com"></script>
 </head>
 <body class="bg-gray-900 text-gray-100 font-sans leading-relaxed text-sm">
 
-    <header class="bg-gray-800 border-b border-gray-700 sticky top-0 z-50 font-sans">
+    <header class="bg-gray-800 border-b border-gray-700 sticky top-0 z-50">
         <div class="max-w-7xl mx-auto px-4 py-4 flex flex-col xl:flex-row justify-between items-center gap-4">
             <div class="flex items-center gap-3">
                 <div class="w-3 h-3 bg-blue-500 rounded-full animate-pulse"></div>
-                <h1 class="text-lg font-bold tracking-wider text-blue-400 font-mono">UNIBO // KE4H_PROJECT</h1>
+                <h1 class="text-lg font-mono font-bold tracking-wider text-blue-400">UNIBO // KE4H_PROJECT</h1>
             </div>
-            
             <nav class="flex flex-wrap gap-1 bg-gray-950 p-1 rounded-lg border border-gray-800 text-xs md:text-sm">
-                <a href="index.html" class="px-3 py-1.5 rounded transition font-medium text-gray-400 hover:text-white">Home & Abstract</a>
+                <a href="index.html" class="px-3 py-1.5 rounded transition font-medium bg-blue-900 text-white border-blue-500">Home & Abstract</a>
                 <a href="gap.html" class="px-3 py-1.5 rounded transition font-medium text-gray-400 hover:text-white">Gap Identification</a>
                 <a href="methodology.html" class="px-3 py-1.5 rounded transition font-medium text-gray-400 hover:text-white">General Methodology</a>
                 <a href="sparql.html" class="px-3 py-1.5 rounded transition font-medium text-gray-400 hover:text-white">SPARQL Implementations</a>
                 <a href="prompts.html" class="px-3 py-1.5 rounded transition font-medium text-gray-400 hover:text-white">LLM Prompting & Triples</a>
-                <a href="evaluation.html" class="px-3 py-1.5 rounded transition font-medium bg-blue-900 text-white border border-blue-500">LLM Comparison</a>
+                <a href="evaluation.html" class="px-3 py-1.5 rounded transition font-medium text-gray-400 hover:text-white">LLM Comparison</a>
                 <a href="challenges.html" class="px-3 py-1.5 rounded transition font-medium text-gray-400 hover:text-white">Challenges & Conclusion</a>
             </nav>
         </div>
     </header>
 
-    <main class="max-w-7xl mx-auto px-4 py-8 space-y-10">
-        
-        <div class="space-y-2">
-            <h2 class="text-2xl font-bold font-mono text-blue-400">5. LLM Performance Benchmarking & Comparative Evaluation</h2>
-            <p class="text-gray-400 font-sans">Formal empirical evaluation matrix comparing ChatGPT (GPT-4o) and Gemini (1.5 Pro) across our three progressive prompt engineering stages.</p>
-            <hr class="border-gray-800">
-        </div>
-
-        <div class="bg-gray-800 rounded-xl border border-gray-700 overflow-hidden shadow-xl">
-            <div class="p-4 bg-gray-750 border-b border-gray-700">
-                <h3 class="font-bold text-white font-mono">// Empirical Capability Matrix</h3>
-            </div>
-            <div class="overflow-x-auto">
-                <table class="w-full text-left border-collapse text-xs font-sans">
-                    <thead>
-                        <tr class="bg-gray-950 text-gray-400 uppercase tracking-wider text-[11px] border-b border-gray-800 font-mono">
-                            <th class="p-4 font-bold">Prompting Strategy</th>
-                            <th class="p-4 font-bold">Model Engine</th>
-                            <th class="p-4 font-bold text-center">Syntax Validity</th>
-                            <th class="p-4 font-bold text-center">Prefix Alignment</th>
-                            <th class="p-4 font-bold text-center">Spatial Accuracy</th>
-                            <th class="p-4 font-bold text-center">Iconographical Depth</th>
-                        </tr>
-                    </thead>
-                    <tbody class="divide-y divide-gray-800 bg-gray-900/40 text-gray-300">
-                        <tr class="hover:bg-gray-800/40 transition">
-                            <td class="p-4 font-bold text-blue-400 font-mono" rowspan="2">Technique 1: Zero-Shot</td>
-                            <td class="p-4">ChatGPT (GPT-4o)</td>
-                            <td class="p-4 text-center text-green-400 font-bold font-mono">100%</td>
-                            <td class="p-4 text-center text-red-400 font-bold font-mono">0% (Hallucinated)</td>
-                            <td class="p-4 text-center text-gray-600 font-mono">N/A</td>
-                            <td class="p-4 text-center text-yellow-500 font-bold">Partial</td>
-                        </tr>
-                        <tr class="hover:bg-gray-800/40 transition border-b border-gray-700">
-                            <td class="p-4">Gemini (1.5 Pro)</td>
-                            <td class="p-4 text-center text-green-400 font-bold font-mono">100%</td>
-                            <td class="p-4 text-center text-red-400 font-bold font-mono">0% (Hallucinated)</td>
-                            <td class="p-4 text-center text-gray-600 font-mono">N/A</td>
-                            <td class="p-4 text-center text-yellow-500 font-bold">Partial</td>
-                        </tr>
-                        <tr class="hover:bg-gray-800/40 transition">
-                            <td class="p-4 font-bold text-blue-400 font-mono" rowspan="2">Technique 2: Few-Shot</td>
-                            <td class="p-4">ChatGPT (GPT-4o)</td>
-                            <td class="p-4 text-center text-green-400 font-bold font-mono">100%</td>
-                            <td class="p-4 text-center text-green-400 font-bold font-mono">100% (Strict)</td>
-                            <td class="p-4 text-center text-gray-600 font-mono">N/A</td>
-                            <td class="p-4 text-center text-yellow-500 font-bold">Partial</td>
-                        </tr>
-                        <tr class="hover:bg-gray-800/40 transition border-b border-gray-700">
-                            <td class="p-4">Gemini (1.5 Pro)</td>
-                            <td class="p-4 text-center text-green-400 font-bold font-mono">100%</td>
-                            <td class="p-4 text-center text-green-400 font-bold font-mono">100% (Strict)</td>
-                            <td class="p-4 text-center text-gray-600 font-mono">N/A</td>
-                            <td class="p-4 text-center text-yellow-500 font-bold">Partial</td>
-                        </tr>
-                        <tr class="hover:bg-gray-800/40 transition">
-                            <td class="p-4 font-bold text-blue-400 font-mono" rowspan="2">Technique 3: CoT Spatial</td>
-                            <td class="p-4">ChatGPT (GPT-4o)</td>
-                            <td class="p-4 text-center text-green-400 font-bold font-mono">100%</td>
-                            <td class="p-4 text-center text-green-400 font-bold font-mono">100% (Strict)</td>
-                            <td class="p-4 text-center text-green-400 font-bold font-mono">100% (Perfect X)</td>
-                            <td class="p-4 text-center text-yellow-500 font-bold">High</td>
-                        </tr>
-                        <tr class="hover:bg-gray-800/40 transition">
-                            <td class="p-4">Gemini (1.5 Pro)</td>
-                            <td class="p-4 text-center text-green-400 font-bold font-mono">100%</td>
-                            <td class="p-4 text-center text-green-400 font-bold font-mono">100% (Strict)</td>
-                            <td class="p-4 text-center text-green-400 font-bold font-mono">100% (Perfect X)</td>
-                            <td class="p-4 text-center text-green-400 font-bold">Excellent</td>
-                        </tr>
-                    </tbody>
-                </table>
-            </div>
-        </div>
-
-        <div class="space-y-6">
-            <div class="space-y-1">
-                <h3 class="text-sm font-bold text-white uppercase tracking-wider font-mono">// Technical Audit Logs per Prompting Tier</h3>
-                <p class="text-xs text-gray-400 font-sans">Granular evaluation of structural behaviors observed during the output streaming phase.</p>
-            </div>
-
-            <!-- Tier 1 -->
-            <div class="bg-gray-800 p-6 rounded-xl border border-gray-700 space-y-3">
-                <span class="bg-blue-900/40 text-blue-300 px-2 py-0.5 rounded text-xs font-mono border border-blue-800 font-bold">Tier 1 Audit: Zero-Shot Constraints</span>
-                <div class="bg-gray-950 p-4 rounded-lg border border-gray-900 font-sans text-xs text-gray-300 leading-relaxed space-y-3">
-                    <div class="text-red-400 font-bold font-mono">// Critique: The Semantic Disconnect</div>
-                    <p>
-                        Both engines yielded syntactically correct <a href="https://www.w3.org/TR/turtle/" target="_blank" class="text-blue-400 hover:underline">W3C Turtle representations</a>, demonstrating total adherence to the operational exclusion of conversational preamble. However, a profound <strong>Semantic Web Disconnect</strong> occurred: lacking <a href="https://www.w3.org/standards/semanticweb/ontology" target="_blank" class="text-blue-400 hover:underline">ontological anchoring</a> references, both models hallucinated local base URIs (e.g., <span class="text-yellow-500 font-mono">http://example.org/ontology/core/</span>). 
-                    </p>
-                    <p class="text-gray-400">• Result: Individual characters were correctly segmented, but triples remain isolated from the global Linked Open Data cloud.</p>
+    <main class="max-w-7xl mx-auto px-4 py-8">
+        <section class="space-y-6">
+            <div class="bg-gradient-to-r from-blue-950 to-gray-800 p-8 rounded-xl border border-gray-700 shadow-xl">
+                
+                <div class="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-4 mb-3">
+                    <span class="text-xs font-mono tracking-widest text-blue-400 uppercase font-semibold">
+                        <a href="https://www.unibo.it/it" target="_blank" class="hover:underline hover:text-blue-300">Alma Mater Studiorum – Università di Bologna</a>
+                    </span>
+                    
+                    <a href="https://github.com/gixrg/Project-site" target="_blank" class="flex items-center gap-2 bg-gray-900 hover:bg-gray-950 text-gray-300 hover:text-white px-3 py-1.5 rounded-lg border border-gray-700 hover:border-gray-600 font-mono text-xs transition duration-200 shadow-md">
+                        <svg class="w-4 h-4 fill-current" viewBox="0 0 24 24" aria-hidden="true">
+                            <path fill-rule="evenodd" d="M12 2C6.477 2 2 6.484 2 12.017c0 4.425 2.865 8.18 6.839 9.504.5.092.682-.217.682-.483 0-.237-.008-.868-.013-1.703-2.782.605-3.369-1.343-3.369-1.343-.454-1.158-1.11-1.466-1.11-1.466-.908-.62.069-.608.069-.608 1.003.07 1.531 1.032 1.531 1.032.892 1.53 2.341 1.088 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.113-4.555-4.951 0-1.093.39-1.988 1.029-2.688-.103-.253-.446-1.272.098-2.65 0 0 .84-.27 2.75 1.026A9.564 9.564 0 0112 6.844c.85.004 1.705.115 2.504.337 1.909-1.296 2.747-1.027 2.747-1.027.546 1.379.202 2.398.1 2.651.64.7 1.028 1.595 1.028 2.688 0 3.848-2.339 4.695-4.566 4.943.359.309.678.92.678 1.855 0 1.338-.012 2.419-.012 2.747 0 .268.18.58.688.482A10.019 10.019 0 0022 12.017C22 6.484 17.522 2 12 2z" clip-rule="evenodd" />
+                        </svg>
+                        <span>View on GitHub</span>
+                    </a>
                 </div>
-            </div>
+                
+                <h2 class="text-2xl md:text-3xl font-extrabold text-white mt-1 mb-4 tracking-tight">Project: Enriching <a href="https://www.wikidata.org/wiki/Q5669" target="_blank" class="text-blue-400 hover:underline hover:text-blue-300 font-normal">Sandro Botticelli</a>'s <a href="https://www.wikidata.org/wiki/Q549847" target="_blank" class="italic text-blue-400 hover:underline hover:text-blue-300 font-normal">Primavera</a> within the <a href="https://dati.beniculturali.it/arco/index.php" target="_blank" class="text-blue-400 hover:underline hover:text-blue-300 font-normal">ArCo Knowledge Graph</a></h2>
 
-            <!-- Tier 2 -->
-            <div class="bg-gray-800 p-6 rounded-xl border border-gray-700 space-y-3">
-                <span class="bg-blue-900/40 text-blue-300 px-2 py-0.5 rounded text-xs font-mono border border-blue-800 font-bold">Tier 2 Audit: Few-Shot Structural Alignment</span>
-                <div class="bg-gray-950 p-4 rounded-lg border border-gray-900 font-sans text-xs text-gray-300 leading-relaxed space-y-3">
-                    <div class="text-green-400 font-bold font-mono">// Critique: Contextual Precision Achieved</div>
-                    <p>
-                        The injection of structural examples acted as an architectural anchor. By observing the mapping patterns, both models immediately aligned their outputs to the authoritative namespaces of ArCo.
-                    </p>
-                    <p class="text-gray-400">• Result: Zero namespace hallucinations. The structural topology matched our required data blueprint flawlessly.</p>
-                </div>
-            </div>
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-6 pt-4 border-t border-gray-700/50 text-xs md:text-sm">
+                    <div>
+                        <h3 class="text-xs uppercase tracking-wider text-gray-400 font-mono font-bold mb-1">Project Abstract</h3>
+                        <p class="text-gray-300 leading-relaxed font-sans">This project explores the collaborative enrichment of cultural heritage metadata through the combined use of <a href="https://en.wikipedia.org/wiki/Knowledge_graph" target="_blank" class="text-blue-400 hover:underline hover:text-blue-300 font-normal">Knowledge Graphs (KGs)</a> and <a href="https://en.wikipedia.org/wiki/Large_language_model" target="_blank" class="text-blue-400 hover:underline hover:text-blue-300 font-normal">Large Language Models (LLMs)</a> within the <a href="https://dati.beniculturali.it/arco/" target="_blank" class="text-blue-400 hover:underline hover:text-blue-300 font-normal">ArCo framework</a>. Focusing strictly on <a href="https://www.wikidata.org/wiki/Q5669" target="_blank" class="text-blue-400 hover:underline hover:text-blue-300 font-normal">Sandro Botticelli</a>'s <a href="https://www.wikidata.org/wiki/Q549847" target="_blank" class="italic text-blue-400 hover:underline hover:text-blue-300 font-normal">Primavera</a> (c. 1482), we execute specialized <a href="https://dati.cultura.gov.it/sparql" target="_blank" class="text-blue-400 hover:underline hover:text-blue-300 font-normal">SPARQL queries</a> to audit data deficiencies in online digital registries. By leveraging <a href="https://www.promptingguide.ai/techniques/zeroshot" target="_blank" class="text-blue-400 hover:underline hover:text-blue-300 font-normal">zero-shot</a>, <a href="https://www.promptingguide.ai/techniques/fewshot" target="_blank" class="text-blue-400 hover:underline hover:text-blue-300 font-normal">few-shot</a>, and <a href="https://www.promptingguide.ai/techniques/cot" target="_blank" class="text-blue-400 hover:underline hover:text-blue-300 font-normal">chain-of-thought</a> prompt engineering, we generate new validated semantic triples to model individual canvas components, bypassing narrative constraints to capture fine-grained spatial and situational realities.</p>
 
-            <!-- Tier 3 -->
-            <div class="bg-gray-800 p-6 rounded-xl border border-gray-700 space-y-3">
-                <span class="bg-blue-900/40 text-blue-300 px-2 py-0.5 rounded text-xs font-mono border border-blue-800 font-bold">Tier 3 Audit: Chain-of-Thought Spatial Extraction</span>
-                <div class="bg-gray-950 p-4 rounded-lg border border-gray-900 font-sans text-xs text-gray-300 leading-relaxed space-y-3">
-                    <div class="text-yellow-400 font-bold font-mono">// Critique: Advanced Inference vs. Ontological Inversion</div>
-                    <p>
-                        Enforcing a normalized grid calculation (100x100) unlocked <a href="https://arxiv.org/abs/2201.11903" target="_blank" class="text-blue-400 hover:underline">advanced spatial reasoning</a>. Both models simulated canvas tracking successfully.
-                    </p>
-                    <div class="text-gray-400 space-y-2">
-                        <p><strong class="text-white">ChatGPT:</strong> Impeccable relational tracking using the correct <span class="text-yellow-500 font-mono">core:hasPart</span> property.</p>
-                        <p><strong class="text-white">Gemini:</strong> Outperformed in art-historical naming, but suffered a <strong>Critical Ontological Inversion Bug</strong> (flipping predicate direction).</p>
                     </div>
-                    <div class="text-blue-400 font-bold font-mono pt-2">// Curation Verdict:</div>
-                    <p>
-                        This comparative split justified our <strong><a href="https://en.wikipedia.org/wiki/Human-in-the-loop" target="_blank" class="text-blue-400 hover:underline">Human-in-the-Loop</a></strong> intervention. Our final reconciled dataset combines <a href="https://gemini.google.com/" target="_blank" class="text-blue-400 hover:underline">Gemini</a>'s advanced nomenclature with <a href="https://chatgpt.com/" target="_blank" class="text-blue-400 hover:underline">ChatGPT</a>'s flawless <a href="https://www.w3.org/TR/rdf11-concepts/" target="_blank" class="text-blue-400 hover:underline">relational logic</a>, mitigating <a href="https://en.wikipedia.org/wiki/Hallucination_(artificial_intelligence)" target="_blank" class="text-blue-400 hover:underline">AI hallucinations</a> to ensure the graph meets the strict requirements of the <a href="https://dati.beniculturali.it/arco/" target="_blank" class="text-blue-400 hover:underline">ArCo ecosystem</a>.
-                    </p>
+                    <div class="bg-gray-900/60 p-4 rounded-lg border border-gray-800 flex flex-col justify-between">
+                        <div>
+                            <h3 class="text-xs uppercase tracking-wider text-gray-400 font-mono font-bold mb-2">Project Team Members</h3>
+                            <ul class="space-y-1 font-mono text-xs text-blue-300">
+                                <li>• Caterina Zanet</li>
+                                <li>• Cecilia Domeniconi</li>
+                                <li>• Giorgia Lacroce</li>
+                                <li>• Roberta Casacchia</li>
+                            </ul>
+                        </div>
+                    </div>
                 </div>
             </div>
-        </div>
+
+            <div class="relative bg-gray-950 p-2 rounded-xl border border-gray-800 overflow-hidden flex justify-center items-end">
+                <img src="https://upload.wikimedia.org/wikipedia/commons/3/3c/Botticelli-primavera.jpg" alt="Sandro Botticelli - Primavera" class="w-full h-auto object-cover rounded-lg opacity-90">
+                
+                <div class="absolute bottom-6 mx-auto max-w-md bg-gray-950/80 backdrop-blur-md p-4 rounded-lg border border-gray-800 font-mono text-xs shadow-2xl text-center">
+                    <p class="text-gray-300 leading-relaxed">
+                        Canvas Target: <a href="https://www.uffizi.it/en/the-uffizi" target="_blank" class="text-white hover:underline">Uffizi Gallery</a>, <a href="https://en.wikipedia.org/wiki/Florence" target="_blank" class="text-white hover:underline">Florence</a> 
+                        <span class="block mt-1 text-gray-400 font-sans">
+                           Linked via external authority 
+                            <a href="https://www.wikidata.org/wiki/Q549847" target="_blank" class="text-blue-400 hover:underline hover:text-blue-300 font-normal font-mono">Wikidata:Q549847</a>
+                        </span>
+                    </p>
+                </div>
+
+            </div>
+        </section>
     </main>
+
 </body>
 </html>
