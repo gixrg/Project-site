@@ -28,9 +28,9 @@
     </header>
 
     <main class="max-w-7xl mx-auto px-4 py-8 space-y-10">
-        <div class="space-y-2">
+                       <div class="space-y-2">
             <h2 class="text-2xl font-bold font-mono text-blue-400">4. LLM Prompt Engineering & RDF Generation</h2>
-            <p class="text-gray-400 text-sm font-sans">Formal representation of the <a href="https://en.wikipedia.org/wiki/Prompt_engineering" target="_blank" class="text-blue-400 hover:underline hover:text-blue-300 font-normal">prompt engineering</a> techniques applied to extract, model, and bridge the data omissions documented in our <a href="sparql.html" class="text-blue-400 hover:underline hover:text-blue-300 font-normal">SPARQL</a> repository audit.</p>
+            <p class="text-gray-400 text-sm font-sans">Formal representation of the <a href="https://en.wikipedia.org/wiki/Prompt_engineering" target="_blank" class="text-blue-400 hover:underline hover:text-blue-300 font-normal">prompt engineering</a> techniques applied to extract, model, and bridge the data omissions documented in our SPARQL repository audit.</p>
             <hr class="border-gray-800">
         </div>
 
@@ -47,26 +47,34 @@
                 We targeted the documented data gap using three systematic prompt engineering strategies, instructing the foundational models to bypass conversational padding and output data-ready <a href="https://www.w3.org/RDF/" target="_blank" class="text-blue-400 hover:underline hover:text-blue-300 font-normal">RDF structures</a> directly.
             </p>
 
-            <div class="space-y-3 pt-4">
-                <span class="bg-blue-900/40 text-blue-300 px-2 py-0.5 rounded text-xs font-mono border border-blue-800 font-bold">Phase 1 (Semantic Gap) — Technique 1: Zero-Shot Constraints</span>
-                <div class="bg-gray-950 p-4 rounded-lg border border-gray-900 font-sans text-xs text-gray-300 leading-relaxed">
+            </div>
+
+            <p class="text-gray-300 text-sm font-sans">
+                We targeted the documented data gap using three systematic prompt engineering strategies, instructing the foundational models to bypass conversational padding and output data-ready <a href="https://www.w3.org/RDF/" target="_blank" class="text-blue-400 hover:underline hover:text-blue-300 font-normal">RDF structures</a> directly.
+            </p>
+
+
+            <!-- Technique 1 -->
+            <div class="space-y-3"><span class="bg-blue-900/40 text-blue-300 px-2 py-0.5 rounded text-xs font-mono border border-blue-800 font-bold">Phase 1 (Semantic Gap) — Technique 1: Zero-Shot Constraints</span>
+                                <div class="bg-gray-950 p-4 rounded-lg border border-gray-900 font-sans text-xs text-gray-300 leading-relaxed">
                     Isolate the core characters into independent component nodes. Strip out all aesthetic interpretations. Output only valid <a href="https://www.w3.org/TR/turtle/" target="_blank" class="text-blue-400 hover:underline hover:text-blue-300 font-normal">Turtle syntax</a> using the <a href="https://dati.beniculturali.it/arco/" target="_blank" class="text-blue-400 hover:underline hover:text-blue-300 font-normal">ArCo framework</a>.
                 </div>
 
+                
                 <div class="pl-4 border-l-2 border-gray-700 space-y-4">
                     <div class="space-y-1">
-                        <span class="text-gray-400 text-xs font-mono font-bold">// Target Input Prompt (Sent to <a href="https://en.wikipedia.org/wiki/Large_language_model" target="_blank" class="text-gray-400 hover:underline hover:text-gray-300">LLMs</a>)</span>
+                        <span class="text-gray-400 text-xs font-mono font-bold">// Target Input Prompt (Sent to LLMs)</span>
                         <div class="bg-gray-900 p-4 rounded-lg border border-gray-950 font-sans text-xs text-gray-400 leading-relaxed">
-                            Act as a Semantic Web Knowledge Engineer. Analyze <a href="https://www.wikidata.org/wiki/Q5669" target="_blank" class="text-gray-400 hover:text-gray-300 hover:underline">Sandro Botticelli</a>'s artwork "<a href="https://www.wikidata.org/wiki/Q549847" target="_blank" class="text-gray-400 hover:text-gray-300 hover:underline">La Primavera</a>" to resolve its internal characters. You must follow these strict operational constraints:<br><br>
-                            1. Isolate every single one of the 9 core characters into a dedicated node modeled explicitly as an instance of the class <a href="https://w3id.org/arco/ontology/arco/CulturalPropertyComponent" target="_blank" class="text-gray-400 hover:text-gray-300 hover:underline">a-cd:CulturalPropertyComponent</a>.<br>
-                            2. Link each component back to the parent artwork URI (ex:Primavera_Artwork) using the object property <a href="https://w3id.org/arco/ontology/core/hasPart" target="_blank" class="text-gray-400 hover:text-gray-300 hover:underline">core:hasPart</a>.<br>
-                            3. Assign an rdfs:label string to each component containing their primary mythological identification (<a href="https://www.wikidata.org/wiki/Q467515" target="_blank" class="text-gray-400 hover:text-gray-300 hover:underline">Zephyrus</a>, <a href="https://www.wikidata.org/wiki/Q1075258" target="_blank" class="text-gray-400 hover:text-gray-300 hover:underline">Chloris</a>, <a href="https://www.wikidata.org/wiki/Q209644" target="_blank" class="text-gray-400 hover:text-gray-300 hover:underline">Flora</a>, <a href="https://www.wikidata.org/wiki/Q47652" target="_blank" class="text-gray-400 hover:text-gray-300 hover:underline">Venus</a>, <a href="https://www.wikidata.org/wiki/Q5011" target="_blank" class="text-gray-400 hover:text-gray-300 hover:underline">Cupid</a>, <a href="https://www.wikidata.org/wiki/Q212816" target="_blank" class="text-gray-400 hover:text-gray-300 hover:underline">Aglaia</a>, <a href="https://www.wikidata.org/wiki/Q244388" target="_blank" class="text-gray-400 hover:text-gray-300 hover:underline">Euphrosyne</a>, <a href="https://www.wikidata.org/wiki/Q2722777" target="_blank" class="text-gray-400 hover:text-gray-300 hover:underline">Thalia</a>, <a href="https://www.wikidata.org/wiki/Q1150" target="_blank" class="text-gray-400 hover:text-gray-300 hover:underline">Mercury</a>).<br>
-                            4. Output ONLY a valid <a href="https://www.w3.org/TR/turtle/" target="_blank" class="text-gray-400 hover:text-gray-300 hover:underline">W3C Turtle</a> file using the prefixes: <a href="http://example.org/" target="_blank" class="text-gray-400 hover:text-gray-300 hover:underline">ex:</a>, <a href="https://w3id.org/arco/ontology/context-description/" target="_blank" class="text-gray-400 hover:text-gray-300 hover:underline">a-cd:</a>, <a href="https://w3id.org/arco/ontology/core/" target="_blank" class="text-gray-400 hover:text-gray-300 hover:underline">core:</a>, and <a href="http://www.w3.org/2000/01/rdf-schema#" target="_blank" class="text-gray-400 hover:text-gray-300 hover:underline">rdfs:</a>. Do not include any conversational preamble, markdown explanations, or chat commentary.
+                            Act as a Semantic Web Knowledge Engineer. Analyze Sandro Botticelli's artwork "La Primavera" to resolve its internal characters. You must follow these strict operational constraints:<br><br>
+                            1. Isolate every single one of the 9 core characters into a dedicated node modeled explicitly as an instance of the class a-cd:CulturalPropertyComponent.<br>
+                            2. Link each component back to the parent artwork URI (ex:Primavera_Artwork) using the object property core:hasPart.<br>
+                            3. Assign an rdfs:label string to each component containing their primary mythological identification (Zephyrus, Chloris, Flora, Venus, Cupid, Aglaia, Euphrosyne, Thalia, Mercury).<br>
+                            4. Output ONLY a valid W3C Turtle file using the prefixes: ex:, a-cd:, core:, and rdfs:. Do not include any conversational preamble, markdown explanations, or chat commentary.
                         </div>
                     </div>
                     
                     <div class="space-y-1">
-                        <span class="text-green-400 text-xs font-mono font-bold">// Zero-Shot Model Response Output (<a href="https://chatgpt.com/" target="_blank" class="text-green-400 hover:text-green-300 hover:underline">ChatGPT</a>)</span>
+                        <span class="text-green-400 text-xs font-mono font-bold">// Zero-Shot Model Response Output (ChatGPT)</span>
                         <pre class="bg-gray-950 p-4 rounded-lg font-mono text-xs text-green-400 border border-gray-900 overflow-x-auto leading-relaxed">@prefix ex: &lt;http://example.org/&gt; .
 @prefix a-cd: &lt;http://example.org/a-cd/&gt; .
 @prefix core: &lt;http://example.org/core/&gt; .
@@ -95,7 +103,7 @@ ex:Primavera_Mercury  a a-cd:CulturalPropertyComponent ; rdfs:label "Mercury" .<
                     </div>
 
                     <div class="space-y-1">
-                        <span class="text-green-400 text-xs font-mono font-bold">// Zero-Shot Model Response Output (<a href="https://gemini.google.com/" target="_blank" class="text-green-400 hover:text-green-300 hover:underline">Gemini</a>)</span>
+                        <span class="text-green-400 text-xs font-mono font-bold">// Zero-Shot Model Response Output (Gemini)</span>
                         <pre class="bg-gray-950 p-4 rounded-lg font-mono text-xs text-green-400 border border-gray-900 overflow-x-auto leading-relaxed">@prefix ex: &lt;http://example.org/artwork/&gt; .
 @prefix a-cd: &lt;http://example.org/ontology/a-cd/&gt; .
 @prefix core: &lt;http://example.org/ontology/core/&gt; .
@@ -127,6 +135,7 @@ ex:Mercury    a a-cd:CulturalPropertyComponent ; rdfs:label "Mercury" .</pre>
                 </div>
             </div>
 
+            <!-- Technique 2 -->
             <div class="space-y-3 pt-6">
                <span class="bg-blue-900/40 text-blue-300 px-2 py-0.5 rounded text-xs font-mono border border-blue-800 font-bold">Phase 1 (Semantic Gap) — Technique 2: Few-Shot Alignment</span>
                 <div class="bg-gray-950 p-4 rounded-lg border border-gray-900 font-sans text-xs text-gray-300 leading-relaxed">
@@ -136,20 +145,20 @@ ex:Mercury    a a-cd:CulturalPropertyComponent ; rdfs:label "Mercury" .</pre>
                 
                 <div class="pl-4 border-l-2 border-gray-700 space-y-4">
                     <div class="space-y-1">
-                        <span class="text-gray-400 text-xs font-mono font-bold">// Target Input Prompt (Sent to <a href="https://en.wikipedia.org/wiki/Large_language_model" target="_blank" class="text-gray-400 hover:underline hover:text-gray-300">LLMs</a>)</span>
+                        <span class="text-gray-400 text-xs font-mono font-bold">// Target Input Prompt (Sent to LLMs)</span>
                         <div class="bg-gray-900 p-4 rounded-lg border border-gray-950 font-sans text-xs text-gray-400 leading-relaxed">
-                            Act as a Semantic Web Knowledge Engineer. Convert the following unstructured inputs into valid Turtle structures based on the provided examples, adhering strictly to the official <a href="https://dati.beniculturali.it/arco/" target="_blank" class="text-gray-400 hover:text-gray-300 hover:underline">ArCo ontology</a> prefixes.<br><br>
-                            [Example 1 Input] Canvas: <a href="https://www.wikidata.org/wiki/Q2268652" target="_blank" class="text-gray-400 hover:text-gray-300 hover:underline">Pallas and the Centaur</a> | Component: <a href="https://www.wikidata.org/wiki/Q83090" target="_blank" class="text-gray-400 hover:text-gray-300 hover:underline">Centaur</a><br>
-                            [Example 1 Output] ex:Pallas_Artwork <a href="https://w3id.org/arco/ontology/core/hasPart" target="_blank" class="text-gray-400 hover:text-gray-300 hover:underline">core:hasPart</a> ex:Centaur . ex:Centaur a <a href="https://w3id.org/arco/ontology/arco/CulturalPropertyComponent" target="_blank" class="text-gray-400 hover:text-gray-300 hover:underline">a-cd:CulturalPropertyComponent</a> ; rdfs:label "Centaur" .<br><br>
-                            [Example 2 Input] Canvas: <a href="https://www.wikidata.org/wiki/Q151047" target="_blank" class="text-gray-400 hover:text-gray-300 hover:underline">Birth of Venus</a> | Component: <a href="https://www.wikidata.org/wiki/Q47652" target="_blank" class="text-gray-400 hover:text-gray-300 hover:underline">Venus</a><br>
-                            [Example 2 Output] ex:BirthVenus_Artwork <a href="https://w3id.org/arco/ontology/core/hasPart" target="_blank" class="text-gray-400 hover:text-gray-300 hover:underline">core:hasPart</a> ex:Venus . ex:Venus a <a href="https://w3id.org/arco/ontology/arco/CulturalPropertyComponent" target="_blank" class="text-gray-400 hover:text-gray-300 hover:underline">a-cd:CulturalPropertyComponent</a> ; rdfs:label "Venus" .<br><br>
-                            [Target Input] Canvas: <a href="https://www.wikidata.org/wiki/Q549847" target="_blank" class="text-gray-400 hover:text-gray-300 hover:underline">La Primavera</a> by <a href="https://www.wikidata.org/wiki/Q5669" target="_blank" class="text-gray-400 hover:text-gray-300 hover:underline">Botticelli</a> | Components: <a href="https://www.wikidata.org/wiki/Q467515" target="_blank" class="text-gray-400 hover:text-gray-300 hover:underline">Zephyrus</a>, <a href="https://www.wikidata.org/wiki/Q1075258" target="_blank" class="text-gray-400 hover:text-gray-300 hover:underline">Chloris</a>, <a href="https://www.wikidata.org/wiki/Q209644" target="_blank" class="text-gray-400 hover:text-gray-300 hover:underline">Flora</a>, <a href="https://www.wikidata.org/wiki/Q47652" target="_blank" class="text-gray-400 hover:text-gray-300 hover:underline">Venus</a>, <a href="https://www.wikidata.org/wiki/Q5011" target="_blank" class="text-gray-400 hover:text-gray-300 hover:underline">Cupid</a>, <a href="https://www.wikidata.org/wiki/Q212816" target="_blank" class="text-gray-400 hover:text-gray-300 hover:underline">Aglaia</a>, <a href="https://www.wikidata.org/wiki/Q244388" target="_blank" class="text-gray-400 hover:text-gray-300 hover:underline">Euphrosyne</a>, <a href="https://www.wikidata.org/wiki/Q2722777" target="_blank" class="text-gray-400 hover:text-gray-300 hover:underline">Thalia</a>, <a href="https://www.wikidata.org/wiki/Q1150" target="_blank" class="text-gray-400 hover:text-gray-300 hover:underline">Mercury</a>.<br><br>
-                            Generate the exact <a href="https://www.w3.org/TR/turtle/" target="_blank" class="text-gray-400 hover:text-gray-300 hover:underline">W3C Turtle</a> output for the Target Input following the pattern. Output ONLY the code block. No explanations, no chat commentary.
+                            Act as a Semantic Web Knowledge Engineer. Convert the following unstructured inputs into valid Turtle structures based on the provided examples, adhering strictly to the official ArCo ontology prefixes.<br><br>
+                            [Example 1 Input] Canvas: Pallas and the Centaur | Component: Centaur<br>
+                            [Example 1 Output] ex:Pallas_Artwork core:hasPart ex:Centaur . ex:Centaur a a-cd:CulturalPropertyComponent ; rdfs:label "Centaur" .<br><br>
+                            [Example 2 Input] Canvas: Birth of Venus | Component: Venus<br>
+                            [Example 2 Output] ex:BirthVenus_Artwork core:hasPart ex:Venus . ex:Venus a a-cd:CulturalPropertyComponent ; rdfs:label "Venus" .<br><br>
+                            [Target Input] Canvas: La Primavera by Botticelli | Components: Zephyrus, Chloris, Flora, Venus, Cupid, Aglaia, Euphrosyne, Thalia, Mercury.<br><br>
+                            Generate the exact W3C Turtle output for the Target Input following the pattern. Output ONLY the code block. No explanations, no chat commentary.
                         </div>
                     </div>
                     
                     <div class="space-y-1">
-                        <span class="text-green-400 text-xs font-mono font-bold">// Few-Shot Model Response Output (<a href="https://chatgpt.com/" target="_blank" class="text-green-400 hover:text-green-300 hover:underline">ChatGPT</a>)</span>
+                        <span class="text-green-400 text-xs font-mono font-bold">// Few-Shot Model Response Output (ChatGPT)</span>
                         <pre class="bg-gray-950 p-4 rounded-lg font-mono text-xs text-green-400 border border-gray-900 overflow-x-auto leading-relaxed">@prefix ex:    &lt;http://example.org/primavera/&gt; .
 @prefix a-cd:  &lt;https://w3id.org/arco/ontology/context-description/&gt; .
 @prefix core:  &lt;https://w3id.org/arco/ontology/core/&gt; .
@@ -178,7 +187,7 @@ ex:Mercury a a-cd:CulturalPropertyComponent ; rdfs:label "Mercury" .</pre>
                     </div>
 
                     <div class="space-y-1">
-                        <span class="text-green-400 text-xs font-mono font-bold">// Few-Shot Model Response Output (<a href="https://gemini.google.com/" target="_blank" class="text-green-400 hover:text-green-300 hover:underline">Gemini</a>)</span>
+                        <span class="text-green-400 text-xs font-mono font-bold">// Few-Shot Model Response Output (Gemini)</span>
                         <pre class="bg-gray-950 p-4 rounded-lg font-mono text-xs text-green-400 border border-gray-900 overflow-x-auto leading-relaxed">@prefix ex:    &lt;http://example.org/primavera/&gt; .
 @prefix a-cd:  &lt;https://w3id.org/arco/ontology/context-description/&gt; .
 @prefix core:  &lt;https://w3id.org/arco/ontology/core/&gt; .
@@ -199,29 +208,31 @@ ex:Mercury a a-cd:CulturalPropertyComponent ; rdfs:label "Mercury" .</pre>
                 </div>
             </div>
 
+            <!-- Technique 3 -->
             <div class="space-y-3 pt-6">
-                <span class="bg-blue-900/40 text-blue-300 px-2 py-0.5 rounded text-xs font-mono border border-blue-800 font-bold">Phase 2 (Spatial Gap) — Technique 3: Chain-of-Thought (CoT)</span>
+                                <span class="bg-blue-900/40 text-blue-300 px-2 py-0.5 rounded text-xs font-mono border border-blue-800 font-bold">Phase 2 (Spatial Gap) — Technique 3: Chain-of-Thought (CoT)</span>
                 <div class="bg-gray-950 p-4 rounded-lg border border-gray-900 font-sans text-xs text-gray-300 leading-relaxed">
                     1. Calculate boundary limits on a normalized 100x100 grid from right to left using <a href="https://en.wikipedia.org/wiki/Prompt_engineering#Chain-of-thought" target="_blank" class="text-blue-400 hover:underline hover:text-blue-300 font-normal">Chain-of-Thought (CoT)</a> reasoning.<br>
                     2. Establish separate URI nodes for overlapping actors. Map properties to ArCo documentation rules.
                 </div>
 
+                
                 <div class="pl-4 border-l-2 border-gray-700 space-y-4">
                     <div class="space-y-1">
-                        <span class="text-gray-400 text-xs font-mono font-bold">// Target Input Prompt (Sent to <a href="https://en.wikipedia.org/wiki/Large_language_model" target="_blank" class="text-gray-400 hover:underline hover:text-gray-300">LLMs</a>)</span>
+                        <span class="text-gray-400 text-xs font-mono font-bold">// Target Input Prompt (Sent to LLMs)</span>
                         <div class="bg-gray-900 p-4 rounded-lg border border-gray-950 font-sans text-xs text-gray-400 leading-relaxed">
-                            Act as a Semantic Web Knowledge Engineer. You need to map the internal components of <a href="https://www.wikidata.org/wiki/Q5669" target="_blank" class="text-gray-400 hover:text-gray-300 hover:underline">Sandro Botticelli</a>'s "<a href="https://www.wikidata.org/wiki/Q549847" target="_blank" class="text-gray-400 hover:text-gray-300 hover:underline">La Primavera</a>" by computing their spatial distribution from right to left on a normalized 100x100 canvas grid.<br><br>
+                            Act as a Semantic Web Knowledge Engineer. You need to map the internal components of Sandro Botticelli's "La Primavera" by computing their spatial distribution from right to left on a normalized 100x100 canvas grid.<br><br>
                             Execute this task following these exact logical steps:<br>
                             1. Identify the 9 characters moving sequentially from the far right (X=100) to the far left (X=0).<br>
-                            2. For each character, establish a dedicated URI node as an instance of <a href="https://w3id.org/arco/ontology/arco/CulturalPropertyComponent" target="_blank" class="text-gray-400 hover:text-gray-300 hover:underline">a-cd:CulturalPropertyComponent</a>, linked via <a href="https://w3id.org/arco/ontology/core/hasPart" target="_blank" class="text-gray-400 hover:text-gray-300 hover:underline">core:hasPart</a> to ex:LaPrimavera_Artwork.<br>
-                            3. For each character, generate a secondary connected ex:Subj_ node using <a href="https://w3id.org/arco/ontology/context-description/hasSubject" target="_blank" class="text-gray-400 hover:text-gray-300 hover:underline">a-cd:hasSubject</a> to model their iconographical role (e.g., <a href="https://www.wikidata.org/wiki/Q467515" target="_blank" class="text-gray-400 hover:text-gray-300 hover:underline">God of the West Wind</a>, <a href="https://www.wikidata.org/wiki/Q1075258" target="_blank" class="text-gray-400 hover:text-gray-300 hover:underline">Nymph</a>, <a href="https://www.wikidata.org/wiki/Q209644" target="_blank" class="text-gray-400 hover:text-gray-300 hover:underline">Goddess of Spring</a>, <a href="https://www.wikidata.org/wiki/Q47652" target="_blank" class="text-gray-400 hover:text-gray-300 hover:underline">Goddess of Love</a>, <a href="https://www.wikidata.org/wiki/Q5011" target="_blank" class="text-gray-400 hover:text-gray-300 hover:underline">God of Desire</a>, <a href="https://www.wikidata.org/wiki/Q184353" target="_blank" class="text-gray-400 hover:text-gray-300 hover:underline">Three Graces</a>, <a href="https://www.wikidata.org/wiki/Q1150" target="_blank" class="text-gray-400 hover:text-gray-300 hover:underline">Messenger of the Gods</a>) and write an <a href="http://www.w3.org/2000/01/rdf-schema#label" target="_blank" class="text-gray-400 hover:text-gray-300 hover:underline">rdfs:label</a> for both nodes.<br>
-                            4. Use the official ArCo ontology prefixes for <a href="https://w3id.org/arco/ontology/context-description/" target="_blank" class="text-gray-400 hover:text-gray-300 hover:underline">a-cd:</a>, <a href="https://w3id.org/arco/ontology/core/" target="_blank" class="text-gray-400 hover:text-gray-300 hover:underline">core:</a>, and <a href="http://www.w3.org/2000/01/rdf-schema#" target="_blank" class="text-gray-400 hover:text-gray-300 hover:underline">rdfs:</a>.<br><br>
-                            Output the final result as a strict <a href="https://www.w3.org/TR/turtle/" target="_blank" class="text-gray-400 hover:text-gray-300 hover:underline">W3C Turtle</a> block. Do not write any conversational preamble or chat commentary.
+                            2. For each character, establish a dedicated URI node as an instance of a-cd:CulturalPropertyComponent, linked via core:hasPart to ex:LaPrimavera_Artwork.<br>
+                            3. For each character, generate a secondary connected ex:Subj_ node using a-cd:hasSubject to model their iconographical role (e.g., God of the West Wind, Nymph, Goddess of Spring, Goddess of Love, God of Desire, Three Graces, Messenger of the Gods) and write an rdfs:label for both nodes.<br>
+                            4. Use the official ArCo ontology prefixes for a-cd:, core:, and rdfs:.<br><br>
+                            Output the final result as a strict W3C Turtle block. Do not write any conversational preamble or chat commentary.
                         </div>
                     </div>
                     
                     <div class="space-y-1">
-                        <span class="text-green-400 text-xs font-mono font-bold">// Chain-of-Thought Model Response Output (<a href="https://chatgpt.com/" target="_blank" class="text-green-400 hover:text-green-300 hover:underline">ChatGPT</a>)</span>
+                        <span class="text-green-400 text-xs font-mono font-bold">// Chain-of-Thought Model Response Output (ChatGPT)</span>
                         <pre class="bg-gray-950 p-4 rounded-lg font-mono text-xs text-green-400 border border-gray-900 overflow-x-auto leading-relaxed">@prefix ex: &lt;http://example.org/la-primavera/&gt; .
 @prefix a-cd: &lt;https://w3id.org/arco/ontology/context-description/&gt; .
 @prefix core: &lt;https://w3id.org/arco/ontology/core/&gt; .
@@ -268,7 +279,7 @@ ex:Subj_Mercury rdfs:label "Messenger of the Gods" .</pre>
                     </div>
 
                     <div class="space-y-1">
-                        <span class="text-green-400 text-xs font-mono font-bold">// Chain-of-Thought Model Response Output (<a href="https://gemini.google.com/" target="_blank" class="text-green-400 hover:text-green-300 hover:underline">Gemini</a>)</span>
+                        <span class="text-green-400 text-xs font-mono font-bold">// Chain-of-Thought Model Response Output (Gemini)</span>
                         <pre class="bg-gray-950 p-4 rounded-lg font-mono text-xs text-green-400 border border-gray-900 overflow-x-auto leading-relaxed">@prefix a-cd: &lt;https://w3id.org/arco/ontology/context-description/&gt; .
 @prefix core: &lt;https://w3id.org/arco/ontology/core/&gt; .
 @prefix rdfs: &lt;http://www.w3.org/2000/01/rdf-schema#&gt; .
@@ -307,9 +318,10 @@ ex:Subj_Mercury a a-cd:Subject ; rdfs:label "Messenger of the Gods" .</pre>
                 </div>
             </div>
 
-            <div class="pt-6 border-t border-gray-700 space-y-3">
+            <!-- Reconciled Section -->
+                            <div class="pt-6 border-t border-gray-700 space-y-3">
                 <h3 class="text-sm font-bold font-sans text-white">Reconciled Knowledge Graph Dataset (9 Subject Components + Spatial Bounds)</h3>
-                <p class="text-gray-400 text-sm font-sans">The following <a href="https://www.w3.org/TR/turtle/" target="_blank" class="text-blue-400 hover:underline hover:text-blue-300 font-normal">Turtle schema</a> serialization represents the verified enrichment layer. During the <a href="https://en.wikipedia.org/wiki/Human-in-the-loop" target="_blank" class="text-blue-400 hover:underline hover:text-blue-300 font-normal">Human-in-the-Loop</a> phase, we corrected the <a href="https://en.wikipedia.org/wiki/Large_language_model" target="_blank" class="text-blue-400 hover:underline hover:text-blue-300 font-normal">LLM's</a> predicate direction errors, fixed namespace hallucinations (restoring <code class="text-yellow-500 font-mono text-xs">arco:CulturalPropertyComponent</code>), and normalized the spatial estimates into strict <code class="text-yellow-500 font-mono text-xs">ex:hasXMin / ex:hasXMax</code> properties, fully resolving the gap identified in the <a href="sparql.html" class="text-blue-400 hover:underline hover:text-blue-300 font-normal">SPARQL</a> audit.</p>
+                <p class="text-gray-400 text-sm font-sans">The following <a href="https://www.w3.org/TR/turtle/" target="_blank" class="text-blue-400 hover:underline hover:text-blue-300 font-normal">Turtle schema</a> serialization represents the verified enrichment layer. During the <a href="https://en.wikipedia.org/wiki/Human-in-the-loop" target="_blank" class="text-blue-400 hover:underline hover:text-blue-300 font-normal">Human-in-the-Loop</a> phase, we corrected the LLM's predicate direction errors, fixed namespace hallucinations (restoring <code class="text-yellow-500 font-mono text-xs">arco:CulturalPropertyComponent</code>), and normalized the spatial estimates into strict <code class="text-yellow-500 font-mono text-xs">ex:hasXMin / ex:hasXMax</code> properties, fully resolving the gap identified in the SPARQL audit.</p>
                 
                 <pre class="bg-gray-950 p-4 rounded-lg font-mono text-xs text-yellow-400 border border-gray-900 overflow-x-auto leading-relaxed">@prefix ex:    &lt;http://example.org/primavera/&gt; .
 @prefix a-cd:  &lt;https://w3id.org/arco/ontology/context-description/&gt; .
@@ -364,4 +376,4 @@ ex:Subj_Mercury          a a-cd:Subject ; rdfs:label "Messenger of the Gods disp
         </div>
     </main>
 </body>
-</html>
+</html> 
