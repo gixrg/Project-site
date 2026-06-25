@@ -73,38 +73,36 @@
             </div>
 
         </div>
-<!-- Visual Reconciliation: Before vs After -->
-<div class="bg-gray-800 p-6 rounded-xl border border-gray-700 space-y-4">
-    <h3 class="text-xs font-bold text-blue-400 font-mono uppercase tracking-wider">// Semantic Enrichment: Before vs. After</h3>
-    <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
-        <!-- Before -->
-        <div class="bg-gray-950 p-4 rounded-lg border border-red-900/50">
-            <span class="text-[10px] font-bold text-red-400 uppercase tracking-widest">Original Data Model (Monolithic)</span>
-            <pre class="mt-2 text-[10px] font-mono text-gray-500">
+        <div class="bg-gray-800 p-6 rounded-xl border border-gray-700 space-y-4">
+            <h3 class="text-xs font-bold text-blue-400 font-mono uppercase tracking-wider">// Semantic Enrichment: Before vs. After</h3>
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                <div class="bg-gray-950 p-4 rounded-lg border border-red-900/50">
+                    <span class="text-[10px] font-bold text-red-400 uppercase tracking-widest">Original Data Model (Monolithic)</span>
+                    <pre class="mt-2 text-[10px] font-mono text-gray-500">
 ex:Primavera_Artwork
     rdfs:label "Primavera" ;
     a-cd:hasAuthor "Botticelli" .
-    # (Gap: No components, No spatial data)
-            </pre>
-        </div>
-        <!-- After -->
-        <div class="bg-gray-950 p-4 rounded-lg border border-green-900/50">
-            <span class="text-[10px] font-bold text-green-400 uppercase tracking-widest">Enriched Data Model (Granular)</span>
-            <pre class="mt-2 text-[10px] font-mono text-green-500">
+    # Gap: No components, No spatial data</pre>
+                </div>
+                <div class="bg-gray-950 p-4 rounded-lg border border-green-900/50">
+                    <span class="text-[10px] font-bold text-green-400 uppercase tracking-widest">Enriched Data Model (Granular - 9 Components)</span>
+                    <pre class="mt-2 text-[10px] font-mono text-green-500">
 ex:Primavera_Artwork 
-    core:hasPart ex:Zephyrus, ex:Venus, ... ;
+    core:hasPart ex:Zephyrus, ex:Venus, 
+                 ex:Cupid, ex:Mercury, ... ;
     arco:hasSpatialDecomposition ex:Grid_100x100 .
 
 ex:Zephyrus a arco:CulturalPropertyComponent ;
-    ex:hasXMin 90 ;
-    ex:hasXMax 100 .
-            </pre>
+    ex:hasXMin 90 ; ex:hasXMax 100 .
+# [Repeat for 9 total components: Zephyrus, Chloris, 
+# Flora, Venus, Cupid, 3xGraces, Mercury]</pre>
+                </div>
+            </div>
+            <p class="text-[10px] text-gray-400 font-sans italic">
+                *Empirical transformation: The model now supports 9 unique URI nodes with discrete coordinate mapping for every mythological actor.*
+            </p>
         </div>
-    </div>
-    <p class="text-[10px] text-gray-400 font-sans italic">
-        *Empirical transformation from flat record to networked semantic components.*
-    </p>
-</div>
+
 
         <div class="bg-blue-950/20 p-6 rounded-xl border border-blue-900/50 space-y-4 mt-6">
             <h3 class="text-xs font-bold font-mono text-blue-400 uppercase tracking-wider">Project Strategic Conclusions</h3>
